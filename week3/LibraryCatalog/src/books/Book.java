@@ -25,4 +25,6 @@ public abstract class Book {
     public void setNumberOfPages(int numberOfPages) {
         this.numberOfPages = numberOfPages;
     }
+
+    public abstract String toString();
 }
