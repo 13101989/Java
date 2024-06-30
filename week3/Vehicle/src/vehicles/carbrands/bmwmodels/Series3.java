@@ -33,13 +33,14 @@ public class Series3 extends BMW {
         this.driveMode = true;
         this.tachometer = 0;
         this.fuelConsumption = 0;
-        this.shiftGear(1);
+        this.currentGear = 1;
         System.out.println("Started car and entered gear 1.");
     }
 
     public void shiftGear(int newGear) {
         if (newGear <= this.gears) {
             this.currentGear = newGear;
+            System.out.println("Current gear is now: " + this.currentGear);
         } else {
             System.out.println("Maximum gear allowed is " + this.gears + " continued using gear " + this.currentGear);
         }
@@ -62,7 +63,7 @@ public class Series3 extends BMW {
     }
 
     private float calculateFuelConsumption(int distance) {
-        return (float) distance / 100 * this.consumptionPer100km + (float) this.tireSize / 200;
+        return ((float) distance / 100 * this.consumptionPer100km + (float) this.tireSize / 200) + (float) this.currentGear / 10;
     }
 
     public void getAverageFuelConsumption() {
@@ -89,14 +90,19 @@ public class Series3 extends BMW {
         this.tireSize = tireSize;
     }
 
-    public void getAvailableFuel() {
+    public float getAvailableFuel() {
         System.out.println("Available fuel: "
                 + Math.round((this.availableFuel - this.fuelConsumption) * 100.0f) / 100.0f + " liters");
+        return Math.round((this.availableFuel - this.fuelConsumption) * 100.0f) / 100.0f;
     }
 
     public void setAvailableFuel(float availableFuel) {
-        this.availableFuel = availableFuel;
-        System.out.println("New available fuel value changed successfully");
+        if (availableFuel < this.fuelTankSize) {
+            this.availableFuel = availableFuel;
+            System.out.println("New available fuel value changed successfully");
+        } else {
+            System.out.println("Operation failed because value provided is bigger than fuel tank size.");
+        }
     }
 
     public String getChassisNumber() {
