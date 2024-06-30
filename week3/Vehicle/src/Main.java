@@ -41,7 +41,7 @@ public class Main {
 
         Car car1 = (Car) vehicle;
 
-        float availableFuel1 = car.getAvailableFuel();
-        float fuelConsumedPer100Km1 = car.getAverageFuelConsumption();
+        float availableFuel1 = car1.getAvailableFuel();
+        float fuelConsumedPer100Km1 = car1.getAverageFuelConsumption();
     }
 }

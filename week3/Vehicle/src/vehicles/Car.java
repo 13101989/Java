@@ -52,7 +52,7 @@ public class Car extends Vehicle {
                 this.tachometer += (int) distance;
                 this.fuelConsumption += distanceFuelConsumption;
                 System.out.println("Drove distance " + distance +
-                        " km and consumed an extra " + distanceFuelConsumption + " liters");
+                        " km and consumed an extra " + Math.round(distanceFuelConsumption * 100.0) / 100.0 + " liters");
             } else {
                 System.out.println("Cannot travel distance " + distance + " " + "with the current fuel. You need another  "
                         + (fuelConsumption + distanceFuelConsumption - this.availableFuel) + "liters, please fill up first!");
