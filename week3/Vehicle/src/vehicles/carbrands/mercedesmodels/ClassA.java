@@ -18,8 +18,8 @@ public class ClassA extends Mercedes {
 
     @Override
     public double calculateFuelConsumption(double distance) {
-        return (distance / 100 * this.getConsumptionPer100km()) +
-                (double) this.getCurrentGear() / 10 * (distance / 100 * this.getConsumptionPer100km());
+        return super.calculateFuelConsumption(distance) +
+                (double) this.getCurrentGear() / 10 * super.calculateFuelConsumption(distance);
     }
 
     public String getModelName() {

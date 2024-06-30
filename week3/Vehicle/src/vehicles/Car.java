@@ -47,7 +47,7 @@ public class Car extends Vehicle {
 
     @Override
     public void drive(double distance) {
-        if (driveMode) {
+        if (this.driveMode) {
             double distanceFuelConsumption = this.calculateFuelConsumption(distance);
             if (this.availableFuel > fuelConsumption + distanceFuelConsumption) {
                 this.tachometer += (int) distance;
