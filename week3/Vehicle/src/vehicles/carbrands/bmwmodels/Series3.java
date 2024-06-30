@@ -72,7 +72,7 @@ public class Series3 extends BMW {
             System.out.println("Average fuel consumption so far: "
                     + Math.round(averageFuelConsumption * 100.0f) / 100.0f + " liters/100km");
         } else {
-            System.out.println("Average fuel consumption so far: car has not drove any distance yet.");
+            System.out.println("Cannot provide average fuel consumption so far because car has not drove any distance yet.");
         }
     }
 
