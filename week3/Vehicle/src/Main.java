@@ -1,12 +1,8 @@
 import vehicles.Car;
-import vehicles.Vehicle;
-import vehicles.carbrands.Mercedes;
 import vehicles.carbrands.bmwmodels.Series3;
 import vehicles.carbrands.bmwmodels.Series5;
-import vehicles.carbrands.mercedesmodels.ClassA;
+import vehicles.carbrands.mercedesmodels.ClassC;
 import vehicles.carbrands.mercedesmodels.ClassE;
-
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -64,12 +60,12 @@ public class Main {
         series5.getAverageFuelConsumption();
 
         System.out.println();
-        Car classA = new ClassA(60, "classA_chassis");
-        classA.start();
-        classA.drive(100);
-        classA.stop();
-        classA.getAvailableFuel();
-        classA.getAverageFuelConsumption();
+        Car classC = new ClassC(60, "classA_chassis");
+        classC.start();
+        classC.drive(100);
+        classC.stop();
+        classC.getAvailableFuel();
+        classC.getAverageFuelConsumption();
 
         System.out.println();
         Car classE = new ClassE(60, "classE_chassis");

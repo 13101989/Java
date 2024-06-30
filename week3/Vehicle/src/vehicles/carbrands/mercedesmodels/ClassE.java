@@ -8,7 +8,7 @@ public class ClassE extends Mercedes {
     private final String modelName;
 
     public ClassE(int availableFuel, String chassisNumber) {
-        super(59, "Petrol", 8, 6.4, availableFuel, 15);
+        super(66, "Petrol", 9, 6.9, availableFuel, 15);
 
         this.chassisNumber = chassisNumber;
         this.modelName = "Class E";

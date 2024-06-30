@@ -2,16 +2,16 @@ package vehicles.carbrands.mercedesmodels;
 
 import vehicles.carbrands.Mercedes;
 
-public class ClassA extends Mercedes {
+public class ClassC extends Mercedes {
     private final String chassisNumber;
 
     private final String modelName;
 
-    public ClassA(int availableFuel, String chassisNumber) {
-        super(59, "Petrol", 8, 6.4, availableFuel, 15);
+    public ClassC(int availableFuel, String chassisNumber) {
+        super(66, "Petrol", 9, 6.4, availableFuel, 15);
 
         this.chassisNumber = chassisNumber;
-        this.modelName = "Class A";
+        this.modelName = "Class C";
 
         System.out.println(this);
     }

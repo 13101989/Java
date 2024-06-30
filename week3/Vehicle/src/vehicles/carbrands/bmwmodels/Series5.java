@@ -8,7 +8,7 @@ public class Series5 extends BMW {
     private final String modelName;
 
     public Series5(int availableFuel, String chassisNumber) {
-        super(59, "Petrol", 8, 6.4, availableFuel, 15);
+        super(68, "Petrol", 8, 6.9, availableFuel, 15);
 
         this.chassisNumber = chassisNumber;
         this.modelName = "5 Series";
