@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Series3 series3 = new Series3(40, "B-01-DAM");
+        Series3 series3 = new Series3(40, "12GF3NMF34DLD198FG3");
 
         System.out.println();
 
@@ -35,7 +35,7 @@ public class Main {
         series3.drive(100);
         series3.getAverageFuelConsumption();
         series3.getAvailableFuel();
-        series3.setAvailableFuel(180);
+        series3.setAvailableFuel(50);
         series3.getAvailableFuel();
         series3.drive(100);
         series3.getAvailableFuel();

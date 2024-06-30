@@ -7,6 +7,4 @@ public abstract class Vehicle {
     public abstract void stop();
 
     public abstract void drive(int distance);
-
-    public abstract String toString();
 }
