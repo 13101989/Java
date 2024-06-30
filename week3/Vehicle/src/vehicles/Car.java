@@ -53,10 +53,10 @@ public class Car extends Vehicle {
                 this.tachometer += (int) distance;
                 this.fuelConsumption += distanceFuelConsumption;
                 System.out.println("Drove distance " + distance +
-                        " km and consumed an extra " + Math.round(distanceFuelConsumption * 100.0) / 100.0 + " liters");
+                        " km and consumed an extra " + (float) distanceFuelConsumption + " liters");
             } else {
-                System.out.println("Cannot travel distance " + distance + " " + "with the current fuel. You need another  "
-                        + (fuelConsumption + distanceFuelConsumption - this.availableFuel) + "liters, please fill up first!");
+                System.out.println("Cannot travel distance " + distance + " " + "with the current fuel. You need another "
+                        + (int) (fuelConsumption + distanceFuelConsumption - this.availableFuel) + " liters, please fill up first!");
             }
         } else {
             System.out.println("In order to drive you need first to start the car");
@@ -64,7 +64,7 @@ public class Car extends Vehicle {
     }
 
     public double calculateFuelConsumption(double distance) {
-        return (distance / 100 * this.consumptionPer100km);
+        return distance / 100 * this.consumptionPer100km;
     }
 
     public void shiftGear(int newGear) {
@@ -80,8 +80,8 @@ public class Car extends Vehicle {
         if (this.tachometer > 0) {
             double averageFuelConsumption = this.fuelConsumption / this.tachometer * 100;
             System.out.println("Average fuel consumption so far: "
-                    + Math.round(averageFuelConsumption * 100.0f) / 100.0f + " liters/100km");
-            return Math.round(averageFuelConsumption * 100.0f) / 100.0f;
+                    + (float) averageFuelConsumption + " liters/100km");
+            return (float) averageFuelConsumption;
         } else {
             System.out.println("Cannot provide average fuel consumption so far because car has not drove any distance yet.");
             return 0.0f;
