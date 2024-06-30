@@ -1,24 +1,25 @@
 package vehicles;
 
 public class Car extends Vehicle {
-    private final float fuelTankSize;
+    private final double fuelTankSize;
     private final String fuelType;
     private final int gears;
-    private final float consumptionPer100km;
-    private float availableFuel;
-    private int tireSize;
-
+    private final double consumptionPer100km;
     public boolean driveMode;
     public int tachometer;
     public int currentGear;
-    public float fuelConsumption;
+    public double fuelConsumption;
+    private double availableFuel;
+    private int tireSize;
 
-    public Car(float fuelTankSize,
+    public Car(double fuelTankSize,
                String fuelType,
                int gears,
-               float consumptionPer100km,
-               float availableFuel,
+               double consumptionPer100km,
+               double availableFuel,
                int tireSize) {
+
+        super("car");
 
         this.fuelTankSize = fuelTankSize;
         this.fuelType = fuelType;
@@ -28,7 +29,7 @@ public class Car extends Vehicle {
         this.tireSize = tireSize;
     }
 
-
+    @Override
     public void start() {
         this.driveMode = true;
         this.tachometer = 0;
@@ -37,18 +38,21 @@ public class Car extends Vehicle {
         System.out.println("Started car and entered gear 1.");
     }
 
+    @Override
     public void stop() {
         this.driveMode = false;
         System.out.println("Stopped the car.");
     }
 
-    public void drive(int distance) {
+    @Override
+    public void drive(double distance) {
         if (driveMode) {
-            float distanceFuelConsumption = this.calculateFuelConsumption(distance);
+            double distanceFuelConsumption = this.calculateFuelConsumption(distance);
             if (this.availableFuel > fuelConsumption + distanceFuelConsumption) {
-                this.tachometer += distance;
+                this.tachometer += (int) distance;
                 this.fuelConsumption += distanceFuelConsumption;
-                System.out.println("Drove distance " + distance + " km and consumed an extra " + distanceFuelConsumption + " liters");
+                System.out.println("Drove distance " + distance +
+                        " km and consumed an extra " + distanceFuelConsumption + " liters");
             } else {
                 System.out.println("Cannot travel distance " + distance + " " + "with the current fuel. You need another  "
                         + (fuelConsumption + distanceFuelConsumption - this.availableFuel) + "liters, please fill up first!");
@@ -58,8 +62,8 @@ public class Car extends Vehicle {
         }
     }
 
-    private float calculateFuelConsumption(int distance) {
-        return ((float) distance / 100 * this.consumptionPer100km + (float) this.tireSize / 200) + (float) this.currentGear / 10;
+    private double calculateFuelConsumption(double distance) {
+        return (distance / 100 * this.consumptionPer100km + (double) this.tireSize / 200) + (double) this.currentGear / 10;
     }
 
     public void shiftGear(int newGear) {
@@ -73,7 +77,7 @@ public class Car extends Vehicle {
 
     public float getAverageFuelConsumption() {
         if (this.tachometer > 0) {
-            float averageFuelConsumption = this.fuelConsumption / this.tachometer * 100;
+            double averageFuelConsumption = this.fuelConsumption / this.tachometer * 100;
             System.out.println("Average fuel consumption so far: "
                     + Math.round(averageFuelConsumption * 100.0f) / 100.0f + " liters/100km");
             return Math.round(averageFuelConsumption * 100.0f) / 100.0f;
@@ -89,7 +93,7 @@ public class Car extends Vehicle {
         return Math.round((this.availableFuel - this.fuelConsumption) * 100.0f) / 100.0f;
     }
 
-    public void setAvailableFuel(float availableFuel) {
+    public void setAvailableFuel(double availableFuel) {
         if (availableFuel < this.fuelTankSize) {
             this.availableFuel = availableFuel;
             this.fuelConsumption = 0;

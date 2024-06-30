@@ -1,10 +1,22 @@
 package vehicles;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Runnable {
+    private final String vehicleType;
 
-    public abstract void start();
+    public Vehicle(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
 
-    public abstract void stop();
+    public void start() {
+    }
 
-    public abstract void drive(int distance);
+    public void stop() {
+    }
+
+    public void drive(int distance) {
+    }
+
+    public String getVehicleType() {
+        return this.vehicleType;
+    }
 }
