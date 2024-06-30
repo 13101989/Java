@@ -65,8 +65,13 @@ public class Series3 extends BMW {
         return (float) (this.tachometer + distance) / 100 * this.consumptionPer100km;
     }
 
-    public float getAverageFuelConsumption() {
-        return (float) (this.tachometer) / 100 * this.consumptionPer100km;
+    public void getAverageFuelConsumption() {
+        if (this.tachometer > 0) {
+            float getAverageFuelConsumption = (float) (this.tachometer) / 100 * this.consumptionPer100km;
+            System.out.println("Average fuel consumtion so far: " + getAverageFuelConsumption + "l.");
+        } else {
+            System.out.println("Car has not drove any distance yet");
+        }
     }
 
     public void stop() {
@@ -94,7 +99,7 @@ public class Series3 extends BMW {
         return chassisNumber;
     }
 
-    public String toString(){
+    public String toString() {
         return "Car(brand=BMW; model=Series3; chassis_number=" + this.chassisNumber + ") created successfully.";
     }
 }

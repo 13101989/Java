@@ -4,5 +4,5 @@ public abstract class Car extends Vehicle {
 
     public abstract void shiftGear(int newGear);
 
-    public abstract float getAverageFuelConsumption();
+    public abstract void getAverageFuelConsumption();
 }
