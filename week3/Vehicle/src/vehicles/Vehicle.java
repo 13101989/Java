@@ -13,7 +13,7 @@ public abstract class Vehicle implements Runnable {
     public void stop() {
     }
 
-    public void drive(int distance) {
+    public void drive(double distance) {
     }
 
     public String getVehicleType() {
