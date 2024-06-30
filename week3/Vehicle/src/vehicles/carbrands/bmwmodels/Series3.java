@@ -48,27 +48,28 @@ public class Series3 extends BMW {
 
     public void drive(int distance) {
         if (driveMode) {
-            float distanceFuelConsumption = this.getAverageFuelConsumption(distance);
+            float distanceFuelConsumption = this.getFuelConsumption(distance);
             if (this.availableFuel > fuelConsumption + distanceFuelConsumption) {
                 this.tachometer += distance;
                 this.fuelConsumption += distanceFuelConsumption;
             } else {
                 System.out.println("Cannot travel distance " + distance + " " + "with the current fuel. You need another  "
-                        + (fuelConsumption + distanceFuelConsumption - this.availableFuel) + "l, please fill up first!");
+                        + (fuelConsumption + distanceFuelConsumption - this.availableFuel) + "liters, please fill up first!");
             }
         } else {
             System.out.println("In order to drive you need first to start the car");
         }
     }
 
-    private float getAverageFuelConsumption(int distance) {
+    private float getFuelConsumption(int distance) {
         return (float) (this.tachometer + distance) / 100 * this.consumptionPer100km;
     }
 
     public void getAverageFuelConsumption() {
         if (this.tachometer > 0) {
-            float getAverageFuelConsumption = (float) (this.tachometer) / 100 * this.consumptionPer100km;
-            System.out.println("Average fuel consumtion so far: " + getAverageFuelConsumption + "l.");
+            float fuelConsumed = (float) (this.tachometer) / 100 * this.consumptionPer100km;
+            float averageFuelConsumtion = fuelConsumed / this.tachometer * 100;
+            System.out.println("Average fuel consumtion so far: " + averageFuelConsumtion + " liters/100km");
         } else {
             System.out.println("Car has not drove any distance yet");
         }
@@ -88,11 +89,13 @@ public class Series3 extends BMW {
     }
 
     public float getAvailableFuel() {
-        return this.availableFuel;
+        System.out.println("Available fuel: " + (this.availableFuel - this.fuelConsumption)+ " liters");
+        return this.availableFuel - this.fuelConsumption;
     }
 
     public void setAvailableFuel(float availableFuel) {
         this.availableFuel = availableFuel;
+        System.out.println("New available fuel value changed successfully");
     }
 
     public String getChassisNumber() {
