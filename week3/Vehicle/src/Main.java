@@ -1,9 +1,6 @@
 import vehicles.Car;
 import vehicles.Vehicle;
-import vehicles.carbrands.BMW;
 import vehicles.carbrands.bmwmodels.Series3;
-
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {

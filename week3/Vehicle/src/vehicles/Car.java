@@ -5,12 +5,13 @@ public class Car extends Vehicle {
     private final String fuelType;
     private final int gears;
     private final double consumptionPer100km;
-    public boolean driveMode;
-    public int tachometer;
-    public int currentGear;
-    public double fuelConsumption;
     private double availableFuel;
     private int tireSize;
+
+    private boolean driveMode;
+    private int tachometer;
+    private int currentGear;
+    private double fuelConsumption;
 
     public Car(double fuelTankSize,
                String fuelType,
@@ -62,8 +63,8 @@ public class Car extends Vehicle {
         }
     }
 
-    private double calculateFuelConsumption(double distance) {
-        return (distance / 100 * this.consumptionPer100km + (double) this.tireSize / 200) + (double) this.currentGear / 10;
+    public double calculateFuelConsumption(double distance) {
+        return (distance / 100 * this.consumptionPer100km);
     }
 
     public void shiftGear(int newGear) {
@@ -109,6 +110,14 @@ public class Car extends Vehicle {
 
     public void setTireSize(int tireSize) {
         this.tireSize = tireSize;
+    }
+
+    public double getConsumptionPer100km() {
+        return this.consumptionPer100km;
+    }
+
+    public int getCurrentGear() {
+        return this.currentGear;
     }
 
 

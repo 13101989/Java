@@ -16,6 +16,12 @@ public class Series3 extends BMW {
         System.out.println(this);
     }
 
+    @Override
+    public double calculateFuelConsumption(double distance) {
+        return (distance / 100 * this.getConsumptionPer100km()) +
+                (double) this.getCurrentGear() / 10 * (distance / 100 * this.getConsumptionPer100km());
+    }
+
     public String getModelName() {
         return this.modelName;
     }
