@@ -12,7 +12,7 @@ public class Main {
         series3.drive(10);
         series3.getAverageFuelConsumption();
         series3.getAvailableFuel();
-        series3.drive(100);
+        series3.drive(500);
         series3.getAvailableFuel();
         series3.getAverageFuelConsumption();
         series3.stop();
@@ -20,8 +20,20 @@ public class Main {
         System.out.println();
 
         series3.start();
+        series3.shiftGear(1);
         series3.getAvailableFuel();
-        series3.drive(10);
+        series3.drive(100);
+        series3.getAverageFuelConsumption();
+        series3.getAvailableFuel();
+        series3.stop();
+
+        System.out.println();
+
+        series3.start();
+        series3.shiftGear(9);
+        series3.getAvailableFuel();
+        series3.drive(100);
+        series3.getAverageFuelConsumption();
         series3.getAvailableFuel();
         series3.stop();
 

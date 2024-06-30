@@ -24,34 +24,34 @@ public class Series3 extends BMW {
         this.fuelType = "Petrol";
         this.gears = 8;
         this.consumptionPer100km = 6.4f;
+        this.tireSize = 15;
 
         System.out.println(this);
     }
 
     public void start() {
-        if (this.availableFuel > this.fuelTankSize) {
-
-        }
         this.driveMode = true;
         this.tachometer = 0;
         this.fuelConsumption = 0;
-        this.currentGear = 0;
+        this.shiftGear(1);
+        System.out.println("Started car and entered gear 1.");
     }
 
     public void shiftGear(int newGear) {
         if (newGear <= this.gears) {
             this.currentGear = newGear;
         } else {
-            System.out.println("Maximum gear allowed is " + this.gears);
+            System.out.println("Maximum gear allowed is " + this.gears + " continued using gear " + this.currentGear);
         }
     }
 
     public void drive(int distance) {
         if (driveMode) {
-            float distanceFuelConsumption = this.getFuelConsumption(distance);
+            float distanceFuelConsumption = this.calculateFuelConsumption(distance);
             if (this.availableFuel > fuelConsumption + distanceFuelConsumption) {
                 this.tachometer += distance;
                 this.fuelConsumption += distanceFuelConsumption;
+                System.out.println("Drove distance " + distance + " km and consumed an extra " + distanceFuelConsumption + " liters");
             } else {
                 System.out.println("Cannot travel distance " + distance + " " + "with the current fuel. You need another  "
                         + (fuelConsumption + distanceFuelConsumption - this.availableFuel) + "liters, please fill up first!");
@@ -61,22 +61,23 @@ public class Series3 extends BMW {
         }
     }
 
-    private float getFuelConsumption(int distance) {
-        return (float) (this.tachometer + distance) / 100 * this.consumptionPer100km;
+    private float calculateFuelConsumption(int distance) {
+        return (float) distance / 100 * this.consumptionPer100km + (float) this.tireSize / 200;
     }
 
     public void getAverageFuelConsumption() {
         if (this.tachometer > 0) {
-            float fuelConsumed = (float) (this.tachometer) / 100 * this.consumptionPer100km;
-            float averageFuelConsumtion = fuelConsumed / this.tachometer * 100;
-            System.out.println("Average fuel consumtion so far: " + averageFuelConsumtion + " liters/100km");
+            float averageFuelConsumption = this.fuelConsumption / this.tachometer * 100;
+            System.out.println("Average fuel consumption so far: "
+                    + Math.round(averageFuelConsumption * 100.0f) / 100.0f + " liters/100km");
         } else {
-            System.out.println("Car has not drove any distance yet");
+            System.out.println("Average fuel consumption so far: car has not drove any distance yet.");
         }
     }
 
     public void stop() {
         this.driveMode = false;
+        System.out.println("Stopped the car.");
     }
 
 
@@ -88,9 +89,9 @@ public class Series3 extends BMW {
         this.tireSize = tireSize;
     }
 
-    public float getAvailableFuel() {
-        System.out.println("Available fuel: " + (this.availableFuel - this.fuelConsumption)+ " liters");
-        return this.availableFuel - this.fuelConsumption;
+    public void getAvailableFuel() {
+        System.out.println("Available fuel: "
+                + Math.round((this.availableFuel - this.fuelConsumption) * 100.0f) / 100.0f + " liters");
     }
 
     public void setAvailableFuel(float availableFuel) {
