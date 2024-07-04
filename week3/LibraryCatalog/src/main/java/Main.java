@@ -1,5 +1,7 @@
-import books.ArtAlbum;
-import books.Novel;
+package main.java;
+
+import main.java.books.ArtAlbum;
+import main.java.books.Novel;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.

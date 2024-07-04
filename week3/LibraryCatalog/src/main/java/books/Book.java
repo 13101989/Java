@@ -1,4 +1,4 @@
-package books;
+package main.java.books;
 
 public abstract class Book {
     private String name;

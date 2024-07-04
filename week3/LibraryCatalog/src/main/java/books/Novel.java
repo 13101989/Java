@@ -1,4 +1,4 @@
-package books;
+package main.java.books;
 
 public class Novel extends Book {
     private String type;

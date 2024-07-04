@@ -1,4 +1,4 @@
-package books;
+package main.java.books;
 
 public class ArtAlbum extends Book {
     private String paperQuality;

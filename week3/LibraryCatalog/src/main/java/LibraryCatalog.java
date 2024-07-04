@@ -1,4 +1,6 @@
-import books.Book;
+package main.java;
+
+import main.java.books.Book;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,7 @@ public class LibraryCatalog {
 
     public LibraryCatalog() {
         bookCatalog = new ArrayList<>();
-        System.out.println("Library is open for storing books!");
+        System.out.println("Library is open for storing main.java.books!");
     }
 
     public void addBook(Book book) {
@@ -22,7 +24,7 @@ public class LibraryCatalog {
     }
 
     public void listBooks() {
-        System.out.println("Library includes the following books:");
+        System.out.println("Library includes the following main.java.books:");
         for (Book book : bookCatalog) {
             System.out.println(book.getName());
         }
