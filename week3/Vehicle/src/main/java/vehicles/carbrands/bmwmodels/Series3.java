@@ -1,6 +1,6 @@
-package vehicles.carbrands.bmwmodels;
+package main.java.vehicles.carbrands.bmwmodels;
 
-import vehicles.carbrands.BMW;
+import main.java.vehicles.carbrands.BMW;
 
 public class Series3 extends BMW {
     private final String chassisNumber;

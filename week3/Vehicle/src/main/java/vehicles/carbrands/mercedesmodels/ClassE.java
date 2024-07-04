@@ -1,25 +1,25 @@
-package vehicles.carbrands.mercedesmodels;
+package main.java.vehicles.carbrands.mercedesmodels;
 
-import vehicles.carbrands.Mercedes;
+import main.java.vehicles.carbrands.Mercedes;
 
-public class ClassC extends Mercedes {
+public class ClassE extends Mercedes {
     private final String chassisNumber;
 
     private final String modelName;
 
-    public ClassC(int availableFuel, String chassisNumber) {
-        super(66, "Petrol", 9, 6.4, availableFuel, 15);
+    public ClassE(int availableFuel, String chassisNumber) {
+        super(66, "Petrol", 9, 6.9, availableFuel, 15);
 
         this.chassisNumber = chassisNumber;
-        this.modelName = "Class C";
+        this.modelName = "Class E";
 
         System.out.println(this);
     }
 
     @Override
     public double calculateFuelConsumption(double distance) {
-        return super.calculateFuelConsumption(distance) +
-                (double) this.getCurrentGear() / 10 * super.calculateFuelConsumption(distance);
+        return (super.calculateFuelConsumption(distance) + (double) this.getTireSize() / 200)
+                + (double) this.getCurrentGear() / 10 * super.calculateFuelConsumption(distance);
     }
 
     public String getModelName() {
@@ -34,3 +34,4 @@ public class ClassC extends Mercedes {
                 "created successfully.";
     }
 }
+

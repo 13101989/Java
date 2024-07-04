@@ -1,4 +1,4 @@
-package vehicles;
+package main.java.vehicles;
 
 public abstract class Vehicle implements Runnable {
     private final String vehicleType;

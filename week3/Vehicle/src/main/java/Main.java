@@ -1,9 +1,11 @@
-import vehicles.Car;
-import vehicles.Vehicle;
-import vehicles.carbrands.bmwmodels.Series3;
-import vehicles.carbrands.bmwmodels.Series5;
-import vehicles.carbrands.mercedesmodels.ClassC;
-import vehicles.carbrands.mercedesmodels.ClassE;
+package main.java;
+
+import main.java.vehicles.Car;
+import main.java.vehicles.Vehicle;
+import main.java.vehicles.carbrands.bmwmodels.Series3;
+import main.java.vehicles.carbrands.bmwmodels.Series5;
+import main.java.vehicles.carbrands.mercedesmodels.ClassC;
+import main.java.vehicles.carbrands.mercedesmodels.ClassE;
 
 public class Main {
     public static void main(String[] args) {

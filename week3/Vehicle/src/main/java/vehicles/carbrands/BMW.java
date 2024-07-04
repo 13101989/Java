@@ -1,11 +1,11 @@
-package vehicles.carbrands;
+package main.java.vehicles.carbrands;
 
-import vehicles.Car;
+import main.java.vehicles.Car;
 
-public class Mercedes extends Car {
+public class BMW extends Car {
     private final String brandName;
 
-    public Mercedes(double fuelTankSize,
+    public BMW(double fuelTankSize,
                String fuelType,
                int gears,
                double consumptionPer100km,
@@ -14,7 +14,7 @@ public class Mercedes extends Car {
 
         super(fuelTankSize, fuelType, gears, consumptionPer100km, availableFuel, tireSize);
 
-        this.brandName = "Mercedes";
+        this.brandName = "BMW";
     }
 
     public String getBrandName() {

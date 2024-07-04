@@ -1,17 +1,17 @@
-package vehicles.carbrands.mercedesmodels;
+package main.java.vehicles.carbrands.bmwmodels;
 
-import vehicles.carbrands.Mercedes;
+import main.java.vehicles.carbrands.BMW;
 
-public class ClassE extends Mercedes {
+public class Series5 extends BMW {
     private final String chassisNumber;
 
     private final String modelName;
 
-    public ClassE(int availableFuel, String chassisNumber) {
-        super(66, "Petrol", 9, 6.9, availableFuel, 15);
+    public Series5(int availableFuel, String chassisNumber) {
+        super(68, "Petrol", 8, 6.9, availableFuel, 15);
 
         this.chassisNumber = chassisNumber;
-        this.modelName = "Class E";
+        this.modelName = "5 Series";
 
         System.out.println(this);
     }

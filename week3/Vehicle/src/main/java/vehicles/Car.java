@@ -1,4 +1,4 @@
-package vehicles;
+package main.java.vehicles;
 
 public class Car extends Vehicle {
     private final double fuelTankSize;
