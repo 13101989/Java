@@ -4,9 +4,9 @@ public class MakeTagsCodingBat {
     public static void main(String[] args) {
         MakeTagsCodingBat object = new MakeTagsCodingBat();
 
-        System.out.println("makeTags(\"i\", \"Yay\") = "+ object.makeTags("i", "Yay"));
-        System.out.println("makeTags(\"i\", \"Hello\") = "+ object.makeTags("i", "Hello"));
-        System.out.println("makeTags(\"cite\", \"Yay\") = "+ object.makeTags("cite", "Yay"));
+        System.out.println("makeTags(\"i\", \"Yay\") = " + object.makeTags("i", "Yay"));
+        System.out.println("makeTags(\"i\", \"Hello\") = " + object.makeTags("i", "Hello"));
+        System.out.println("makeTags(\"cite\", \"Yay\") = " + object.makeTags("cite", "Yay"));
     }
 
     /**

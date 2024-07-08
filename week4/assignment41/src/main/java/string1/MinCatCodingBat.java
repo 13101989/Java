@@ -1,7 +1,5 @@
 package main.java.string1;
 
-import java.util.Arrays;
-
 public class MinCatCodingBat {
     public static void main(String[] args) {
 
