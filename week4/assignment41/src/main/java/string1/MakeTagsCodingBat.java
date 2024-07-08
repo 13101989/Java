@@ -20,9 +20,9 @@ public class MakeTagsCodingBat {
      */
 
     public String makeTags(String tag, String word) {
-        String sufix = "<" + tag + ">";
+        String suffix = "<" + tag + ">";
         String prefix = "</" + tag + ">";
 
-        return sufix + word + prefix;
+        return suffix + word + prefix;
     }
 }

@@ -32,7 +32,7 @@ public class Double23CodingBat {
             } else if (num == 3) {
                 count3s += 1;
             }
-            if(count2s > 1 || count3s > 1){
+            if (count2s > 1 || count3s > 1) {
                 return true;
             }
         }
