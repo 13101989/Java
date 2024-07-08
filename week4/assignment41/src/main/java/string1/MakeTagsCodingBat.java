@@ -1,6 +1,4 @@
-package main.java;
-
-import java.util.Arrays;
+package main.java.string1;
 
 public class MakeTagsCodingBat {
     public static void main(String[] args) {

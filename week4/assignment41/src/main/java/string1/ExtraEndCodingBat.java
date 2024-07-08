@@ -1,8 +1,12 @@
-package main.java;
+package main.java.string1;
 
 public class ExtraEndCodingBat {
     public static void main(String[] args) {
+        ExtraEndCodingBat object = new ExtraEndCodingBat();
 
+        System.out.println("extraEnd('Hello') = " + object.extraEnd("Hello"));
+        System.out.println("extraEnd('ab') = " + object.extraEnd("ab"));
+        System.out.println("extraEnd('Hi') = " + object.extraEnd("Hi"));
     }
 
     /**
@@ -14,6 +18,8 @@ public class ExtraEndCodingBat {
      */
 
     public String extraEnd(String str) {
+        String end = str.substring(str.length() - 2);
 
+        return end + end + end;
     }
 }
