@@ -1,8 +1,14 @@
 package main.java;
 
+import java.util.Arrays;
+
 public class MakeTagsCodingBat {
     public static void main(String[] args) {
+        MakeTagsCodingBat object = new MakeTagsCodingBat();
 
+        System.out.println("makeTags(\"i\", \"Yay\") = "+ object.makeTags("i", "Yay"));
+        System.out.println("makeTags(\"i\", \"Hello\") = "+ object.makeTags("i", "Hello"));
+        System.out.println("makeTags(\"cite\", \"Yay\") = "+ object.makeTags("cite", "Yay"));
     }
 
     /**
@@ -16,6 +22,9 @@ public class MakeTagsCodingBat {
      */
 
     public String makeTags(String tag, String word) {
+        String sufix = "<" + tag + ">";
+        String prefix = "</" + tag + ">";
 
+        return sufix + word + prefix;
     }
 }
