@@ -2,7 +2,11 @@ package main.java.string2;
 
 public class XYBalanceCodingBat {
     public static void main(String[] args) {
+        XYBalanceCodingBat object = new XYBalanceCodingBat();
 
+        System.out.println("xyBalance(\"aaxbby\") = " + object.xyBalance("aaxbby"));
+        System.out.println("xyBalance(\"aaxbb\") = " + object.xyBalance("aaxbb"));
+        System.out.println("xyBalance(\"yaaxbb\") = " + object.xyBalance("yaaxbb"));
     }
 
     /**
@@ -15,9 +19,15 @@ public class XYBalanceCodingBat {
      * xyBalance("yaaxbb") → false
      */
 
-//    public boolean xyBalance(String str) {
-//        for(int i=0; i < str.length(); i++){
-//
-//        }
-//    }
+    public boolean xyBalance(String str) {
+        boolean foundX = false;
+        for (int i = str.length() - 1; i >= 0; i--) {
+            if (str.charAt(i) == 'x') {
+                foundX = true;
+            } else if (str.charAt(i) == 'y' && !foundX) {
+                return true;
+            }
+        }
+        return !foundX;
+    }
 }
