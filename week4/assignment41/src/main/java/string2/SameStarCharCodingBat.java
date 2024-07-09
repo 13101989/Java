@@ -1,7 +1,5 @@
 package main.java.string2;
 
-import java.util.Arrays;
-
 public class SameStarCharCodingBat {
     public static void main(String[] args) {
         SameStarCharCodingBat object = new SameStarCharCodingBat();
@@ -20,12 +18,9 @@ public class SameStarCharCodingBat {
      */
 
     public boolean sameStarChar(String str) {
-        for(int i = 1; i < str.length() - 1; i++){
-            if(str.charAt(i) == '*'){
-                if(str.charAt(i-1) == str.charAt(i+1)){
-                    continue;
-                }
-                else{
+        for (int i = 1; i < str.length() - 1; i++) {
+            if (str.charAt(i) == '*') {
+                if (!(str.charAt(i - 1) == str.charAt(i + 1))) {
                     return false;
                 }
             }
