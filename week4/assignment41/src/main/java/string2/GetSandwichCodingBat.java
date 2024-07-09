@@ -6,7 +6,7 @@ public class GetSandwichCodingBat {
 
         System.out.println("getSandwich(\"breadjambread\") = " + object.getSandwich("breadjambread"));
         System.out.println("getSandwich(\"xxbreadjambreadyy\") = " + object.getSandwich("xxbreadjambreadyy"));
-        System.out.println("getSandwich(\"breaxbreadybread\") = " + object.getSandwich("breaxbreadybread"));
+        System.out.println("getSandwich(\"breaxbreadybread\") = " + object.getSandwich("xxbreadyy"));
 
     }
 
@@ -42,7 +42,7 @@ public class GetSandwichCodingBat {
             }
             if (!rightIndexFound) {
                 String stringToCheck = str.substring(right - lengthToCheck, right);
-                if (!rightIndexFound && !stringToCheck.equals("bread")) {
+                if (!stringToCheck.equals("bread")) {
                     right -= 1;
                 } else {
                     rightIndexFound = true;
