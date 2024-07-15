@@ -1,16 +1,19 @@
 package main.java.map2;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class FirstCharCodingBat {
     public static void main(String[] args) {
         FirstCharCodingBat object = new FirstCharCodingBat();
 
-        Map<String, String> params = new HashMap<>();
+        String[] params1 = {"salt", "tea", "soda", "toast"};
+        System.out.println("firstChar([\"salt\", \"tea\", \"soda\", \"toast\"]) --> " + object.firstChar(params1));
 
+        String[] params2 = {"aa", "bb", "cc", "aAA", "cCC", "d"};
+        System.out.println("firstChar([\"aa\", \"bb\", \"cc\", \"aAA\", \"cCC\", \"d\"]) --> " + object.firstChar(params2));
 
-
+        String[] params3 = {};
+        System.out.println("firstChar([]) --> " + object.firstChar(params3));
     }
 
     /**
@@ -23,6 +26,17 @@ public class FirstCharCodingBat {
      */
 
     public Map<String, String> firstChar(String[] strings) {
+        Map<String, String> map = new HashMap<>();
+        List<String> arrayAsList = Arrays.asList(strings);
 
+        for (String string : arrayAsList) {
+            String key = String.valueOf(string.charAt(0));
+            if (!map.containsKey(key)) {
+                map.put(key, string);
+            } else {
+                map.put(key, map.get(key) + string);
+            }
+        }
+        return map;
     }
 }
