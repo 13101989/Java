@@ -9,7 +9,7 @@ public class Topping2CodingBat {
 
         Map<String, String> params = new HashMap<>();
 
-        params.put("ice cream","cherry");
+        params.put("ice cream", "cherry");
         System.out.println("topping2({\"ice cream\": \"cherry\"}) -→ " + object.topping2(params));
         params.clear();
 
@@ -20,6 +20,7 @@ public class Topping2CodingBat {
 
         params.put("yogurt", "salt");
         System.out.println("topping2({\"yogurt\": \"salt\"}) -→ " + object.topping2(params));
+        params.clear();
     }
 
     /**
