@@ -1,5 +1,8 @@
 package main.java.array3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CanBalanceCodingBat {
     public static void main(String[] args) {
         CanBalanceCodingBat object = new CanBalanceCodingBat();
@@ -23,22 +26,27 @@ public class CanBalanceCodingBat {
      */
 
     public boolean canBalance(int[] nums) {
-        int length = nums.length;
+        List<Integer> numsAsList = new ArrayList<>();
+        for (Integer num : nums) {
+            numsAsList.add(num);
+        }
+
+        int length = numsAsList.size();
         int left = 0;
         int right = length - 1;
 
-        int sumLeft = nums[left];
-        int sumRight = nums[right];
+        int sumLeft = numsAsList.get(left);
+        int sumRight = numsAsList.get(right);
 
         while (left + 1 < right) {
             if (sumLeft < sumRight) {
                 left++;
-                sumLeft += nums[left];
+                sumLeft += numsAsList.get(left);
             } else {
                 right--;
-                sumRight += nums[right];
+                sumRight += numsAsList.get(right);
             }
         }
-        return sumLeft == sumRight && nums.length > 1;
+        return sumLeft == sumRight && numsAsList.size() > 1;
     }
 }
