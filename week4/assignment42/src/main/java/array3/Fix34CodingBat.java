@@ -1,6 +1,8 @@
 package main.java.array3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Fix34CodingBat {
     public static void main(String[] args) {
@@ -28,6 +30,33 @@ public class Fix34CodingBat {
      */
 
     public int[] fix34(int[] nums) {
-        return nums;
+        List<Integer> numsAsList = new ArrayList<>();
+        for (Integer num : nums) {
+            numsAsList.add(num);
+        }
+
+        List<Integer> result = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        for (int i = 0; i < numsAsList.size(); i++) {
+            if (i > 0 && numsAsList.get(i - 1) == 3) {
+                temp.add(numsAsList.get(i));
+                result.add(4);
+            } else {
+                result.add(numsAsList.get(i));
+            }
+        }
+        for (int i = 0; i < numsAsList.size(); i++) {
+            if (i > 0 && numsAsList.get(i - 1) != 3 && numsAsList.get(i) == 4) {
+                result.set(i, temp.get(0));
+                temp.remove(0);
+            }
+        }
+
+        int[] resultAsArray = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            resultAsArray[i] = result.get(i);
+        }
+
+        return resultAsArray;
     }
 }
