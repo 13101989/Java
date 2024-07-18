@@ -1,7 +1,6 @@
 package main.java.array3;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MaxSpanCodingBat {
     public static void main(String[] args) {

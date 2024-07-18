@@ -1,4 +1,4 @@
-package week1.assignment2;
+package main.java;
 
 
 public class MaxDigitOfNumber {

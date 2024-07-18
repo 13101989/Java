@@ -1,4 +1,4 @@
-package week2.assignment1;
+package main.java.logic2;
 
 /**
  * Logic 2 -> noTeenSum:
