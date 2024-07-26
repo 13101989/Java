@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.*;
 
 public abstract class Phone implements Callable, Messageable, Contacts {
-    public final String batteryLife;
+    public final Integer batteryLife;
     public String color;
     public String material;
 
@@ -12,7 +12,7 @@ public abstract class Phone implements Callable, Messageable, Contacts {
     public Map<String, List<String>> messages;
     public LinkedHashMap<Instant, String> callHistory;
 
-    public Phone(String batteryLife, String color, String material) {
+    public Phone(Integer batteryLife, String color, String material) {
         this.batteryLife = batteryLife;
         this.color = color;
         this.material = material;
@@ -96,6 +96,5 @@ public abstract class Phone implements Callable, Messageable, Contacts {
         } else {
             System.out.println("You haven't made any calls yet.");
         }
-
     }
 }
