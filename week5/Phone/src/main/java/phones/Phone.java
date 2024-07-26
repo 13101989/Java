@@ -72,7 +72,7 @@ public abstract class Phone implements Callable, Messageable, Contacts {
 
     public void getSecondMessage(String phoneNumber) {
         if (messages.get(phoneNumber).size() > 1) {
-            String secondMessage = messages.get(phoneNumber).get(2);
+            String secondMessage = messages.get(phoneNumber).get(1);
             System.out.println("Second message towards number " + phoneNumber + " is " + secondMessage);
         } else {
             System.out.println("You haven't sent two messages towards " + phoneNumber + " yet.");
