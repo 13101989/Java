@@ -7,7 +7,7 @@ public class S24 extends Samsung {
     private final String IMEI = generateIMEI();
 
     public S24() {
-        super(90, "purple", "aluminium");
+        super(4, "purple", "aluminium");
     }
 
     public S24(Integer batteryLife, String color, String material) {
