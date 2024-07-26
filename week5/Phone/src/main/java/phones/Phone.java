@@ -61,21 +61,21 @@ public abstract class Phone implements Callable, Messageable, Contacts {
     }
 
     public void getFirstMessage(String phoneNumber) {
-        if (!messages.get(phoneNumber).isEmpty()){
+        if (!messages.get(phoneNumber).isEmpty()) {
             String firstMessage = messages.get(phoneNumber).getFirst();
             System.out.println("First message towards number " + phoneNumber + " is " + firstMessage);
         } else {
-            System.out.println("You haven't sent any messages towards " +  phoneNumber + " yet ");
+            System.out.println("You haven't sent any messages towards " + phoneNumber + " yet.");
         }
 
     }
 
-    public void getLastMessage(String phoneNumber) {
-        if (!messages.get(phoneNumber).isEmpty()) {
-            String lastMessage = messages.get(phoneNumber).getLast();
-            System.out.println("Last message towards number " + phoneNumber + " is " + lastMessage);
+    public void getSecondMessage(String phoneNumber) {
+        if (messages.get(phoneNumber).size() > 1) {
+            String secondMessage = messages.get(phoneNumber).get(2);
+            System.out.println("Second message towards number " + phoneNumber + " is " + secondMessage);
         } else {
-            System.out.println("You haven't sent any messages towards " +  phoneNumber + " yet ");
+            System.out.println("You haven't sent two messages towards " + phoneNumber + " yet.");
         }
     }
 }
