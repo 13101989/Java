@@ -10,16 +10,22 @@ public class Main {
 
         Phone phone = new iPhone15();
 
-        phone.addContact("1", "phone number", "first name", "last name");
-        phone.addContact("2", "second phone number", "second first name", "second last name");
+        phone.addContact("1", "1111111111", "John", "First");
+        phone.addContact("2", "2222222222", "John", "Second");
+        System.out.println();
         phone.getFirstContact();
         phone.getLastContact();
+        System.out.println();
 
-        phone.sendMessage("phone number", "message content");
-        phone.getFirstMessage("phone number");
-        phone.getSecondMessage("phone number");
+        phone.sendMessage("1111111111", "Let's go outside!");
+        System.out.println();
+        phone.getFirstMessage("1111111111");
+        phone.getSecondMessage("1111111111");
+        System.out.println();
 
-        phone.call("second phone number");
+        phone.call("2222222222");
+        System.out.println();
         phone.viewHistory();
+        System.out.println();
     }
 }
