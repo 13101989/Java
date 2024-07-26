@@ -2,8 +2,6 @@ package main.java.phones.manufacturer.applemodels;
 
 import main.java.phones.manufacturer.Apple;
 
-import java.util.Random;
-
 public class iPhone15Pro extends Apple {
     private final String modelName = "iPhone15 Pro";
     private final String IMEI = generateIMEI();

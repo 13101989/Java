@@ -5,13 +5,12 @@ import java.util.*;
 
 public abstract class Phone implements Callable, Messageable, Contacts {
     private final int batteryLife;
-    private String color;
-    private String material;
-
-    private int batteryLeft;
     private final LinkedHashMap<String, Map<String, String>> contacts = new LinkedHashMap<>();
     private final Map<String, List<String>> messages = new HashMap<>();
     private final LinkedHashMap<Instant, String> callHistory = new LinkedHashMap<>();
+    private String color;
+    private String material;
+    private int batteryLeft;
 
     public Phone(Integer batteryLife, String color, String material) {
         this.batteryLife = batteryLife;
@@ -55,7 +54,7 @@ public abstract class Phone implements Callable, Messageable, Contacts {
     public void sendMessage(String phoneNumber, String messageContent) {
         if (batteryLeft > 1) {
             batteryLeft -= 1;
-            if (messageContent.length() < 10) {
+            if (messageContent.length() < 30) {
                 List<String> message = new ArrayList<>();
                 if (messages.containsKey(phoneNumber)) {
                     message = messages.get(phoneNumber);

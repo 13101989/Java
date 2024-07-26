@@ -2,8 +2,6 @@ package main.java.phones.manufacturer.samsungmodels;
 
 import main.java.phones.manufacturer.Samsung;
 
-import java.util.Random;
-
 public class S24Ultra extends Samsung {
     private final String modelName = "Samsung S24 Ultra";
     private final String IMEI = generateIMEI();
