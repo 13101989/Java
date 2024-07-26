@@ -2,8 +2,11 @@ package main.java.phones.manufacturer.applemodels;
 
 import main.java.phones.manufacturer.Apple;
 
+import java.util.Random;
+
 public class iPhone15Pro extends Apple {
     private final String modelName = "iPhone15 Pro";
+    private final String IMEI = generateIMEI();
 
     public iPhone15Pro() {
         super(150, "dark blue", "titanium");
@@ -15,5 +18,9 @@ public class iPhone15Pro extends Apple {
 
     public String getModelName() {
         return modelName;
+    }
+
+    public String getIMEI() {
+        return IMEI;
     }
 }

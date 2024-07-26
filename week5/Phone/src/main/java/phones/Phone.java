@@ -104,6 +104,17 @@ public abstract class Phone implements Callable, Messageable, Contacts {
         }
     }
 
+    public String generateIMEI() {
+        String numberToString = "";
+        Random random = new Random();
+
+        for (int i = 0; i < 15; i++) {
+            int randomNumber0to9 = random.nextInt(9) + 1;
+            numberToString += String.valueOf(randomNumber0to9);
+        }
+        return numberToString;
+    }
+
     public String getColor() {
         return color;
     }
