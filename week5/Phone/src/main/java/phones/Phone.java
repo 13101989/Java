@@ -17,6 +17,8 @@ public abstract class Phone implements Callable, Messageable, Contacts {
         this.batteryLife = batteryLife;
         this.color = color;
         this.material = material;
+
+        this.batteryLeft = batteryLife;
     }
 
     public void addContact(String number, String phoneNumber, String firstName, String lastName) {
@@ -51,21 +53,25 @@ public abstract class Phone implements Callable, Messageable, Contacts {
     }
 
     public void sendMessage(String phoneNumber, String messageContent) {
-        if (messageContent.length() < 10) {
-            List<String> message = new ArrayList<>();
-            if (messages.containsKey(phoneNumber)) {
-                message = messages.get(phoneNumber);
-                message.add(messageContent);
+        if (batteryLeft > 1) {
+            batteryLeft -= 1;
+            if (messageContent.length() < 10) {
+                List<String> message = new ArrayList<>();
+                if (messages.containsKey(phoneNumber)) {
+                    message = messages.get(phoneNumber);
+                    message.add(messageContent);
+                } else {
+                    message.add(messageContent);
+                    messages.put(phoneNumber, message);
+                }
+
+                System.out.println("Message was sent: {destination number=" + phoneNumber + ", message=" + messageContent + "}");
             } else {
-                message.add(messageContent);
-                messages.put(phoneNumber, message);
+                System.out.println("Cannot send message: the maximum allowed character limit is 10.");
             }
-            System.out.println("Message was sent: {destination number=" + phoneNumber + ", message=" + messageContent + "}");
         } else {
-            System.out.println("Cannot send message: the maximum allowed character limit is 10.");
+            System.out.println("You don't have enough battery to send this message. Please charge your phone first.");
         }
-
-
     }
 
     public void getFirstMessage(String phoneNumber) {
@@ -75,7 +81,6 @@ public abstract class Phone implements Callable, Messageable, Contacts {
         } else {
             System.out.println("You haven't sent any messages towards " + phoneNumber + " yet.");
         }
-
     }
 
     public void getSecondMessage(String phoneNumber) {
@@ -88,9 +93,15 @@ public abstract class Phone implements Callable, Messageable, Contacts {
     }
 
     public void call(String phoneNumber) {
-        Instant now = Instant.now();
-        callHistory.put(now, phoneNumber);
-        System.out.println("Call initiated: {destination number=" + phoneNumber + " , timestamp=" + now + "}");
+        if (batteryLeft > 2) {
+            batteryLeft -= 2;
+            Instant now = Instant.now();
+            callHistory.put(now, phoneNumber);
+            System.out.println("Call initiated: {destination number=" + phoneNumber + " , timestamp=" + now + "}");
+        } else {
+            System.out.println("You don't have enough battery to make this call. Please charge your phone first.");
+        }
+
     }
 
     public void viewHistory() {
