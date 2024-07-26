@@ -1,5 +1,6 @@
 package main.java.phones;
 
+import java.time.Instant;
 import java.util.*;
 
 public abstract class Phone implements Callable, Messageable, Contacts {
@@ -9,7 +10,7 @@ public abstract class Phone implements Callable, Messageable, Contacts {
 
     public LinkedHashMap<String, Map<String, String>> contacts;
     public Map<String, List<String>> messages;
-    public LinkedHashMap<String, String> callHistory;
+    public LinkedHashMap<Instant, String> callHistory;
 
     public Phone(String batteryLife, String color, String material) {
         this.batteryLife = batteryLife;
@@ -58,6 +59,7 @@ public abstract class Phone implements Callable, Messageable, Contacts {
             message.add(messageContent);
             messages.put(phoneNumber, message);
         }
+        System.out.println("You have just sent towards phone number " + phoneNumber + "the following message " + messageContent);
     }
 
     public void getFirstMessage(String phoneNumber) {
@@ -77,5 +79,23 @@ public abstract class Phone implements Callable, Messageable, Contacts {
         } else {
             System.out.println("You haven't sent two messages towards " + phoneNumber + " yet.");
         }
+    }
+
+    public void call(String phoneNumber) {
+        Instant now = Instant.now();
+        callHistory.put(now, phoneNumber);
+        System.out.println("You made a call towards phoneNumber " + phoneNumber + " at " + now);
+    }
+
+    public void viewHistory() {
+        System.out.println("The history of your calls is (timestamp -> called number): ");
+        if (!callHistory.isEmpty()) {
+            for (Map.Entry<Instant, String> entry : callHistory.entrySet()) {
+                System.out.println("Timestamp: " + entry.getKey() + " -> " + entry.getValue());
+            }
+        } else {
+            System.out.println("You haven't made any calls yet.");
+        }
+
     }
 }
