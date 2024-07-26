@@ -4,13 +4,14 @@ import java.time.Instant;
 import java.util.*;
 
 public abstract class Phone implements Callable, Messageable, Contacts {
-    public final Integer batteryLife;
-    public String color;
-    public String material;
+    private final int batteryLife;
+    private String color;
+    private String material;
 
-    public LinkedHashMap<String, Map<String, String>> contacts = new LinkedHashMap<>();
-    public Map<String, List<String>> messages = new HashMap<>();
-    public LinkedHashMap<Instant, String> callHistory = new LinkedHashMap<>();
+    private int batteryLeft;
+    private final LinkedHashMap<String, Map<String, String>> contacts = new LinkedHashMap<>();
+    private final Map<String, List<String>> messages = new HashMap<>();
+    private final LinkedHashMap<Instant, String> callHistory = new LinkedHashMap<>();
 
     public Phone(Integer batteryLife, String color, String material) {
         this.batteryLife = batteryLife;
@@ -50,20 +51,25 @@ public abstract class Phone implements Callable, Messageable, Contacts {
     }
 
     public void sendMessage(String phoneNumber, String messageContent) {
-        List<String> message = new ArrayList<>();
-
-        if (messages.containsKey(phoneNumber)) {
-            message = messages.get(phoneNumber);
-            message.add(messageContent);
+        if (messageContent.length() < 10) {
+            List<String> message = new ArrayList<>();
+            if (messages.containsKey(phoneNumber)) {
+                message = messages.get(phoneNumber);
+                message.add(messageContent);
+            } else {
+                message.add(messageContent);
+                messages.put(phoneNumber, message);
+            }
+            System.out.println("Message was sent: {destination number=" + phoneNumber + ", message=" + messageContent + "}");
         } else {
-            message.add(messageContent);
-            messages.put(phoneNumber, message);
+            System.out.println("Cannot send message: the maximum allowed character limit is 10.");
         }
-        System.out.println("Message was sent: {destination number=" + phoneNumber + ", message=" + messageContent + "}");
+
+
     }
 
     public void getFirstMessage(String phoneNumber) {
-        if (!messages.get(phoneNumber).isEmpty()) {
+        if (messages.containsKey(phoneNumber) && !messages.get(phoneNumber).isEmpty()) {
             String firstMessage = messages.get(phoneNumber).getFirst();
             System.out.println("First message: {destination number=" + phoneNumber + " ,message=" + firstMessage + "}");
         } else {
@@ -73,7 +79,7 @@ public abstract class Phone implements Callable, Messageable, Contacts {
     }
 
     public void getSecondMessage(String phoneNumber) {
-        if (messages.get(phoneNumber).size() > 1) {
+        if (messages.containsKey(phoneNumber) && messages.get(phoneNumber).size() > 1) {
             String secondMessage = messages.get(phoneNumber).get(1);
             System.out.println("Second message: {destination number=" + phoneNumber + " ,message=" + secondMessage + "}");
         } else {
@@ -96,5 +102,29 @@ public abstract class Phone implements Callable, Messageable, Contacts {
         } else {
             System.out.println("You haven't made any calls yet.");
         }
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public int getBatteryLife() {
+        return batteryLife;
+    }
+
+    public int getBatteryLeft() {
+        return batteryLeft;
     }
 }

@@ -3,7 +3,7 @@ package main.java.phones.manufacturer.samsungmodels;
 import main.java.phones.manufacturer.Samsung;
 
 public class S24Ultra extends Samsung {
-    public final String modelName = "Samsung S24 Ultra";
+    private final String modelName = "Samsung S24 Ultra";
 
     public S24Ultra() {
         super(140, "purple", "aluminium");
@@ -11,5 +11,9 @@ public class S24Ultra extends Samsung {
 
     public S24Ultra(Integer batteryLife, String color, String material) {
         super(batteryLife, color, material);
+    }
+
+    public String getModelName() {
+        return modelName;
     }
 }
