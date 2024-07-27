@@ -44,8 +44,12 @@ public class Main2 {
         hobby3.addLocation(address1);
         hobby3.addLocation(address5);
 
+        person1.addHobby(hobby1);
+        person2.addHobby(hobby2);
+        person2.addHobby(hobby3);
+
         for (Person person : personTreeSet) {
-            System.out.println(person);
+            System.out.println(person.hobbies);
         }
     }
 

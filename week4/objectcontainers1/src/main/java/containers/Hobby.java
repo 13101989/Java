@@ -30,12 +30,13 @@ public class Hobby {
 
     @Override
     public String toString() {
-        StringBuilder returnStatement = new StringBuilder("Hobby{name=" + name + ", countries_to_practice=");
+        String returnStatement = "Hobby{name=" + name + ", countries_to_practice=";
         for (Address location : locationsToPractice) {
-            returnStatement.append(location.country);
+            returnStatement = returnStatement + location.getCountry() + ",";
         }
-        returnStatement.append("}");
-        return returnStatement.toString();
+        returnStatement = returnStatement.substring(0, returnStatement.length() - 1);
+        returnStatement += "}";
+        return returnStatement;
     }
 
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Person implements Comparable<Person> {
-    public String name;
-    public int age;
+    private String name;
+    private int age;
     public List<Hobby> hobbies = new ArrayList<>();
 
     public Person(String name, int age) {
@@ -16,7 +16,7 @@ public class Person implements Comparable<Person> {
 
     public void addHobby(Hobby hobby) {
         hobbies.add(hobby);
-        System.out.println("Person " + name + "has a new hobby:" + hobby);
+        System.out.println("Person " + name + " has a new hobby: " + hobby);
     }
 
     @Override
