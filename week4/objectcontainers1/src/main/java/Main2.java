@@ -4,6 +4,7 @@ import main.java.containers.Address;
 import main.java.containers.Hobby;
 import main.java.containers.Person;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.TreeSet;
 
@@ -44,12 +45,14 @@ public class Main2 {
         hobby3.addLocation(address1);
         hobby3.addLocation(address5);
 
+        System.out.println();
         person1.addHobby(hobby1);
         person2.addHobby(hobby2);
         person2.addHobby(hobby3);
 
+        System.out.println();
         for (Person person : personTreeSet) {
-            System.out.println(person.hobbies);
+            System.out.println("Person name is " + person.getName() + " and is " + person.getAge() + " years old.");
         }
     }
 
