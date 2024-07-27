@@ -34,14 +34,14 @@ public class Main2 {
         Address address5 = new Address("Switzerland", "Interlaken", "aStreet");
         Address address6 = new Address("United Kingdom", "London", "aStreet");
 
-        hobby1.addLocation(address3);
-        hobby1.addLocation(address2);
-        hobby1.addLocation(address6);
-        hobby2.addLocation(address2);
-        hobby2.addLocation(address6);
-        hobby2.addLocation(address4);
-        hobby3.addLocation(address1);
-        hobby3.addLocation(address5);
+        hobby1.addLocationToPractice(address3);
+        hobby1.addLocationToPractice(address2);
+        hobby1.addLocationToPractice(address6);
+        hobby2.addLocationToPractice(address2);
+        hobby2.addLocationToPractice(address6);
+        hobby2.addLocationToPractice(address4);
+        hobby3.addLocationToPractice(address1);
+        hobby3.addLocationToPractice(address5);
 
         System.out.println();
         person1.addHobby(hobby1);
@@ -54,9 +54,9 @@ public class Main2 {
         }
 
         Map<Person, List<Hobby>> mapPersonHobbies = new HashMap<>();
-        mapPersonHobbies.put(person1, person1.hobbies);
-        mapPersonHobbies.put(person2, person2.hobbies);
-        mapPersonHobbies.put(person3, person3.hobbies);
+        mapPersonHobbies.put(person1, person1.getHobbies());
+        mapPersonHobbies.put(person2, person2.getHobbies());
+        mapPersonHobbies.put(person3, person3.getHobbies());
 
         System.out.println();
         for (Map.Entry<Person, List<Hobby>> entry : mapPersonHobbies.entrySet()) {

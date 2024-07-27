@@ -7,16 +7,12 @@ import java.util.Objects;
 public class Person implements Comparable<Person> {
     private String name;
     private int age;
-    public List<Hobby> hobbies = new ArrayList<>();
+
+    private List<Hobby> hobbies = new ArrayList<>();
 
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
-    }
-
-    public void addHobby(Hobby hobby) {
-        hobbies.add(hobby);
-        System.out.println("Person " + name + " has a new hobby: " + hobby);
     }
 
     @Override
@@ -62,6 +58,15 @@ public class Person implements Comparable<Person> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void addHobby(Hobby hobby) {
+        hobbies.add(hobby);
+        System.out.println("Person " + name + " has a new hobby: " + hobby);
     }
 }
 
