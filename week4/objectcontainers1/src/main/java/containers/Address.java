@@ -4,12 +4,19 @@ public class Address {
     public String country;
     public String city;
     public String street;
-    public int streetNumber;
 
-    public Address(String country, String city, String street, int streetNumber) {
+    public Address(String country, String city, String street) {
         this.country = country;
         this.city = city;
         this.street = street;
-        this.streetNumber = streetNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "country=" + country + ", " +
+                "city=" + city + ", " +
+                "street=" + street +
+                "}";
     }
 }
