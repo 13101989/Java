@@ -60,7 +60,11 @@ public class Main2 {
 
         System.out.println();
         for (Map.Entry<Person, List<Hobby>> entry : mapPersonHobbies.entrySet()) {
-            System.out.println(entry.getKey() + " has the following hobbies: " + entry.getValue());
+            if (entry.getValue().isEmpty()) {
+                System.out.println(entry.getKey() + " has no hobbies.");
+            } else {
+                System.out.println(entry.getKey() + " has the following hobbies: " + entry.getValue());
+            }
         }
     }
 
