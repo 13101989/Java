@@ -4,9 +4,7 @@ import main.java.containers.Address;
 import main.java.containers.Hobby;
 import main.java.containers.Person;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main2 {
     public static void main(String[] args) {
@@ -53,6 +51,16 @@ public class Main2 {
         System.out.println();
         for (Person person : personTreeSet) {
             System.out.println("Person name is " + person.getName() + " and is " + person.getAge() + " years old.");
+        }
+
+        Map<Person, List<Hobby>> mapPersonHobbies = new HashMap<>();
+        mapPersonHobbies.put(person1, person1.hobbies);
+        mapPersonHobbies.put(person2, person2.hobbies);
+        mapPersonHobbies.put(person3, person3.hobbies);
+
+        System.out.println();
+        for (Map.Entry<Person, List<Hobby>> entry : mapPersonHobbies.entrySet()) {
+            System.out.println(entry.getKey() + " has the following hobbies: " + entry.getValue());
         }
     }
 
