@@ -14,7 +14,8 @@ public class Main2 {
                 .comparing(Person::getName)
                 .thenComparingInt(Person::getAge);
 
-        TreeSet<Person> personTreeSet = new TreeSet<>(); // new TreeSet<>(personComparator);
+        TreeSet<Person> personTreeSet = new TreeSet<>();
+//        TreeSet<Person> personTreeSet = new TreeSet<>(personComparator);
 
         Person person1 = new Person("John2", 40);
         Person person2 = new Person("John", 50);
@@ -61,12 +62,14 @@ public class Main2 {
         System.out.println();
         for (Map.Entry<Person, List<Hobby>> entry : mapPersonHobbies.entrySet()) {
             if (entry.getValue().isEmpty()) {
-                System.out.println(entry.getKey() + " has no hobbies.");
+                System.out.println(entry.getKey() + " has NO hobbies.");
             } else {
-                System.out.println(entry.getKey() + " has the following hobbies: " + entry.getValue());
+                System.out.println(entry.getKey() + " has the following hobbies: ");
+                for (Hobby hobby : entry.getValue()) {
+                    System.out.println(" --> " + hobby);
+                }
             }
+            System.out.println();
         }
     }
-
-
 }

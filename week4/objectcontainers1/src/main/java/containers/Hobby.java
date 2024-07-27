@@ -18,7 +18,7 @@ public class Hobby {
 
     @Override
     public String toString() {
-        String returnStatement = "{name=" + name + ", countries_to_practice=";
+        String returnStatement = "Hobby{name=" + name + ", countries_to_practice=";
         for (Address location : locationsToPractice) {
             returnStatement = returnStatement + location.getCountry() + ",";
         }
