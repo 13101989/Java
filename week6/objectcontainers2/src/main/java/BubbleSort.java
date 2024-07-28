@@ -11,7 +11,7 @@ public class BubbleSort {
         for (i = 0; i < arrayLength; i++) {
             swapped = false;
             for (j = 0; j < arrayLength - i - 1; j++) {
-                if (salesRepresentatives[j].revenueGenerated < salesRepresentatives[j + 1].revenueGenerated) {
+                if (salesRepresentatives[j].getRevenueGenerated() < salesRepresentatives[j + 1].getRevenueGenerated()) {
                     temp = salesRepresentatives[j];
                     salesRepresentatives[j] = salesRepresentatives[j + 1];
                     salesRepresentatives[j + 1] = temp;

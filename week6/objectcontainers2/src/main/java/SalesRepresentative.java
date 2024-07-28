@@ -1,9 +1,9 @@
 package main.java;
 
 public class SalesRepresentative {
-    public int numberOfSales;
-    public int quotaPerSale;
-    public int revenueGenerated;
+    private final int numberOfSales;
+    private final int quotaPerSale;
+    private final int revenueGenerated;
 
     public SalesRepresentative(int numberOfSales, int quotaPerSale) {
         this.numberOfSales = numberOfSales;
@@ -13,5 +13,17 @@ public class SalesRepresentative {
 
     public String toString() {
         return "SalesRepresentative{revenue_generated=" + revenueGenerated + "}";
+    }
+
+    public int getNumberOfSales() {
+        return numberOfSales;
+    }
+
+    public int getQuotaPerSale() {
+        return quotaPerSale;
+    }
+
+    public int getRevenueGenerated() {
+        return revenueGenerated;
     }
 }
