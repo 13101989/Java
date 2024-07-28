@@ -36,22 +36,31 @@ class BubbleSortTest {
     @Test
     @DisplayName("test sort")
     void sort() {
-        SalesRepresentative[] sortedRepresentatives = {representative4, representative2, representative1, representative3};
+        SalesRepresentative[] expected = {representative4, representative2, representative1, representative3};
+        SalesRepresentative[] actual = bubble.sort(representatives);
 
-        assertNotNull(sortedRepresentatives);
-        assertEquals(Arrays.toString(sortedRepresentatives), Arrays.toString(bubble.sort(representatives)));
-        assertEquals(representative4.getRevenueGenerated(), bubble.sort(representatives)[0].getRevenueGenerated());
-        assertEquals(representative3.getRevenueGenerated(), bubble.sort(representatives)[3].getRevenueGenerated());
+        assertNotNull(actual);
+
+        assertEquals(Arrays.toString(expected), Arrays.toString(actual));
+
+        assertEquals(expected[0].getRevenueGenerated(), actual[0].getRevenueGenerated());
+
+        assertEquals(expected[3].getRevenueGenerated(), actual[3].getRevenueGenerated());
     }
 
     @Test
     @DisplayName("test reverse")
     void reverse() {
-        SalesRepresentative[] reverseSortedRepresentatives = {representative3, representative1, representative2, representative4};
+        SalesRepresentative[] sortedRepresentatives = bubble.sort(representatives);
+        SalesRepresentative[] expected = {representative3, representative1, representative2, representative4};
+        SalesRepresentative[] actual = bubble.reverse(sortedRepresentatives);
 
-        assertNotNull(reverseSortedRepresentatives);
-        assertEquals(Arrays.toString(reverseSortedRepresentatives), Arrays.toString(bubble.reverse(bubble.sort(representatives))));
-        assertEquals(representative3.getRevenueGenerated(), bubble.reverse(bubble.sort(representatives))[0].getRevenueGenerated());
-        assertEquals(representative4.getRevenueGenerated(), bubble.reverse(bubble.sort(representatives))[3].getRevenueGenerated());
+        assertNotNull(actual);
+
+        assertEquals(Arrays.toString(expected), Arrays.toString(actual));
+
+        assertEquals(expected[0].getRevenueGenerated(), actual[0].getRevenueGenerated());
+
+        assertEquals(expected[3].getRevenueGenerated(), actual[3].getRevenueGenerated());
     }
 }
