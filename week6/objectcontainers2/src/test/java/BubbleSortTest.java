@@ -11,6 +11,10 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * Test class for the BubbleSort class.
+ * Contains test methods to verify the sorting and reversing functionality.
+ */
 class BubbleSortTest {
     private BubbleSort bubble;
     private SalesRepresentative representative1;
@@ -19,6 +23,10 @@ class BubbleSortTest {
     private SalesRepresentative representative4;
     private final SalesRepresentative[] representatives = new SalesRepresentative[4];
 
+    /**
+     * Sets up the test environment.
+     * Initializes the BubbleSort instance and a sample array of SalesRepresentative objects.
+     */
     @BeforeEach
     void set_up() {
         bubble = new BubbleSort();
@@ -33,6 +41,9 @@ class BubbleSortTest {
         representatives[3] = representative4;
     }
 
+    /**
+     * Tests whether the BubbleSort instance and SalesRepresentative objects are instantiated properly.
+     */
     @Test
     void canInstantiate() {
         assertNotNull(bubble);
@@ -43,6 +54,9 @@ class BubbleSortTest {
         assertNotNull(representative3);
     }
 
+    /**
+     * Tests case for when the representative array is empty.
+     */
     @Test
     void arrayIsEmpty() {
         SalesRepresentative[] emptyRepresentatives = new SalesRepresentative[0];
@@ -52,6 +66,10 @@ class BubbleSortTest {
         assertEquals(0, emptyRepresentatives.length);
     }
 
+    /**
+     * Tests the sorting functionality of the BubbleSort class.
+     * Verifies that elements in the array are sorted in descending order by revenue generated.
+     */
     @Test
     @DisplayName("test sort")
     void sort() {
@@ -67,6 +85,10 @@ class BubbleSortTest {
         assertEquals(expected[3].getRevenueGenerated(), actual[3].getRevenueGenerated());
     }
 
+    /**
+     * Tests the reverse sorting functionality of the BubbleSort class.
+     * Verifies that elements in the array are sorted in ascending order by revenue generated.
+     */
     @Test
     @DisplayName("test reverse")
     void reverse() {

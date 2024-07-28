@@ -14,7 +14,7 @@ public class SalesRepresentative {
      * The revenue generated is calculated as the product of the number of sales and the quota per sale.
      *
      * @param numberOfSales the number of sales made by the sales representative
-     * @param quotaPerSale the quota per sale for the sales representative
+     * @param quotaPerSale  the quota per sale for the sales representative
      */
     public SalesRepresentative(int numberOfSales, int quotaPerSale) {
         this.numberOfSales = numberOfSales;
