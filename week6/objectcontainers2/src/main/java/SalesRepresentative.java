@@ -13,7 +13,7 @@ public class SalesRepresentative {
         this.revenueGenerated = this.numberOfSales * this.quotaPerSale;
     }
 
-    public List<SalesRepresentative> sort(SalesRepresentative salesRepresentative) {
-
-    }
+//    public List<SalesRepresentative> sort(SalesRepresentative salesRepresentative) {
+//
+//    }
 }
