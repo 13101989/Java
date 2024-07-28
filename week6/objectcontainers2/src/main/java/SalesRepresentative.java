@@ -1,7 +1,5 @@
 package main.java;
 
-import java.util.List;
-
 public class SalesRepresentative {
     public int numberOfSales;
     public int quotaPerSale;
@@ -13,7 +11,25 @@ public class SalesRepresentative {
         this.revenueGenerated = this.numberOfSales * this.quotaPerSale;
     }
 
-//    public List<SalesRepresentative> sort(SalesRepresentative salesRepresentative) {
-//
-//    }
+    public SalesRepresentative[] bubbleSort(SalesRepresentative[] salesRepresentatives) {
+        int arrayLength = salesRepresentatives.length;
+        int i, j, temp;
+        boolean swapped;
+
+        for (i = 0; i < arrayLength; i++) {
+            swapped = false;
+            for (j = 0; j < arrayLength - i; j++) {
+                if (salesRepresentatives[j].revenueGenerated > salesRepresentatives[j + 1].revenueGenerated) {
+                    temp = salesRepresentatives[j].revenueGenerated;
+                    salesRepresentatives[j].revenueGenerated = salesRepresentatives[j + 1].revenueGenerated;
+                    salesRepresentatives[j + 1].revenueGenerated = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+        return salesRepresentatives;
+    }
 }
