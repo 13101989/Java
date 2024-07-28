@@ -11,19 +11,19 @@ public class Calculator {
             "km", 1000000
     );
 
-    public int add(int a, String aUnit, int b, String bUnit) {
-        if (unitMap.containsKey(aUnit) && unitMap.containsKey(bUnit)) {
-            return a * unitMap.get(aUnit) + b * unitMap.get(bUnit);
-        } else {
-            return 0;
+    public String add(int a, String aUnit, int b, String bUnit, String outputUnit) {
+        if (unitMap.containsKey(aUnit) && unitMap.containsKey(bUnit) && unitMap.containsKey(outputUnit)) {
+            float result = (float) (a * unitMap.get(aUnit) + b * unitMap.get(bUnit)) / unitMap.get(outputUnit);
+            return a + " " + aUnit + " + " + b + " " + bUnit + " = " + result + " " + outputUnit;
         }
+        return "Please enter a valid unit (supported formats: mm, cm, dm, m, km).";
     }
 
-    public int subtract(int a, String aUnit, int b, String bUnit) {
-        if (unitMap.containsKey(aUnit) && unitMap.containsKey(bUnit)) {
-            return a * unitMap.get(aUnit) - b * unitMap.get(bUnit);
-        } else {
-            return 0;
+    public String subtract(int a, String aUnit, int b, String bUnit, String outputUnit) {
+        if (unitMap.containsKey(aUnit) && unitMap.containsKey(bUnit) && unitMap.containsKey(outputUnit)) {
+            float result = (float) (a * unitMap.get(aUnit) - b * unitMap.get(bUnit)) / unitMap.get(outputUnit);
+            return a + " " + aUnit + " - " + b + " " + bUnit + " = " + result + " " + outputUnit;
         }
+        return "Please enter a valid unit (supported formats: mm, cm, dm, m, km).";
     }
 }
