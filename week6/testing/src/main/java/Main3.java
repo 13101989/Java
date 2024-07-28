@@ -1,7 +1,5 @@
 package main.java;
 
-import java.util.Arrays;
-
 public class Main3 {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
