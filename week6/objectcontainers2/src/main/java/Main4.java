@@ -1,8 +1,6 @@
 package main.java;
 
 
-import java.util.Arrays;
-
 public class Main4 {
     public static void main(String[] args) {
 
@@ -15,7 +13,7 @@ public class Main4 {
         SalesRepresentative[] representatives = {representative1, representative2, representative3, representative4};
 
         SalesRepresentative[] sortedRepresentatives = bubble.sort(representatives);
-        System.out.println("args = " + Arrays.toString(sortedRepresentatives));
+
         System.out.println("Sorted representatives:");
         for (SalesRepresentative salesRepresentative : sortedRepresentatives) {
             System.out.println(salesRepresentative);

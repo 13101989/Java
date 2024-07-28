@@ -34,6 +34,25 @@ class BubbleSortTest {
     }
 
     @Test
+    void canInstantiate() {
+        assertNotNull(bubble);
+
+        assertNotNull(representative1);
+        assertNotNull(representative2);
+        assertNotNull(representative3);
+        assertNotNull(representative3);
+    }
+
+    @Test
+    void arrayIsEmpty() {
+        SalesRepresentative[] emptyRepresentatives = new SalesRepresentative[0];
+
+        assertNotNull(emptyRepresentatives);
+
+        assertEquals(0, emptyRepresentatives.length);
+    }
+
+    @Test
     @DisplayName("test sort")
     void sort() {
         SalesRepresentative[] expected = {representative4, representative2, representative1, representative3};
