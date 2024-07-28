@@ -49,4 +49,16 @@ class CalculatorTest {
     void subtractParametrized(int first, String second, int third, String fourth, String fifth, String expectedResult) {
         assertEquals(expectedResult, calculator.subtract(first, second, third, fourth, fifth));
     }
+
+    @Test
+    void addWrongUnitFail() {
+        assertEquals("Please enter a valid unit (supported formats: mm, cm, dm, m, km).",
+                calculator.add(1, "m", 2, "mm", "hm"));
+    }
+
+    @Test
+    void subtractWrongUnitFail() {
+        assertEquals("Please enter a valid unit (supported formats: mm, cm, dm, m, km).",
+                calculator.subtract(1, "cm", 2, "hm", "cm"));
+    }
 }
