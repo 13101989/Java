@@ -1,5 +1,12 @@
 package main.java;
 
+import main.java.shapes.Circle;
+import main.java.shapes.Rectangle;
+import main.java.shapes.Square;
+import main.java.shapes.Triangle;
+
+import java.util.Arrays;
+
 /**
  * You need to design an application that allows the possibility to calculate the surface (area) and perimeter for multiple types of shape:
  * rectangle, square, circle and triangle.
@@ -23,6 +30,37 @@ package main.java;
 
 public class Main6 {
     public static void main(String[] args) {
+        Coordinate topLeftSquare = new Coordinate(2, 2);
+        Coordinate bottomRightSquare = new Coordinate(0, 0);
+        Square square = new Square(topLeftSquare, bottomRightSquare);
+        System.out.println("Square area: " + square.getArea());
+        System.out.println("Square perimeter: " + square.getPerimeter());
 
+        System.out.println();
+        Coordinate topLeftRectangle = new Coordinate(1, 3);
+        Coordinate bottomRightRectangle = new Coordinate(4, 1);
+        Rectangle rectangle = new Rectangle(topLeftRectangle, bottomRightRectangle);
+        System.out.println("Rectangle area: " + rectangle.getArea());
+        System.out.println("Rectangle perimeter: " + rectangle.getPerimeter());
+
+        System.out.println();
+        Coordinate centerCircle = new Coordinate(0, 0);
+        Circle circle = new Circle(centerCircle, 5);
+        System.out.println("Circle area: " + circle.getArea());
+        System.out.println("Circle perimeter: " + circle.getPerimeter());
+
+        System.out.println();
+        Coordinate vertex1 = new Coordinate(0, 0);
+        Coordinate vertex2 = new Coordinate(0, 1);
+        Coordinate vertex3 = new Coordinate(1, 0);
+        Triangle triangle = new Triangle(vertex1, vertex2, vertex3);
+        System.out.println("Triangle area: " + triangle.getArea());
+        System.out.println("Triangle perimeter: " + triangle.getPerimeter());
+
+        System.out.println();
+        ShapeManager shapeManager = new ShapeManager();
+        Shape[] shapes = new Shape[]{square, rectangle, circle};
+        System.out.println("Total area: " + shapeManager.getTotalArea(shapes));
+        System.out.println("Total perimeter: " + shapeManager.getTotalPerimeter(shapes));
     }
 }
