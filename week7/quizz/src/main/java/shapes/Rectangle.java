@@ -3,7 +3,6 @@ package main.java.shapes;
 import main.java.Coordinate;
 import main.java.Shapable;
 
-
 public class Rectangle implements Shapable {
     private final Coordinate topLeft, bottomRight;
 

@@ -3,7 +3,6 @@ package main.java.shapes;
 import main.java.Coordinate;
 import main.java.Shapable;
 
-
 public class Triangle implements Shapable {
     private final Coordinate vertex1, vertex2, vertex3;
 
