@@ -8,6 +8,7 @@ import main.java.shapes.Triangle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ShapeTest {
@@ -55,12 +56,60 @@ class ShapeTest {
     }
 
     @Test
-    void getTotalArea() {
+    void getTotalAreaForASquare() {
         Shape shapeManager = new Shape();
         Shapable[] shapes = new Shapable[]{square};
 
+        double expected = square.getArea();
+        double actual = shapeManager.getTotalArea(shapes);
 
+        assertEquals(expected, actual);
     }
+
+    @Test
+    void getTotalAreaForARectangle() {
+        Shape shapeManager = new Shape();
+        Shapable[] shapes = new Shapable[]{rectangle};
+
+        double expected = rectangle.getArea();
+        double actual = shapeManager.getTotalArea(shapes);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getTotalAreaForACircle() {
+        Shape shapeManager = new Shape();
+        Shapable[] shapes = new Shapable[]{circle};
+
+        double expected = circle.getArea();
+        double actual = shapeManager.getTotalArea(shapes);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getTotalAreaForATriangle() {
+        Shape shapeManager = new Shape();
+        Shapable[] shapes = new Shapable[]{triangle};
+
+        double expected = triangle.getArea();
+        double actual = shapeManager.getTotalArea(shapes);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getTotalAreaForASquareTriangleRectangleAndCircle() {
+        Shape shapeManager = new Shape();
+        Shapable[] shapes = new Shapable[]{square,rectangle,circle,triangle};
+
+        double expected = triangle.getArea() + circle.getArea() + rectangle.getArea() + square.getArea();
+        double actual = shapeManager.getTotalArea(shapes);
+
+        assertEquals(expected, actual);
+    }
+
 
     @Test
     void getTotalPerimeter() {

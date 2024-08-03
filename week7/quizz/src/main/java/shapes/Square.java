@@ -1,15 +1,16 @@
 package main.java.shapes;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import main.java.Coordinate;
 import main.java.Shapable;
 
 
-@Data
-@AllArgsConstructor
 public class Square implements Shapable {
     private final Coordinate topLeft, bottomRight;
+
+    public Square(Coordinate topLeft, Coordinate bottomRight) {
+        this.topLeft = topLeft;
+        this.bottomRight = bottomRight;
+    }
 
     public double getArea() {
         double width = Math.abs(topLeft.getX() - bottomRight.getX());

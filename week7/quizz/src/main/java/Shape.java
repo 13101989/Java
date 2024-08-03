@@ -1,7 +1,7 @@
 package main.java;
 
 public class Shape {
-    public static double getTotalArea(Shapable[] shapes) {
+    public double getTotalArea(Shapable[] shapes) {
         double totalArea = 0;
         for (Shapable shape : shapes) {
             totalArea += shape.getArea();
@@ -9,7 +9,7 @@ public class Shape {
         return totalArea;
     }
 
-    public static double getTotalPerimeter(Shapable[] shapes) {
+    public double getTotalPerimeter(Shapable[] shapes) {
         double totalPerimeter = 0;
         for (Shapable shape : shapes) {
             totalPerimeter += shape.getPerimeter();
