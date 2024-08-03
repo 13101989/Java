@@ -3,10 +3,14 @@ package main.java;
 /**
  * You need to design an application that allows the possibility to calculate the surface (area) and perimeter for multiple types of shape:
  * rectangle, square, circle and triangle.
+ * <p>
  * For each shape you must memorize coordinate points for it's vertices.
+ * <p>
  * A square is made of a top left vertex and a bottom left vertex, with the restriction that the difference in x and y coordinates
- * between the 2 points is the same. A rectangle is the same as a square, without the restriction. A triangle has 3 vertices.
+ * between the 2 points is the same.
+ * A rectangle is the same as a square, without the restriction. A triangle has 3 vertices.
  * A circle has 1 vertex as center and a radius.
+ * <p>
  * The tool should allow the possibility to add multiple shapes and calculate the total sum for perimeter and for the surface from all the
  * shapes in the system.
  * The application should make sure that 2 similar shapes couldn’t be added to the drawing tool. In case 2 similar shapes are added,

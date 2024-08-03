@@ -1,7 +1,7 @@
 package main.java;
 
 public interface Shape {
-    void getArea();
+    double getArea();
 
-    void getPerimeter();
+    double getPerimeter();
 }

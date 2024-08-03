@@ -13,11 +13,11 @@ public class Triangle implements Shape {
         this.z = z;
     }
 
-    public void getArea() {
+    public double getArea() {
 
     }
 
-    public void getPerimeter() {
+    public double getPerimeter() {
 
     }
 
