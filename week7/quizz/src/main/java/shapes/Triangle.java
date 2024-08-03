@@ -1,16 +1,15 @@
 package main.java.shapes;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import main.java.Coordinate;
 import main.java.Shapable;
 
+
+@Data
+@AllArgsConstructor
 public class Triangle implements Shapable {
     private final Coordinate vertex1, vertex2, vertex3;
-
-    public Triangle(Coordinate vertex1, Coordinate vertex2, Coordinate vertex3) {
-        this.vertex1 = vertex1;
-        this.vertex2 = vertex2;
-        this.vertex3 = vertex3;
-    }
 
     public double getArea() {
         double x1 = vertex1.getX();

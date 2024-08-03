@@ -8,7 +8,9 @@ import main.java.shapes.Triangle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ShapeManagerTest {
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+class ShapeTest {
     private Coordinate topLeftSquare;
     private Coordinate bottomRightSquare;
     private Square square;
@@ -45,9 +47,19 @@ class ShapeManagerTest {
     }
 
     @Test
+    void canInstantiate() {
+        assertNotNull(square);
+        assertNotNull(rectangle);
+        assertNotNull(circle);
+        assertNotNull(triangle);
+    }
+
+    @Test
     void getTotalArea() {
         Shape shapeManager = new Shape();
         Shapable[] shapes = new Shapable[]{square};
+
+
     }
 
     @Test
