@@ -1,7 +1,6 @@
 package test.java;
 
 import main.java.Coordinate;
-import main.java.Shapable;
 import main.java.Shape;
 import main.java.shapes.Circle;
 import main.java.shapes.Rectangle;
@@ -10,8 +9,7 @@ import main.java.shapes.Triangle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ShapeTest {
     private Coordinate topLeftSquare;
@@ -171,5 +169,13 @@ class ShapeTest {
         double actual = shapeManager.getTotalPerimeter();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void addDuplicateShape() {
+        Shape shapeManager = new Shape();
+        shapeManager.addShape(triangle);
+
+        assertThrows(IllegalArgumentException.class, () -> shapeManager.addShape(triangle));
     }
 }
