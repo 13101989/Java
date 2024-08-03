@@ -5,8 +5,6 @@ import main.java.shapes.Rectangle;
 import main.java.shapes.Square;
 import main.java.shapes.Triangle;
 
-import java.util.Arrays;
-
 /**
  * You need to design an application that allows the possibility to calculate the surface (area) and perimeter for multiple types of shape:
  * rectangle, square, circle and triangle.
@@ -58,8 +56,8 @@ public class Main6 {
         System.out.println("Triangle perimeter: " + triangle.getPerimeter());
 
         System.out.println();
-        ShapeManager shapeManager = new ShapeManager();
-        Shape[] shapes = new Shape[]{square, rectangle, circle};
+        Shape shapeManager = new Shape();
+        Shapable[] shapes = new Shapable[]{square, rectangle, circle};
         System.out.println("Total area: " + shapeManager.getTotalArea(shapes));
         System.out.println("Total perimeter: " + shapeManager.getTotalPerimeter(shapes));
     }

@@ -1,5 +1,8 @@
 package main.java;
 
+import lombok.Data;
+
+@Data
 public class Coordinate {
     private final double x, y;
 

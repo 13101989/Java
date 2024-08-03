@@ -1,9 +1,9 @@
 package main.java.shapes;
 
 import main.java.Coordinate;
-import main.java.Shape;
+import main.java.Shapable;
 
-public class Square implements Shape {
+public class Square implements Shapable {
     private final Coordinate topLeft, bottomRight;
 
     public Square(Coordinate topLeft, Coordinate bottomRight) {

@@ -1,9 +1,9 @@
 package main.java.shapes;
 
 import main.java.Coordinate;
-import main.java.Shape;
+import main.java.Shapable;
 
-public class Triangle implements Shape {
+public class Triangle implements Shapable {
     private final Coordinate vertex1, vertex2, vertex3;
 
     public Triangle(Coordinate vertex1, Coordinate vertex2, Coordinate vertex3) {

@@ -1,9 +1,9 @@
 package main.java.shapes;
 
 import main.java.Coordinate;
-import main.java.Shape;
+import main.java.Shapable;
 
-public class Circle implements Shape {
+public class Circle implements Shapable {
     private final Coordinate center;
     private final double radius;
 
