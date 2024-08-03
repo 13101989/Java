@@ -57,8 +57,12 @@ public class Main6 {
 
         System.out.println();
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{square, rectangle, circle};
-        System.out.println("Total area: " + shapeManager.getTotalArea(shapes));
-        System.out.println("Total perimeter: " + shapeManager.getTotalPerimeter(shapes));
+        shapeManager.addShape(square);
+        shapeManager.addShape(rectangle);
+        shapeManager.addShape(circle);
+        shapeManager.addShape(triangle);
+
+        System.out.println("Total area: " + shapeManager.getTotalArea());
+        System.out.println("Total perimeter: " + shapeManager.getTotalPerimeter());
     }
 }

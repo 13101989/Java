@@ -60,10 +60,10 @@ class ShapeTest {
     @Test
     void getTotalAreaForASquare() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{square};
+        shapeManager.addShape(square);
 
         double expected = square.getArea();
-        double actual = shapeManager.getTotalArea(shapes);
+        double actual = shapeManager.getTotalArea();
 
         assertEquals(expected, actual);
     }
@@ -71,10 +71,10 @@ class ShapeTest {
     @Test
     void getTotalAreaForARectangle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{rectangle};
+        shapeManager.addShape(rectangle);
 
         double expected = rectangle.getArea();
-        double actual = shapeManager.getTotalArea(shapes);
+        double actual = shapeManager.getTotalArea();
 
         assertEquals(expected, actual);
     }
@@ -82,10 +82,10 @@ class ShapeTest {
     @Test
     void getTotalAreaForACircle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{circle};
+        shapeManager.addShape(circle);
 
         double expected = circle.getArea();
-        double actual = shapeManager.getTotalArea(shapes);
+        double actual = shapeManager.getTotalArea();
 
         assertEquals(expected, actual);
     }
@@ -93,10 +93,10 @@ class ShapeTest {
     @Test
     void getTotalAreaForATriangle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{triangle};
+        shapeManager.addShape(triangle);
 
         double expected = triangle.getArea();
-        double actual = shapeManager.getTotalArea(shapes);
+        double actual = shapeManager.getTotalArea();
 
         assertEquals(expected, actual);
     }
@@ -104,10 +104,13 @@ class ShapeTest {
     @Test
     void getTotalAreaForASquareTriangleRectangleAndCircle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{square, rectangle, circle, triangle};
+        shapeManager.addShape(square);
+        shapeManager.addShape(rectangle);
+        shapeManager.addShape(circle);
+        shapeManager.addShape(triangle);
 
         double expected = triangle.getArea() + circle.getArea() + rectangle.getArea() + square.getArea();
-        double actual = shapeManager.getTotalArea(shapes);
+        double actual = shapeManager.getTotalArea();
 
         assertEquals(expected, actual);
     }
@@ -115,10 +118,10 @@ class ShapeTest {
     @Test
     void getTotalPerimeterForASquare() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{square};
+        shapeManager.addShape(square);
 
         double expected = square.getPerimeter();
-        double actual = shapeManager.getTotalPerimeter(shapes);
+        double actual = shapeManager.getTotalPerimeter();
 
         assertEquals(expected, actual);
     }
@@ -126,10 +129,10 @@ class ShapeTest {
     @Test
     void getTotalPerimeterForARectangle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{rectangle};
+        shapeManager.addShape(rectangle);
 
         double expected = rectangle.getPerimeter();
-        double actual = shapeManager.getTotalPerimeter(shapes);
+        double actual = shapeManager.getTotalPerimeter();
 
         assertEquals(expected, actual);
     }
@@ -137,10 +140,10 @@ class ShapeTest {
     @Test
     void getTotalPerimeterForACircle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{circle};
+        shapeManager.addShape(circle);
 
         double expected = circle.getPerimeter();
-        double actual = shapeManager.getTotalPerimeter(shapes);
+        double actual = shapeManager.getTotalPerimeter();
 
         assertEquals(expected, actual);
     }
@@ -148,10 +151,10 @@ class ShapeTest {
     @Test
     void getTotalPerimeterForATriangle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{triangle};
+        shapeManager.addShape(triangle);
 
         double expected = triangle.getPerimeter();
-        double actual = shapeManager.getTotalPerimeter(shapes);
+        double actual = shapeManager.getTotalPerimeter();
 
         assertEquals(expected, actual);
     }
@@ -159,10 +162,13 @@ class ShapeTest {
     @Test
     void getTotalPerimeterForASquareTriangleRectangleAndCircle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{square, rectangle, circle, triangle};
+        shapeManager.addShape(square);
+        shapeManager.addShape(rectangle);
+        shapeManager.addShape(circle);
+        shapeManager.addShape(triangle);
 
         double expected = triangle.getPerimeter() + circle.getPerimeter() + rectangle.getPerimeter() + square.getPerimeter();
-        double actual = shapeManager.getTotalPerimeter(shapes);
+        double actual = shapeManager.getTotalPerimeter();
 
         assertEquals(expected, actual);
     }
