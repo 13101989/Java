@@ -178,4 +178,11 @@ class ShapeTest {
 
         assertThrows(IllegalArgumentException.class, () -> shapeManager.addShape(triangle));
     }
+
+    @Test
+    void addNullShape() {
+        Shape shapeManager = new Shape();
+
+        assertThrows(IllegalArgumentException.class, () -> shapeManager.addShape(null));
+    }
 }
