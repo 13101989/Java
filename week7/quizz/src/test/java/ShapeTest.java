@@ -1,6 +1,8 @@
 package test.java;
 
-import main.java.*;
+import main.java.Coordinate;
+import main.java.Shapable;
+import main.java.Shape;
 import main.java.shapes.Circle;
 import main.java.shapes.Rectangle;
 import main.java.shapes.Square;
@@ -102,14 +104,13 @@ class ShapeTest {
     @Test
     void getTotalAreaForASquareTriangleRectangleAndCircle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{square,rectangle,circle,triangle};
+        Shapable[] shapes = new Shapable[]{square, rectangle, circle, triangle};
 
         double expected = triangle.getArea() + circle.getArea() + rectangle.getArea() + square.getArea();
         double actual = shapeManager.getTotalArea(shapes);
 
         assertEquals(expected, actual);
     }
-
 
     @Test
     void getTotalPerimeterForASquare() {
@@ -158,7 +159,7 @@ class ShapeTest {
     @Test
     void getTotalPerimeterForASquareTriangleRectangleAndCircle() {
         Shape shapeManager = new Shape();
-        Shapable[] shapes = new Shapable[]{square,rectangle,circle,triangle};
+        Shapable[] shapes = new Shapable[]{square, rectangle, circle, triangle};
 
         double expected = triangle.getPerimeter() + circle.getPerimeter() + rectangle.getPerimeter() + square.getPerimeter();
         double actual = shapeManager.getTotalPerimeter(shapes);
