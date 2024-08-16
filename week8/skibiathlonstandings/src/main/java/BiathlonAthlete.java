@@ -28,6 +28,9 @@ public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthle
     @Getter
     private Duration score;
 
+    @Getter
+    private int penalty;
+
     public BiathlonAthlete(int number, String firstName, String lastName, Country countryCode) {
         super(number, firstName, lastName, countryCode);
         calculateScore();
@@ -35,7 +38,7 @@ public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthle
 
     @Override
     public void calculateScore() {
-        int penalty = 0;
+        penalty = 0;
         List<String> scores = new ArrayList<>();
         scores.add(firstShootingRangeScore);
         scores.add(secondShootingRangeScore);

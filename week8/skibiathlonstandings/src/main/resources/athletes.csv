@@ -1,7 +1,7 @@
 ﻿AthleteNumber,AthleteName,CountryCode,SkiTimeResult(Minutes:Seconds),FirstShootingRange,SecondShooting,ThirdShooting
-11,Athlete One,SK,30:27,xxxox,xxxxx,xxoxo
+11,Athlete One,DE,30:27,xxxox,xxxxx,xxoxo
 12,Athlete Two,UK,29:15,xxoox,xooxo,xxxxo
-13,Athlete Three,CZ,30:10,xxxxx,xoxxx,xoxxo
+13,Athlete Three,NO,30:10,xxxxx,xoxxx,xoxxo
 14,Athlete Four,RO,29:27,xxxxx,xxxxx,xxxxx
-15,Athlete Five,RO,25:55,ooooo,ooooo,ooooo
-16,Athlete Six,RO,29:59,xxxxx,ooooo,xxxxx
+15,Athlete Five,US,25:55,ooooo,ooooo,ooooo
+16,Athlete Six,SE,29:59,xxxxx,ooooo,xxxxx

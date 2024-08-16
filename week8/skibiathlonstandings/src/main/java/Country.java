@@ -1,23 +1,29 @@
 package main.java;
 
 public enum Country {
-    Norway("NOR"),
-    Sweden("SWE"),
-    Germany("GER"),
-    France("FRA"),
-    Italy("ITA"),
-    Austria("AUT"),
-    CzechRepublic("CZE"),
-    Switzerland("SUI"),
-    UnitedStates("USA"),
-    Canada("CAN"),
-    Finland("FIN"),
-    UnitedKingdom("GBR"),
-    Japan("JPN");
+    DE("Germany"),
 
-    public final String abbreviation;
+    FR("France"),
 
-    Country(String abbreviation) {
-        this.abbreviation = abbreviation;
+    NO("Norway"),
+
+    SE("Sweden"),
+
+    US("United States"),
+
+    IT("Italy"),
+
+    AT("Austria"),
+
+    FI("Finland"),
+
+    UK("United Kingdom"),
+
+    RO("Romania");
+
+    public final String country;
+
+    Country(String country) {
+        this.country = country;
     }
 }
