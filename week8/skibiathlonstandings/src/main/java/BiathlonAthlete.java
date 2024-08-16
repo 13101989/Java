@@ -62,7 +62,7 @@ public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthle
         return "BiathlonAthlete{" +
                 "number=" + this.getNumber() + ", " +
                 "name=" + this.getFirstName() + " " + this.getLastName() + ", " +
-                "countryCode=" + this.getCountryCode() + ", " +
+                "country=" + this.getCountryCode().country + ", " +
                 "score=" + this.getScore() + ", " +
                 "skiTimeResult=" + this.getSkiTimeResult() + ", " +
                 "penalty=" + this.getPenalty() + " seconds, " +
