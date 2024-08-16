@@ -8,10 +8,11 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVWithBiathlonAthletesParser {
+public class BiathlonAthletesCSVParser {
     private final String csvFilePath;
+    private final List<BiathlonAthlete> biathlonAthletes = new ArrayList<>();
 
-    public CSVWithBiathlonAthletesParser(String csvFilePath) {
+    public BiathlonAthletesCSVParser(String csvFilePath) {
         this.csvFilePath = csvFilePath;
     }
 
@@ -35,7 +36,6 @@ public class CSVWithBiathlonAthletesParser {
     }
 
     private List<BiathlonAthlete> parseCSVAndAddObjectsToList() throws IOException {
-        List<BiathlonAthlete> biathlonAthletes = new ArrayList<>();
         Path fileToRead = Paths.get(this.csvFilePath);
         List<String> lines = Files.readAllLines(fileToRead);
 
@@ -47,7 +47,7 @@ public class CSVWithBiathlonAthletesParser {
         return biathlonAthletes;
     }
 
-    private BiathlonAthlete instantiateBiathlonAthleteFromCsvLineData (String[] athleteData){
+    private BiathlonAthlete instantiateBiathlonAthleteFromCsvLineData(String[] athleteData) {
         int number = Integer.parseInt(athleteData[0]);
         String firstName = athleteData[1].split(" ")[0];
         String lastName = athleteData[1].split(" ")[1];
@@ -67,5 +67,23 @@ public class CSVWithBiathlonAthletesParser {
         biathlonAthlete.calculateScore();
 
         return biathlonAthlete;
+    }
+
+    public String toString() {
+        StringBuilder result = new StringBuilder("CSV file contains following biathlon athletes:\n");
+
+        if (biathlonAthletes.isEmpty()) {
+            try {
+                parseCSVAndAddObjectsToList();
+            } catch (IOException e) {
+                System.out.println("IOException error caught: " + e);
+            }
+        }
+
+        for (BiathlonAthlete biathlonAthlete : biathlonAthletes) {
+            result.append(biathlonAthlete.toString()).append("\n");
+        }
+
+        return result.toString();
     }
 }

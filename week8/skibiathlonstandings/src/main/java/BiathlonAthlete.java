@@ -49,7 +49,7 @@ public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthle
             }
         }
 
-        score = skiTimeResult.minusSeconds(penalty);
+        score = skiTimeResult.plusSeconds(penalty);
     }
 
     @Override
@@ -63,7 +63,9 @@ public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthle
                 "number=" + this.getNumber() + ", " +
                 "name=" + this.getFirstName() + " " + this.getLastName() + ", " +
                 "countryCode=" + this.getCountryCode() + ", " +
+                "score=" + this.getScore() + ", " +
                 "skiTimeResult=" + this.getSkiTimeResult() + ", " +
+                "penalty=" + this.getPenalty() + " seconds, " +
                 "shootingRangeScores=" +
                 this.getFirstShootingRangeScore() + " " +
                 this.getSecondShootingRangeScore() + " " +
