@@ -9,7 +9,6 @@ import java.util.List;
 
 public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthlete> {
 
-    @Getter
     @Setter
     private Duration skiTimeResult;
 
@@ -26,14 +25,12 @@ public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthle
     private String thirdShootingRangeScore;
 
     @Getter
-    private Duration score;
-
-    @Getter
     private int penalty;
+
+    private Duration score;
 
     public BiathlonAthlete(int number, String firstName, String lastName, Country countryCode) {
         super(number, firstName, lastName, countryCode);
-        calculateScore();
     }
 
     @Override
@@ -57,7 +54,7 @@ public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthle
 
     @Override
     public int compareTo(BiathlonAthlete biathlonAthlete) {
-        return this.score.compareTo(biathlonAthlete.getScore());
+        return this.score.compareTo(biathlonAthlete.score);
     }
 
     @Override
@@ -71,5 +68,19 @@ public class BiathlonAthlete extends Athlete implements Comparable<BiathlonAthle
                 this.getFirstShootingRangeScore() + " " +
                 this.getSecondShootingRangeScore() + " " +
                 this.getThirdShootingRangeScore() + "}";
+    }
+
+    public String durationToStringConverter(Duration duration) {
+        long minutes = duration.toMinutes();
+        long seconds = duration.minusMinutes(minutes).getSeconds();
+        return minutes + ":" + seconds;
+    }
+
+    public String getSkiTimeResult() {
+        return durationToStringConverter(this.skiTimeResult);
+    }
+
+    public String getScore() {
+        return durationToStringConverter(this.score);
     }
 }

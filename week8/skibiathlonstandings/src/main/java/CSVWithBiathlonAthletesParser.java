@@ -24,13 +24,13 @@ public class CSVWithBiathlonAthletesParser {
         BiathlonAthlete thirdPlace = biathlonAthletes.get(2);
 
         System.out.println(
-                "Winner - " + winner.getFirstName() + " " + winner.getLastName() + " " + winner.getSkiTimeResult() +
+                "Winner - " + winner.getFirstName() + " " + winner.getLastName() + " " + winner.getScore() +
                         " (" + winner.getSkiTimeResult() + " + " + winner.getPenalty() + ")");
         System.out.println(
-                "Runner-up - " + runnerUp.getFirstName() + " " + runnerUp.getLastName() + " " + runnerUp.getSkiTimeResult() +
+                "Runner-up - " + runnerUp.getFirstName() + " " + runnerUp.getLastName() + " " + runnerUp.getScore() +
                         " (" + runnerUp.getSkiTimeResult() + " + " + runnerUp.getPenalty() + ")");
         System.out.println(
-                "Runner-up - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getSkiTimeResult() +
+                "Third Place - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getScore() +
                         " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
     }
 
@@ -39,26 +39,33 @@ public class CSVWithBiathlonAthletesParser {
         Path fileToRead = Paths.get(this.csvFilePath);
         List<String> lines = Files.readAllLines(fileToRead);
 
-        for (String line : lines) {
-            String[] athleteData = line.split(",");
-
-            int number = Integer.parseInt(athleteData[0]);
-            String firstName = athleteData[1].split(" ")[0];
-            String lastName = athleteData[1].split(" ")[1];
-            Country countryCode = Country.valueOf(athleteData[2]);
-            Duration skiTimeResult = Duration.parse(athleteData[3]);
-            String firstShootingRangeScore = athleteData[4];
-            String secondShootingRangeScore = athleteData[5];
-            String thirdShootingRangeScore = athleteData[6];
-
-            BiathlonAthlete biathlonAthlete = new BiathlonAthlete(number, firstName, lastName, countryCode);
-            biathlonAthlete.setSkiTimeResult(skiTimeResult);
-            biathlonAthlete.setFirstShootingRangeScore(firstShootingRangeScore);
-            biathlonAthlete.setSecondShootingRangeScore(secondShootingRangeScore);
-            biathlonAthlete.setThirdShootingRangeScore(thirdShootingRangeScore);
-
+        for (int i = 1; i < lines.size(); i++) {
+            String[] athleteData = lines.get(i).split(",");
+            BiathlonAthlete biathlonAthlete = instantiateBiathlonAthleteFromCsvLineData(athleteData);
             biathlonAthletes.add(biathlonAthlete);
         }
         return biathlonAthletes;
+    }
+
+    private BiathlonAthlete instantiateBiathlonAthleteFromCsvLineData (String[] athleteData){
+        int number = Integer.parseInt(athleteData[0]);
+        String firstName = athleteData[1].split(" ")[0];
+        String lastName = athleteData[1].split(" ")[1];
+        Country countryCode = Country.valueOf(athleteData[2]);
+        int minutes = Integer.parseInt(athleteData[3].split(":")[0]);
+        int seconds = Integer.parseInt(athleteData[3].split(":")[1]);
+        Duration skiTimeResult = Duration.ofMinutes(minutes).plusSeconds(seconds);
+        String firstShootingRangeScore = athleteData[4];
+        String secondShootingRangeScore = athleteData[5];
+        String thirdShootingRangeScore = athleteData[6];
+
+        BiathlonAthlete biathlonAthlete = new BiathlonAthlete(number, firstName, lastName, countryCode);
+        biathlonAthlete.setSkiTimeResult(skiTimeResult);
+        biathlonAthlete.setFirstShootingRangeScore(firstShootingRangeScore);
+        biathlonAthlete.setSecondShootingRangeScore(secondShootingRangeScore);
+        biathlonAthlete.setThirdShootingRangeScore(thirdShootingRangeScore);
+        biathlonAthlete.calculateScore();
+
+        return biathlonAthlete;
     }
 }
