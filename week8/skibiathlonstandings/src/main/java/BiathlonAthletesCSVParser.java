@@ -72,8 +72,6 @@ public class BiathlonAthletesCSVParser {
     }
 
     public String toString() {
-        StringBuilder result = new StringBuilder("CSV file contains following biathlon athletes:\n");
-
         if (biathlonAthletes.isEmpty()) {
             try {
                 parseCSVAndAddObjectsToList();
@@ -82,10 +80,10 @@ public class BiathlonAthletesCSVParser {
             }
         }
 
+        StringBuilder result = new StringBuilder("CSV file contains following biathlon athletes:\n");
         for (BiathlonAthlete biathlonAthlete : biathlonAthletes) {
             result.append(biathlonAthlete.toString()).append("\n");
         }
-
         return result.toString();
     }
 }
