@@ -8,10 +8,10 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVParser {
+public class CSVWithBiathlonAthletesParser {
     private final String csvFilePath;
 
-    public CSVParser(String csvFilePath) {
+    public CSVWithBiathlonAthletesParser(String csvFilePath) {
         this.csvFilePath = csvFilePath;
     }
 
@@ -34,7 +34,7 @@ public class CSVParser {
                         " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
     }
 
-    public List<BiathlonAthlete> parseCSVAndAddObjectsToList() throws IOException {
+    private List<BiathlonAthlete> parseCSVAndAddObjectsToList() throws IOException {
         List<BiathlonAthlete> biathlonAthletes = new ArrayList<>();
         Path fileToRead = Paths.get(this.csvFilePath);
         List<String> lines = Files.readAllLines(fileToRead);
