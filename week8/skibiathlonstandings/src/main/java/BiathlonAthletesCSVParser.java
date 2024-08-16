@@ -17,7 +17,10 @@ public class BiathlonAthletesCSVParser {
     }
 
     public void getFirstThreeAthletesByScore() throws IOException {
-        List<BiathlonAthlete> biathlonAthletes = parseCSVAndAddObjectsToList();
+        if (biathlonAthletes.isEmpty()) {
+            parseCSVAndAddObjectsToList();
+        }
+
         biathlonAthletes.sort(null);
 
         BiathlonAthlete winner = biathlonAthletes.get(0);
@@ -35,7 +38,7 @@ public class BiathlonAthletesCSVParser {
                         " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
     }
 
-    private List<BiathlonAthlete> parseCSVAndAddObjectsToList() throws IOException {
+    private void parseCSVAndAddObjectsToList() throws IOException {
         Path fileToRead = Paths.get(this.csvFilePath);
         List<String> lines = Files.readAllLines(fileToRead);
 
@@ -44,7 +47,6 @@ public class BiathlonAthletesCSVParser {
             BiathlonAthlete biathlonAthlete = instantiateBiathlonAthleteFromCsvLineData(athleteData);
             biathlonAthletes.add(biathlonAthlete);
         }
-        return biathlonAthletes;
     }
 
     private BiathlonAthlete instantiateBiathlonAthleteFromCsvLineData(String[] athleteData) {
