@@ -16,7 +16,7 @@ public class BiathlonAthletesCSVParser {
         this.csvFilePath = csvFilePath;
     }
 
-    public void getFirstThreeAthletesByScore() throws IOException {
+    public void getFirstThreeAthletesByScore() throws IOException, EmptyCSVException {
         if (biathlonAthletes.isEmpty()) {
             parseCSVAndAddObjectsToList();
         }
@@ -27,6 +27,7 @@ public class BiathlonAthletesCSVParser {
         BiathlonAthlete runnerUp = biathlonAthletes.get(1);
         BiathlonAthlete thirdPlace = biathlonAthletes.get(2);
 
+        System.out.println("First three athletes by score are:");
         System.out.println(
                 "Winner - " + winner.getFirstName() + " " + winner.getLastName() + " " + winner.getScore() +
                         " (" + winner.getSkiTimeResult() + " + " + winner.getPenalty() + ")");
@@ -38,9 +39,13 @@ public class BiathlonAthletesCSVParser {
                         " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
     }
 
-    private void parseCSVAndAddObjectsToList() throws IOException {
+    public void parseCSVAndAddObjectsToList() throws IOException, EmptyCSVException {
         Path fileToRead = Paths.get(this.csvFilePath);
         List<String> lines = Files.readAllLines(fileToRead);
+
+        if (lines.size() < 2) {
+            throw new EmptyCSVException("CSV is empty.");
+        }
 
         for (int i = 1; i < lines.size(); i++) {
             String[] athleteData = lines.get(i).split(",");
@@ -72,14 +77,6 @@ public class BiathlonAthletesCSVParser {
     }
 
     public String toString() {
-        if (biathlonAthletes.isEmpty()) {
-            try {
-                parseCSVAndAddObjectsToList();
-            } catch (IOException e) {
-                System.out.println("IOException error caught: " + e);
-            }
-        }
-
         StringBuilder result = new StringBuilder("CSV file contains following biathlon athletes:\n");
         for (BiathlonAthlete biathlonAthlete : biathlonAthletes) {
             result.append(biathlonAthlete.toString()).append("\n");
