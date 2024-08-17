@@ -1,13 +1,11 @@
 package test.java;
 
-import main.java.BiathlonAthlete;
 import main.java.BiathlonAthletesParser;
 import main.java.EmptyCSVException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,16 +29,16 @@ class BiathlonAthletesParserTest {
     @CsvSource({
             "11,    Athlete One,    DE,     30:27,      xxxox,      xxxxx,      xxoxo,      " +
                     "[" +
-                        "BiathlonAthlete" +
-                            "{" +
-                                "number={0}, " +
-                                "name={1}, " +
-                                "country=Germany, " +
-                                "score=30:57, " +
-                                "skiTimeResult={3}, " +
-                                "penalty=30 seconds, " +
-                                "shootingRangeScores={4} {5} {6}" +
-                            "}" +
+                    "BiathlonAthlete" +
+                    "{" +
+                    "number={0}, " +
+                    "name={1}, " +
+                    "country=Germany, " +
+                    "score=30:57, " +
+                    "skiTimeResult={3}, " +
+                    "penalty=30 seconds, " +
+                    "shootingRangeScores={4} {5} {6}" +
+                    "}" +
                     "]"
     })
     void canInstantiateBiathlonAthleteFromCsvData(
@@ -62,7 +60,7 @@ class BiathlonAthletesParserTest {
                         "FirstShootingRange",
                         "SecondShooting",
                         "ThirdShooting"));
-        csvData.addAll(List.of(number,name,countryCode,skiTimeResult,firstShootingRangeScore,secondShootingRangeScore,thirdShootingRangeScore));
+        csvData.addAll(List.of(number, name, countryCode, skiTimeResult, firstShootingRangeScore, secondShootingRangeScore, thirdShootingRangeScore));
 
         biathlonAthletes.getFirstThreeAthletesByScoreFromCSV(csvData);
         String result = biathlonAthletes.getBiathlonAthletes().get(0).toString();
