@@ -46,30 +46,44 @@ class BiathlonAthletesParserTest {
         assertEquals(expectedResult, result);
     }
 
-    @ParameterizedTest(name = "assertEquals on {1}")
+    @ParameterizedTest(name = "test podium")
     @CsvSource(value = {
-            "11,Athlete One,DE,30:27,xxxox,xxxxx,xxoxo; 12,Athlete Two,UK,29:15,xxoox,xooxo,xxxxo; 16,Athlete Six,SE,29:59,xxxxx,ooooo,xxxxx; " +
+            "11,Athlete One,DE,30:27,xxxox,xxxxx,xxoxo; " +
+                    "12,Athlete Two,UK,29:15,xxoox,xooxo,xxxxo; " +
+                    "13,Athlete Three,NO,30:10,xxxxx,xoxxx,xoxxo; " +
+                    "14,Athlete Four,RO,29:27,xxxxx,xxxxx,xxxxx; " +
+                    "16,Athlete Six,SE,29:59,xxxxx,ooooo,xxxxx; " +
+
+                    "BiathlonAthlete{number=14, name=Athlete Four, country=Romania, score=29:27, skiTimeResult=29:27, penalty=0 seconds, shootingRangeScores=xxxxx xxxxx xxxxx}; " +
                     "BiathlonAthlete{number=12, name=Athlete Two, country=United Kingdom, score=30:15, skiTimeResult=29:15, penalty=60 seconds, shootingRangeScores=xxoox xooxo xxxxo}; " +
-                    "BiathlonAthlete{number=16, name=Athlete Six, country=Sweden, score=30:49, skiTimeResult=29:59, penalty=50 seconds, shootingRangeScores=xxxxx ooooo xxxxx}; " +
-                    "BiathlonAthlete{number=12, name=Athlete Two, country=United Kingdom, score=30:15, skiTimeResult=29:15, penalty=60 seconds, shootingRangeScores=xxoox xooxo xxxxo}"
+                    "BiathlonAthlete{number=13, name=Athlete Three, country=Norway, score=30:40, skiTimeResult=30:10, penalty=30 seconds, shootingRangeScores=xxxxx xoxxx xoxxo}; "
     }, delimiter = ';')
     void testGetFirstThreeAthletesByScoreFromCSV(
-            String number,
-            String name,
-            String countryCode,
-            String skiTimeResult,
-            String firstShootingRangeScore,
-            String secondShootingRangeScore,
-            String thirdShootingRangeScore,
-            String expectedResult) throws EmptyCSVException {
+            String athlete1,
+            String athlete2,
+            String athlete3,
+            String athlete4,
+            String athlete5,
+            String expectedWinner,
+            String expectedRunnerUp,
+            String expectedThirdPlace) throws EmptyCSVException {
 
         List<String> csvData = new ArrayList<>(
                 List.of("AthleteNumber,AthleteName,CountryCode,SkiTimeResult(Minutes:Seconds),FirstShootingRange,SecondShooting,ThirdShooting"));
-        csvData.add(number + "," + name + "," + countryCode + "," + skiTimeResult + "," + firstShootingRangeScore + "," + secondShootingRangeScore + "," + thirdShootingRangeScore);
+        csvData.add(athlete1);
+        csvData.add(athlete2);
+        csvData.add(athlete3);
+        csvData.add(athlete4);
+        csvData.add(athlete5);
 
         biathlonAthletes.getFirstThreeAthletesByScoreFromCSV(csvData);
 
-        String result = biathlonAthletes.getBiathlonAthletes().get(0).toString();
-        assertEquals(expectedResult, result);
+        String actualWinner = biathlonAthletes.getBiathlonAthletes().get(0).toString();
+        String actualRunnerUp = biathlonAthletes.getBiathlonAthletes().get(1).toString();
+        String actualThirdPlace = biathlonAthletes.getBiathlonAthletes().get(2).toString();
+
+        assertEquals(expectedWinner, actualWinner);
+        assertEquals(expectedRunnerUp, actualRunnerUp);
+        assertEquals(expectedThirdPlace, actualThirdPlace);
     }
 }

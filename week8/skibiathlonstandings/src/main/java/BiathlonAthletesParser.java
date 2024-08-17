@@ -35,7 +35,7 @@ public class BiathlonAthletesParser {
                     "Third Place - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getScore() +
                             " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
         } else {
-            System.out.println("Number of athletes is less than 3");
+            System.out.println("Cannot return podium as number of athletes provided is less than 3");
         }
     }
 
@@ -59,7 +59,7 @@ public class BiathlonAthletesParser {
                     "Third Place - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getScore() +
                             " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
         } else {
-            System.out.println("Number of athletes is less than 3");
+            System.out.println("Cannot return podium as number of athletes provided is less than 3");
         }
     }
 
