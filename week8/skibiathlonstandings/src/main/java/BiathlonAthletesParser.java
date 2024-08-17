@@ -19,47 +19,54 @@ public class BiathlonAthletesParser {
         parseBiathlonAthletesFromCSV(csvFilePath);
         biathlonAthletes.sort(null);
 
-        BiathlonAthlete winner = biathlonAthletes.get(0);
-        BiathlonAthlete runnerUp = biathlonAthletes.get(1);
-        BiathlonAthlete thirdPlace = biathlonAthletes.get(2);
+        if (biathlonAthletes.size() > 2) {
+            BiathlonAthlete winner = biathlonAthletes.get(0);
+            BiathlonAthlete runnerUp = biathlonAthletes.get(1);
+            BiathlonAthlete thirdPlace = biathlonAthletes.get(2);
 
-        System.out.println("First three athletes by score are:");
-        System.out.println(
-                "Winner - " + winner.getFirstName() + " " + winner.getLastName() + " " + winner.getScore() +
-                        " (" + winner.getSkiTimeResult() + " + " + winner.getPenalty() + ")");
-        System.out.println(
-                "Runner-up - " + runnerUp.getFirstName() + " " + runnerUp.getLastName() + " " + runnerUp.getScore() +
-                        " (" + runnerUp.getSkiTimeResult() + " + " + runnerUp.getPenalty() + ")");
-        System.out.println(
-                "Third Place - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getScore() +
-                        " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
+            System.out.println("First three athletes by score are:");
+            System.out.println(
+                    "Winner - " + winner.getFirstName() + " " + winner.getLastName() + " " + winner.getScore() +
+                            " (" + winner.getSkiTimeResult() + " + " + winner.getPenalty() + ")");
+            System.out.println(
+                    "Runner-up - " + runnerUp.getFirstName() + " " + runnerUp.getLastName() + " " + runnerUp.getScore() +
+                            " (" + runnerUp.getSkiTimeResult() + " + " + runnerUp.getPenalty() + ")");
+            System.out.println(
+                    "Third Place - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getScore() +
+                            " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
+        } else {
+            System.out.println("Number of athletes is less than 3");
+        }
     }
 
     public void getFirstThreeAthletesByScoreFromCSV(List<String> csvData) throws EmptyCSVException {
         parseBiathlonAthletesFromCSV(csvData);
         biathlonAthletes.sort(null);
 
-        BiathlonAthlete winner = biathlonAthletes.get(0);
-        BiathlonAthlete runnerUp = biathlonAthletes.get(1);
-        BiathlonAthlete thirdPlace = biathlonAthletes.get(2);
+        if (biathlonAthletes.size() > 2) {
+            BiathlonAthlete winner = biathlonAthletes.get(0);
+            BiathlonAthlete runnerUp = biathlonAthletes.get(1);
+            BiathlonAthlete thirdPlace = biathlonAthletes.get(2);
 
-        System.out.println("First three athletes by score are:");
-        System.out.println(
-                "Winner - " + winner.getFirstName() + " " + winner.getLastName() + " " + winner.getScore() +
-                        " (" + winner.getSkiTimeResult() + " + " + winner.getPenalty() + ")");
-        System.out.println(
-                "Runner-up - " + runnerUp.getFirstName() + " " + runnerUp.getLastName() + " " + runnerUp.getScore() +
-                        " (" + runnerUp.getSkiTimeResult() + " + " + runnerUp.getPenalty() + ")");
-        System.out.println(
-                "Third Place - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getScore() +
-                        " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
+            System.out.println("First three athletes by score are:");
+            System.out.println(
+                    "Winner - " + winner.getFirstName() + " " + winner.getLastName() + " " + winner.getScore() +
+                            " (" + winner.getSkiTimeResult() + " + " + winner.getPenalty() + ")");
+            System.out.println(
+                    "Runner-up - " + runnerUp.getFirstName() + " " + runnerUp.getLastName() + " " + runnerUp.getScore() +
+                            " (" + runnerUp.getSkiTimeResult() + " + " + runnerUp.getPenalty() + ")");
+            System.out.println(
+                    "Third Place - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getScore() +
+                            " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
+        } else {
+            System.out.println("Number of athletes is less than 3");
+        }
     }
 
     private void parseBiathlonAthletesFromCSV(String csvFilePath) throws IOException, EmptyCSVException {
         String csvDelimiter = ",";
         Path fileToRead = Paths.get(csvFilePath);
         List<String> lines = Files.readAllLines(fileToRead);
-        System.out.println(lines);
 
         if (lines.size() < 2) {
             throw new EmptyCSVException("CSV is empty.");

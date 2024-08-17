@@ -27,21 +27,9 @@ class BiathlonAthletesParserTest {
     }
 
     @ParameterizedTest(name = "{7}")
-    @CsvSource({
-            "11,    Athlete One,    DE,     30:27,      xxxox,      xxxxx,      xxoxo,      " +
-                    "[" +
-                    "BiathlonAthlete" +
-                    "{" +
-                    "number={0}, " +
-                    "name={1}, " +
-                    "country=Germany, " +
-                    "score=30:57, " +
-                    "skiTimeResult={3}, " +
-                    "penalty=30 seconds, " +
-                    "shootingRangeScores={4} {5} {6}" +
-                    "}" +
-                    "]"
-    })
+    @CsvSource(value = {
+            "11;    Athlete One;    DE;     30:27;      xxxox;      xxxxx;      xxoxo;      BiathlonAthlete{number=11, name=Athlete One, country=Germany, score=30:57, skiTimeResult=30:27, penalty=30 seconds, shootingRangeScores=xxxox xxxxx xxoxo}"
+    }, delimiter = ';')
     void canReadAndInstantiateBiathlonAthleteFromCsvData(
             String number,
             String name,
@@ -53,15 +41,8 @@ class BiathlonAthletesParserTest {
             String expectedResult) throws EmptyCSVException {
 
         List<String> csvData = new ArrayList<>(
-                List.of(
-                        "AthleteNumber",
-                        "AthleteName",
-                        "CountryCode",
-                        "SkiTimeResult(Minutes:Seconds)",
-                        "FirstShootingRange",
-                        "SecondShooting",
-                        "ThirdShooting"));
-        csvData.addAll(List.of(number, name, countryCode, skiTimeResult, firstShootingRangeScore, secondShootingRangeScore, thirdShootingRangeScore));
+                List.of("AthleteNumber,AthleteName,CountryCode,SkiTimeResult(Minutes:Seconds),FirstShootingRange,SecondShooting,ThirdShooting"));
+        csvData.add(number + "," + name + "," + countryCode + "," + skiTimeResult + "," + firstShootingRangeScore + "," + secondShootingRangeScore + "," + thirdShootingRangeScore);
 
         biathlonAthletes.getFirstThreeAthletesByScoreFromCSV(csvData);
         String result = biathlonAthletes.getBiathlonAthletes().get(0).toString();
