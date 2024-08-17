@@ -48,7 +48,7 @@ class BiathlonAthletesParserTest {
 
     @ParameterizedTest(name = "test podium")
     @CsvSource(value = {
-            "11,Athlete One,DE,30:27,xxxox,xxxxx,xxoxo; " +
+                    "11,Athlete One,DE,30:27,xxxox,xxxxx,xxoxo; " +
                     "12,Athlete Two,UK,29:15,xxoox,xooxo,xxxxo; " +
                     "13,Athlete Three,NO,30:10,xxxxx,xoxxx,xoxxo; " +
                     "14,Athlete Four,RO,29:27,xxxxx,xxxxx,xxxxx; " +
