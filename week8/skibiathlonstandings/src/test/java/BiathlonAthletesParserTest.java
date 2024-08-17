@@ -4,6 +4,7 @@ import main.java.BiathlonAthletesParser;
 import main.java.EmptyCSVException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ class BiathlonAthletesParserTest {
         assertNotNull(biathlonAthletes);
     }
 
-    @Test
+    @ParameterizedTest(name = "{7}")
     @CsvSource({
             "11,    Athlete One,    DE,     30:27,      xxxox,      xxxxx,      xxoxo,      " +
                     "[" +
@@ -41,7 +42,7 @@ class BiathlonAthletesParserTest {
                     "}" +
                     "]"
     })
-    void canInstantiateBiathlonAthleteFromCsvData(
+    void canReadAndInstantiateBiathlonAthleteFromCsvData(
             String number,
             String name,
             String countryCode,
