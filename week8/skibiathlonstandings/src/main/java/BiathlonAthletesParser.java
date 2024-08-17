@@ -35,10 +35,31 @@ public class BiathlonAthletesParser {
                         " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
     }
 
+    public void getFirstThreeAthletesByScoreFromCSV(List<String> csvData) throws EmptyCSVException {
+        parseBiathlonAthletesFromCSV(csvData);
+        biathlonAthletes.sort(null);
+
+        BiathlonAthlete winner = biathlonAthletes.get(0);
+        BiathlonAthlete runnerUp = biathlonAthletes.get(1);
+        BiathlonAthlete thirdPlace = biathlonAthletes.get(2);
+
+        System.out.println("First three athletes by score are:");
+        System.out.println(
+                "Winner - " + winner.getFirstName() + " " + winner.getLastName() + " " + winner.getScore() +
+                        " (" + winner.getSkiTimeResult() + " + " + winner.getPenalty() + ")");
+        System.out.println(
+                "Runner-up - " + runnerUp.getFirstName() + " " + runnerUp.getLastName() + " " + runnerUp.getScore() +
+                        " (" + runnerUp.getSkiTimeResult() + " + " + runnerUp.getPenalty() + ")");
+        System.out.println(
+                "Third Place - " + thirdPlace.getFirstName() + " " + thirdPlace.getLastName() + " " + thirdPlace.getScore() +
+                        " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
+    }
+
     private void parseBiathlonAthletesFromCSV(String csvFilePath) throws IOException, EmptyCSVException {
         String csvDelimiter = ",";
         Path fileToRead = Paths.get(csvFilePath);
         List<String> lines = Files.readAllLines(fileToRead);
+        System.out.println(lines);
 
         if (lines.size() < 2) {
             throw new EmptyCSVException("CSV is empty.");
@@ -46,6 +67,20 @@ public class BiathlonAthletesParser {
 
         for (int i = 1; i < lines.size(); i++) {
             String[] athleteData = lines.get(i).split(csvDelimiter);
+            BiathlonAthlete biathlonAthlete = instantiateBiathlonAthleteFromCsv(athleteData);
+            biathlonAthletes.add(biathlonAthlete);
+        }
+    }
+
+    private void parseBiathlonAthletesFromCSV(List<String> csvData) throws EmptyCSVException {
+        String csvDelimiter = ",";
+
+        if (csvData.size() < 2) {
+            throw new EmptyCSVException("CSV is empty.");
+        }
+
+        for (int i = 1; i < csvData.size(); i++) {
+            String[] athleteData = csvData.get(i).split(csvDelimiter);
             BiathlonAthlete biathlonAthlete = instantiateBiathlonAthleteFromCsv(athleteData);
             biathlonAthletes.add(biathlonAthlete);
         }
