@@ -1,5 +1,7 @@
 package main.java;
 
+import lombok.Getter;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,19 +10,13 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BiathlonAthletesCSVParser {
-    private final String csvFilePath;
+@Getter
+public class BiathlonAthletesParser {
+
     private final List<BiathlonAthlete> biathlonAthletes = new ArrayList<>();
 
-    public BiathlonAthletesCSVParser(String csvFilePath) {
-        this.csvFilePath = csvFilePath;
-    }
-
-    public void getFirstThreeAthletesByScore() throws IOException, EmptyCSVException {
-        if (biathlonAthletes.isEmpty()) {
-            parseCSVAndAddObjectsToList();
-        }
-
+    public void getFirstThreeAthletesByScoreFromCSV(String csvFilePath) throws IOException, EmptyCSVException {
+        parseBiathlonAthletesFromCSV(csvFilePath);
         biathlonAthletes.sort(null);
 
         BiathlonAthlete winner = biathlonAthletes.get(0);
@@ -39,8 +35,9 @@ public class BiathlonAthletesCSVParser {
                         " (" + thirdPlace.getSkiTimeResult() + " + " + thirdPlace.getPenalty() + ")");
     }
 
-    public void parseCSVAndAddObjectsToList() throws IOException, EmptyCSVException {
-        Path fileToRead = Paths.get(this.csvFilePath);
+    private void parseBiathlonAthletesFromCSV(String csvFilePath) throws IOException, EmptyCSVException {
+        String csvDelimiter = ",";
+        Path fileToRead = Paths.get(csvFilePath);
         List<String> lines = Files.readAllLines(fileToRead);
 
         if (lines.size() < 2) {
@@ -48,13 +45,13 @@ public class BiathlonAthletesCSVParser {
         }
 
         for (int i = 1; i < lines.size(); i++) {
-            String[] athleteData = lines.get(i).split(",");
-            BiathlonAthlete biathlonAthlete = instantiateBiathlonAthleteFromCsvLineData(athleteData);
+            String[] athleteData = lines.get(i).split(csvDelimiter);
+            BiathlonAthlete biathlonAthlete = instantiateBiathlonAthleteFromCsv(athleteData);
             biathlonAthletes.add(biathlonAthlete);
         }
     }
 
-    private BiathlonAthlete instantiateBiathlonAthleteFromCsvLineData(String[] athleteData) {
+    private BiathlonAthlete instantiateBiathlonAthleteFromCsv(String[] athleteData) {
         int number = Integer.parseInt(athleteData[0]);
         String firstName = athleteData[1].split(" ")[0];
         String lastName = athleteData[1].split(" ")[1];
