@@ -46,9 +46,34 @@ class BiathlonAthletesParserTest {
         assertEquals(expectedResult, result);
     }
 
-    @ParameterizedTest(name = "test podium")
+    @ParameterizedTest(name = "1:two,  2:six,  3:one")
     @CsvSource(value = {
-                    "11,Athlete One,DE,30:27,xxxox,xxxxx,xxoxo; " +
+            "11,Athlete One,DE,30:27,xxxox,xxxxx,xxoxo;     12,Athlete Two,UK,29:15,xxoox,xooxo,xxxxo;      16,Athlete Six,SE,29:59,xxxxx,ooooo,xxxxx;     " +
+                    "[BiathlonAthlete{number=12, name=Athlete Two, country=United Kingdom, score=30:15, skiTimeResult=29:15, penalty=60 seconds, shootingRangeScores=xxoox xooxo xxxxo}, " +
+                    "BiathlonAthlete{number=16, name=Athlete Six, country=Sweden, score=30:49, skiTimeResult=29:59, penalty=50 seconds, shootingRangeScores=xxxxx ooooo xxxxx}, " +
+                    "BiathlonAthlete{number=11, name=Athlete One, country=Germany, score=30:57, skiTimeResult=30:27, penalty=30 seconds, shootingRangeScores=xxxox xxxxx xxoxo}]"
+    }, delimiter = ';')
+    void canReadAndInstantiateMultipleBiathlonAthletesFromCsvData(
+            String athlete1,
+            String athlete2,
+            String athlete3,
+            String expectedResult) throws EmptyCSVException {
+
+        List<String> csvData = new ArrayList<>(
+                List.of("AthleteNumber,AthleteName,CountryCode,SkiTimeResult(Minutes:Seconds),FirstShootingRange,SecondShooting,ThirdShooting"));
+        csvData.add(athlete1);
+        csvData.add(athlete2);
+        csvData.add(athlete3);
+
+        biathlonAthletes.getFirstThreeAthletesByScoreFromCSV(csvData);
+
+        String result = biathlonAthletes.getBiathlonAthletes().toString();
+        assertEquals(expectedResult, result);
+    }
+
+    @ParameterizedTest(name = "1:four, 2:two, 3:three")
+    @CsvSource(value = {
+            "11,Athlete One,DE,30:27,xxxox,xxxxx,xxoxo; " +
                     "12,Athlete Two,UK,29:15,xxoox,xooxo,xxxxo; " +
                     "13,Athlete Three,NO,30:10,xxxxx,xoxxx,xoxxo; " +
                     "14,Athlete Four,RO,29:27,xxxxx,xxxxx,xxxxx; " +
