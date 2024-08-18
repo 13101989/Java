@@ -47,7 +47,7 @@ public class StudentRepo {
                 System.out.println(student);
             }
         } else if (orderCondition.equals("dateOfBirth")) {
-            students.sort(Comparator.comparing(Student::getDateOfBirth));
+            students.sort(Comparator.comparing(Student::getDateOfBirth).reversed());
             for (Student student : students) {
                 Map<String, Integer> studentAge = student.calculateAge();
                 System.out.println(student + " -> " +
