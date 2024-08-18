@@ -26,8 +26,8 @@ public class Student {
         }
 
         int minYear = LocalDate.now().minusYears(18).getYear();
-        if (dateOfBirth.getYear() > 1900 && dateOfBirth.getYear() < minYear) {
-            throw new DateOfBirthOutsideBoundaries("Year of birth " + dateOfBirth.getYear() + " is not between 1900 and " + minYear);
+        if (dateOfBirth.getYear() < 1900 || dateOfBirth.getYear() > minYear) {
+            throw new DateOfBirthOutsideBoundaries("Year of birth '" + dateOfBirth.getYear() + "' should be between 1900 and " + minYear);
         }
 
         if (!(gender.equalsIgnoreCase("male") ||
@@ -35,7 +35,7 @@ public class Student {
                 gender.equalsIgnoreCase("m") ||
                 gender.equalsIgnoreCase("f"))) {
             throw new InvalidGenderException(
-                    "Gender " + gender + " is not a valid value, choose between {m, f, M, F, male, female, MALE, FEMALE}"
+                    "Gender '" + gender + "' is not a valid value, please choose between {m, f, M, F, male, female, MALE, FEMALE}"
             );
         }
 

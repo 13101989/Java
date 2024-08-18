@@ -11,7 +11,7 @@ public class Main8 {
         Student student1 =
                 new Student("Ion", "Maria", LocalDate.of(1989, 10, 13), "male", "1111111111111");
         Student student2 =
-                new Student("Ioana", "Maria", LocalDate.of(1989, 10, 14), "female", "2222222222222");
+                new Student("Ioana", "Maria", LocalDate.of(1989, 10, 14), "f", "2222222222222");
         Student student3 =
                 new Student("Ana", "Aristide", LocalDate.of(1999, 10, 14), "female", "3333333333333");
 
