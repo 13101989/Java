@@ -41,12 +41,12 @@ public class StudentRepo {
     public void listStudentsOrderedBy(String orderCondition) {
         System.out.println("Sorted students by " + orderCondition + ":");
 
-        if (orderCondition.equals("lastName")) {
+        if (orderCondition.equalsIgnoreCase("lastName")) {
             students.sort(Comparator.comparing(Student::getLastName));
             for (Student student : students) {
                 System.out.println(student);
             }
-        } else if (orderCondition.equals("dateOfBirth")) {
+        } else if (orderCondition.equalsIgnoreCase("dateOfBirth")) {
             students.sort(Comparator.comparing(Student::getDateOfBirth).reversed());
             for (Student student : students) {
                 Map<String, Integer> studentAge = student.calculateAge();

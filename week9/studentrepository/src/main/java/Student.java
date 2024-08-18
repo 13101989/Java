@@ -2,6 +2,7 @@ package main.java;
 
 import lombok.Data;
 import main.java.customexceptions.DateOfBirthOutsideBoundaries;
+import main.java.customexceptions.InvalidGenderException;
 import main.java.customexceptions.StringIsEmptyException;
 
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ public class Student {
     private String id;
 
     public Student(String firstName, String lastName, LocalDate dateOfBirth, String gender, String id)
-            throws StringIsEmptyException, DateOfBirthOutsideBoundaries {
+            throws StringIsEmptyException, DateOfBirthOutsideBoundaries, InvalidGenderException {
 
         if (firstName.isEmpty() || lastName.isEmpty()) {
             throw new StringIsEmptyException("Name value cannot be empty!");
@@ -27,6 +28,15 @@ public class Student {
         int minYear = LocalDate.now().minusYears(18).getYear();
         if (dateOfBirth.getYear() > 1900 && dateOfBirth.getYear() < minYear) {
             throw new DateOfBirthOutsideBoundaries("Year of birth " + dateOfBirth.getYear() + " is not between 1900 and " + minYear);
+        }
+
+        if (!(gender.equalsIgnoreCase("male") ||
+                gender.equalsIgnoreCase("female") ||
+                gender.equalsIgnoreCase("m") ||
+                gender.equalsIgnoreCase("f"))) {
+            throw new InvalidGenderException(
+                    "Gender " + gender + " is not a valid value, choose between {m, f, M, F, male, female, MALE, FEMALE}"
+            );
         }
 
         this.firstName = firstName;
