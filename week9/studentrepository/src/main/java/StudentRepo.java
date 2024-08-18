@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,9 +42,13 @@ public class StudentRepo {
     }
 
     public void listStudentsOrderedBy(String orderCondition) {
-        students.sort(null);
-
         System.out.println("Sorted students by " + orderCondition);
+
+        if (orderCondition.equals("lastName")) {
+            students.sort(Comparator.comparing(Student::getLastName));
+        } else if (orderCondition.equals("dateOfBirth")) {
+            students.sort(Comparator.comparing(Student::getDateOfBirth));
+        }
         for (Student student : students) {
             System.out.println(student);
         }
