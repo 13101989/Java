@@ -1,9 +1,6 @@
 package main.java;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class StudentRepo {
     public List<Student> students = new ArrayList<>();
@@ -19,7 +16,7 @@ public class StudentRepo {
             Student student = iterator.next();
             if (student.getId().equals(id)) {
                 iterator.remove();
-                System.out.println("Student " + student + " was deleted successfully.");
+                System.out.println(student + " was deleted successfully.");
                 break;
             }
         }
@@ -30,7 +27,7 @@ public class StudentRepo {
 
         System.out.println("The following students have age " + age + ":");
         for (Student student : students) {
-            if (student.calculateAge() == age) {
+            if (student.calculateAge().get("years") == age) {
                 System.out.println(student);
                 atLeastOneStudendOfAge = true;
             }
@@ -42,15 +39,21 @@ public class StudentRepo {
     }
 
     public void listStudentsOrderedBy(String orderCondition) {
-        System.out.println("Sorted students by " + orderCondition);
+        System.out.println("Sorted students by " + orderCondition + ":");
 
         if (orderCondition.equals("lastName")) {
             students.sort(Comparator.comparing(Student::getLastName));
+            for (Student student : students) {
+                System.out.println(student);
+            }
         } else if (orderCondition.equals("dateOfBirth")) {
             students.sort(Comparator.comparing(Student::getDateOfBirth));
+            for (Student student : students) {
+                Map<String, Integer> studentAge = student.calculateAge();
+                System.out.println(student + " -> " +
+                        studentAge.get("years") + " years " + studentAge.get("months") + " months " + studentAge.get("days") + " days.");
+            }
         }
-        for (Student student : students) {
-            System.out.println(student);
-        }
+
     }
 }

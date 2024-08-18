@@ -1,15 +1,15 @@
 package main.java;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.HashMap;
+import java.util.Map;
 
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class Student {
     private String firstName;
     private String lastName;
@@ -17,9 +17,14 @@ public class Student {
     private String gender;
     private String id;
 
-    public int calculateAge() {
+    public Map<String, Integer> calculateAge() {
+        Map<String, Integer> ageMap = new HashMap<>();
+
         LocalDate currentDate = LocalDate.now();
         Period age = Period.between(dateOfBirth, currentDate);
-        return age.getYears();
+        ageMap.put("years", age.getYears());
+        ageMap.put("months", age.getMonths());
+        ageMap.put("days", age.getDays());
+        return ageMap;
     }
 }
