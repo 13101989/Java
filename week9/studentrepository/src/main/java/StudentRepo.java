@@ -41,6 +41,11 @@ public class StudentRepo {
     }
 
     public void listStudentsOrderedBy(String orderCondition) {
+        students.sort(null);
 
+        System.out.println("Sorted students by " + orderCondition);
+        for (Student student : students) {
+            System.out.println(student);
+        }
     }
 }

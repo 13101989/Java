@@ -10,7 +10,7 @@ import java.time.Period;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Student {
+public class Student implements Comparable<Student> {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
@@ -21,5 +21,10 @@ public class Student {
         LocalDate currentDate = LocalDate.now();
         Period age = Period.between(dateOfBirth, currentDate);
         return age.getYears();
+    }
+
+    @Override
+    public int compareTo(Student student) {
+        return this.lastName.compareTo(student.lastName);
     }
 }
