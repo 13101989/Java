@@ -10,8 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BiathlonAthletesParserTest {
     private BiathlonAthletesParser biathlonAthletes;
@@ -110,5 +109,14 @@ class BiathlonAthletesParserTest {
         assertEquals(expectedWinner, actualWinner);
         assertEquals(expectedRunnerUp, actualRunnerUp);
         assertEquals(expectedThirdPlace, actualThirdPlace);
+    }
+
+    @Test
+    void testCSVDataIsEmptyException() {
+
+        List<String> csvData = new ArrayList<>(
+                List.of("AthleteNumber,AthleteName,CountryCode,SkiTimeResult(Minutes:Seconds),FirstShootingRange,SecondShooting,ThirdShooting"));
+
+        assertThrows(EmptyCSVException.class, () -> biathlonAthletes.getFirstThreeAthletesByScoreFromCSV(csvData));
     }
 }
