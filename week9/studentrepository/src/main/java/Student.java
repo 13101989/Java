@@ -1,9 +1,6 @@
 package main.java;
 
 import lombok.Data;
-import main.java.customexceptions.InvalidDateOfBirthException;
-import main.java.customexceptions.InvalidGenderException;
-import main.java.customexceptions.StringIsEmptyException;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -21,20 +18,20 @@ public class Student {
     public Student(String firstName, String lastName, LocalDate dateOfBirth, String gender, String id) {
 
         if (firstName.isEmpty() || lastName.isEmpty()) {
-            throw new StringIsEmptyException("Name value cannot be empty!");
+            throw new IllegalArgumentException("Name value cannot be empty!");
         }
 
         int minYear = LocalDate.now().minusYears(18).getYear();
         if (dateOfBirth.getYear() < 1900 || dateOfBirth.getYear() > minYear) {
-            throw new InvalidDateOfBirthException("Year of birth '" + dateOfBirth.getYear() + "' should be between 1900 and " + minYear);
+            throw new IllegalArgumentException("Year of birth '" + dateOfBirth.getYear() + "' should be between 1900 and " + minYear + "!");
         }
 
         if (!(gender.equalsIgnoreCase("male") ||
                 gender.equalsIgnoreCase("female") ||
                 gender.equalsIgnoreCase("m") ||
                 gender.equalsIgnoreCase("f"))) {
-            throw new InvalidGenderException(
-                    "Gender '" + gender + "' is not a valid value, please choose between {m, f, M, F, male, female, MALE, FEMALE}"
+            throw new IllegalArgumentException(
+                    "Gender '" + gender + "' is not a valid value, please choose between {m, f, M, F, male, female, MALE, FEMALE}!"
             );
         }
 
