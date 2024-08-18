@@ -1,13 +1,13 @@
 package main.java;
 
-import main.java.customexceptions.DateOfBirthOutsideBoundaries;
+import main.java.customexceptions.InvalidDateOfBirthException;
 import main.java.customexceptions.InvalidGenderException;
 import main.java.customexceptions.StringIsEmptyException;
 
 import java.time.LocalDate;
 
 public class Main8 {
-    public static void main(String[] args) throws StringIsEmptyException, DateOfBirthOutsideBoundaries, InvalidGenderException {
+    public static void main(String[] args) throws StringIsEmptyException, InvalidDateOfBirthException, InvalidGenderException {
         Student student1 =
                 new Student("Ion", "Maria", LocalDate.of(1989, 10, 13), "male", "1111111111111");
         Student student2 =
