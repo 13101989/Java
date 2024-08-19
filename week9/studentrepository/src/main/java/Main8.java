@@ -1,6 +1,7 @@
 package main.java;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Main8 {
     public static void main(String[] args) {
@@ -17,10 +18,19 @@ public class Main8 {
         studentContainer.addStudent(student3);
 
         System.out.println();
-        studentContainer.listStudentsOrderedBy("lastname");
+        try {
+            studentContainer.listStudentsOrderedBy("name");
+        } catch (InputOrderConditionException e) {
+            System.out.println("Exception caught: " + e);
+        }
+
 
         System.out.println();
-        studentContainer.listStudentsOrderedBy("dateOfBirth");
+        try {
+            studentContainer.listStudentsOrderedBy("name");
+        } catch (InputOrderConditionException e) {
+            System.out.println("Exception caught: " + e);
+        }
 
         System.out.println();
         studentContainer.retrieveAllStudentsOfAge(34);
@@ -29,7 +39,11 @@ public class Main8 {
         studentContainer.deleteStudent("1111111111111");
 
         System.out.println();
-        studentContainer.listStudentsOrderedBy("lastName");
+        try {
+            studentContainer.listStudentsOrderedBy("name");
+        } catch (InputOrderConditionException e) {
+            System.out.println("Exception caught: " + e);
+        }
 
         System.out.println();
         studentContainer.retrieveAllStudentsOfAge(33);
