@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -73,11 +74,21 @@ class StudentRepoTest {
 
         assertThrows(IllegalArgumentException.class, () -> studentRepo.deleteStudent(""));
 
-        assertThrows(NoSuchElementException.class, () -> studentRepo.deleteStudent("IdDoesNotExist"));
+        assertThrows(NoSuchElementException.class, () -> studentRepo.deleteStudent("IdDoesNotExists"));
     }
 
     @Test
-    void retrieveAllStudentsOfAge() {
+    void retrieveAllStudentsOfAgeScenarios() {
+        List<Student> studentsOfAgeExpected = List.of(student1, student2);
+        assertEquals(studentsOfAgeExpected, studentRepo.retrieveAllStudentsOfAge(34));
+
+        studentsOfAgeExpected = List.of(student3);
+        assertEquals(studentsOfAgeExpected, studentRepo.retrieveAllStudentsOfAge(24));
+
+        studentsOfAgeExpected = List.of();
+        assertEquals(studentsOfAgeExpected, studentRepo.retrieveAllStudentsOfAge(44));
+
+        assertThrows(IllegalArgumentException.class, () -> studentRepo.retrieveAllStudentsOfAge(-34));
     }
 
     @Test

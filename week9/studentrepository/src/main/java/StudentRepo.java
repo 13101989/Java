@@ -34,24 +34,25 @@ public class StudentRepo {
         }
     }
 
-    public void retrieveAllStudentsOfAge(int age) {
+    public List<Student> retrieveAllStudentsOfAge(int age) {
         if (age < 0) {
             throw new IllegalArgumentException("Age cannot be a negative number. Age provided '" + age + "'.");
         }
 
-        boolean atLeastOneStudentOfAge = false;
+        List<Student> studentsOfAge = new ArrayList<>();
         System.out.println("The following students have age " + age + " years:");
 
         for (Student student : students) {
             if (student.calculateAge().get("years") == age) {
                 System.out.println(student);
-                atLeastOneStudentOfAge = true;
+                studentsOfAge.add(student);
             }
         }
 
-        if (!atLeastOneStudentOfAge) {
+        if (studentsOfAge.isEmpty()) {
             System.out.println("There are no students of age " + age);
         }
+        return studentsOfAge;
     }
 
     public void listStudentsOrderedBy(String orderCondition) throws IllegalOrderConditionException {
