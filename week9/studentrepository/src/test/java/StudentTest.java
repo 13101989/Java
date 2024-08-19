@@ -13,6 +13,9 @@ class StudentTest {
 
     @Test
     void canInstantiateScenario() {
+        /*
+         * Test that student can instantiate with gender written with uppercase and lowercase letters.
+         */
         assertNotNull(student = new Student(
                 "Ion",
                 "Maria",
