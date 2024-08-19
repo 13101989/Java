@@ -18,6 +18,7 @@ class StudentRepoTest {
     private Student student2;
     private Student student3;
     private Student student4;
+    private Student student5;
 
     @BeforeEach
     void setUp() {
@@ -46,6 +47,12 @@ class StudentRepoTest {
                 LocalDate.of(2000, 10, 14),
                 "m",
                 "4444444444444");
+        student5 = new Student(
+                "Duplicate",
+                "Id",
+                LocalDate.of(1901, 10, 14),
+                "m",
+                "4444444444444");
         studentRepo.addStudent(student1);
         studentRepo.addStudent(student2);
         studentRepo.addStudent(student3);
@@ -62,7 +69,7 @@ class StudentRepoTest {
     }
 
     @Test
-    void testAddStudent() {
+    void addStudentScenarios() {
         assertEquals(
                 "Student(firstName=Ion, lastName=Maria, dateOfBirth=1989-10-14, gender=male, id=1111111111111)",
                 studentRepo.students.get(0).toString());
@@ -75,6 +82,8 @@ class StudentRepoTest {
         assertEquals(
                 "Student(firstName=Mihai, lastName=Zainea, dateOfBirth=2000-10-14, gender=m, id=4444444444444)",
                 studentRepo.students.get(3).toString());
+
+        assertThrows(IllegalArgumentException.class, () -> studentRepo.addStudent(student5));
     }
 
     @Test
@@ -139,5 +148,43 @@ class StudentRepoTest {
         assertThrows(IllegalArgumentException.class, () -> studentRepo.listStudentsOrderedBy(""));
 
         assertThrows(IllegalOrderConditionException.class, () -> studentRepo.listStudentsOrderedBy("notNameOrAge"));
+    }
+
+    @Test
+    void testAddDeleteRetrieveListScenario() throws IllegalOrderConditionException {
+        studentRepo.deleteStudent("3333333333333");
+        studentRepo.deleteStudent("1111111111111");
+        studentRepo.deleteStudent("4444444444444");
+
+        studentRepo.addStudent(student5);
+
+        assertEquals(
+                "Student(firstName=Ioana, lastName=Maria, dateOfBirth=1989-10-14, gender=F, id=2222222222222)",
+                studentRepo.students.get(0).toString());
+        assertEquals(
+                "Student(firstName=Duplicate, lastName=Id, dateOfBirth=1901-10-14, gender=m, id=4444444444444)",
+                studentRepo.students.get(1).toString());
+
+        List<Student> studentsOfAgeExpected = List.of(student5);
+        assertEquals(studentsOfAgeExpected, studentRepo.retrieveAllStudentsOfAge(122));
+        studentsOfAgeExpected = List.of(student2);
+        assertEquals(studentsOfAgeExpected, studentRepo.retrieveAllStudentsOfAge(34));
+
+        studentRepo.listStudentsOrderedBy("name");
+        assertEquals(
+                "Student(firstName=Duplicate, lastName=Id, dateOfBirth=1901-10-14, gender=m, id=4444444444444)",
+                studentRepo.students.get(0).toString());
+        assertEquals(
+                "Student(firstName=Ioana, lastName=Maria, dateOfBirth=1989-10-14, gender=F, id=2222222222222)",
+                studentRepo.students.get(1).toString());
+
+
+        studentRepo.listStudentsOrderedBy("age");
+        assertEquals(
+                "Student(firstName=Ioana, lastName=Maria, dateOfBirth=1989-10-14, gender=F, id=2222222222222)",
+                studentRepo.students.get(0).toString());
+        assertEquals(
+                "Student(firstName=Duplicate, lastName=Id, dateOfBirth=1901-10-14, gender=m, id=4444444444444)",
+                studentRepo.students.get(1).toString());
     }
 }

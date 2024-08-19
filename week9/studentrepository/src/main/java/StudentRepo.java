@@ -7,9 +7,15 @@ import java.util.*;
 public class StudentRepo {
     public List<Student> students = new ArrayList<>();
 
-    public void addStudent(Student student) {
-        students.add(student);
-        System.out.println("Student " + student + " was added successfully.");
+    public void addStudent(Student newStudent) {
+        for (Student student : students) {
+            if (student.getId().equals(newStudent.getId())) {
+                throw new IllegalArgumentException("A student with ID '" + newStudent.getId() + "' already exists, id of student should be unique.");
+            }
+        }
+
+        students.add(newStudent);
+        System.out.println("Student " + newStudent + " was added successfully.");
     }
 
     public void deleteStudent(String id) {
