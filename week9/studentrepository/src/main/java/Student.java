@@ -31,7 +31,7 @@ public class Student {
                 gender.equalsIgnoreCase("m") ||
                 gender.equalsIgnoreCase("f"))) {
             throw new IllegalArgumentException(
-                    "Gender '" + gender + "' is not a valid value, please choose between {m, f, M, F, male, female, MALE, FEMALE}!"
+                    "Gender '" + gender + "' is not a valid value, please choose between 'm', 'male', 'f', and 'female' (case-insensitive)!"
             );
         }
 
