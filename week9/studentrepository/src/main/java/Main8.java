@@ -1,6 +1,6 @@
 package main.java;
 
-import main.java.customexceptions.InputOrderConditionException;
+import main.java.customexceptions.IllegalOrderConditionException;
 
 import java.time.LocalDate;
 
@@ -21,7 +21,7 @@ public class Main8 {
         System.out.println();
         try {
             studentContainer.listStudentsOrderedBy("name");
-        } catch (InputOrderConditionException e) {
+        } catch (IllegalOrderConditionException e) {
             System.out.println("Exception caught: " + e);
         }
 
@@ -29,7 +29,7 @@ public class Main8 {
         System.out.println();
         try {
             studentContainer.listStudentsOrderedBy("name");
-        } catch (InputOrderConditionException e) {
+        } catch (IllegalOrderConditionException e) {
             System.out.println("Exception caught: " + e);
         }
 
@@ -42,7 +42,7 @@ public class Main8 {
         System.out.println();
         try {
             studentContainer.listStudentsOrderedBy("name");
-        } catch (InputOrderConditionException e) {
+        } catch (IllegalOrderConditionException e) {
             System.out.println("Exception caught: " + e);
         }
 

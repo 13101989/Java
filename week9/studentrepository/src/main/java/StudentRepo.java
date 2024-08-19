@@ -1,6 +1,6 @@
 package main.java;
 
-import main.java.customexceptions.InputOrderConditionException;
+import main.java.customexceptions.IllegalOrderConditionException;
 
 import java.util.*;
 
@@ -54,7 +54,7 @@ public class StudentRepo {
         }
     }
 
-    public void listStudentsOrderedBy(String orderCondition) throws InputOrderConditionException {
+    public void listStudentsOrderedBy(String orderCondition) throws IllegalOrderConditionException {
         System.out.println("Sorted students by " + orderCondition + ":");
 
         if (orderCondition.equalsIgnoreCase("name")) {
@@ -72,7 +72,7 @@ public class StudentRepo {
         } else if (orderCondition.isEmpty()) {
             throw new IllegalArgumentException("Order condition cannot be empty. You can only choose between 'name' and 'age'.");
         } else {
-            throw new InputOrderConditionException("Input order condition can only be one of 'name' and 'age' values");
+            throw new IllegalOrderConditionException("Input order condition can only be one of 'name' and 'age' values");
         }
     }
 }
