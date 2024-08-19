@@ -3,8 +3,11 @@ package main.java;
 import main.java.customexceptions.IllegalOrderConditionException;
 
 import java.time.LocalDate;
+import java.util.logging.Logger;
 
 public class Main8 {
+    private static final Logger logger = Logger.getLogger(Main8.class.getName());
+
     public static void main(String[] args) {
         Student student1 = new Student(
                 "Ion",
@@ -30,35 +33,28 @@ public class Main8 {
         studentContainer.addStudent(student2);
         studentContainer.addStudent(student3);
 
-        System.out.println();
         try {
             studentContainer.listStudentsOrderedBy("name");
         } catch (IllegalOrderConditionException e) {
-            System.out.println("Exception caught: " + e);
+            logger.severe("Exception caught: " + e);
         }
 
-
-        System.out.println();
         try {
             studentContainer.listStudentsOrderedBy("age");
         } catch (IllegalOrderConditionException e) {
-            System.out.println("Exception caught: " + e);
+            logger.severe("Exception caught: " + e);
         }
 
-        System.out.println();
         studentContainer.retrieveAllStudentsOfAge(34);
 
-        System.out.println();
         studentContainer.deleteStudent("1111111111111");
 
-        System.out.println();
         try {
             studentContainer.listStudentsOrderedBy("name");
         } catch (IllegalOrderConditionException e) {
-            System.out.println("Exception caught: " + e);
+            logger.severe("Exception caught: " + e);
         }
 
-        System.out.println();
         studentContainer.retrieveAllStudentsOfAge(33);
     }
 }

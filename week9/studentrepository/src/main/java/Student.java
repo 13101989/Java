@@ -6,9 +6,11 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Data
 public class Student {
+    private static final Logger logger = Logger.getLogger(Student.class.getName());
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
@@ -18,21 +20,27 @@ public class Student {
     public Student(String firstName, String lastName, LocalDate dateOfBirth, String gender, String id) {
 
         if (firstName.isEmpty() || lastName.isEmpty()) {
-            throw new IllegalArgumentException("Name value cannot be empty!");
+            String exceptionMessage = "IllegalArgumentException exception thrown: Name value cannot be empty!";
+            logger.severe(exceptionMessage);
+            throw new IllegalArgumentException(exceptionMessage);
         }
 
         int minYear = LocalDate.now().minusYears(18).getYear();
         if (dateOfBirth.getYear() < 1900 || dateOfBirth.getYear() > minYear) {
-            throw new IllegalArgumentException("Year of birth '" + dateOfBirth.getYear() + "' should be between 1900 and " + minYear + "!");
+            String exceptionMessage = "IllegalArgumentException exception thrown: " +
+                    "Year of birth '" + dateOfBirth.getYear() + "' should be between 1900 and " + minYear + "!";
+            logger.severe(exceptionMessage);
+            throw new IllegalArgumentException(exceptionMessage);
         }
 
         if (!(gender.equalsIgnoreCase("male") ||
                 gender.equalsIgnoreCase("female") ||
                 gender.equalsIgnoreCase("m") ||
                 gender.equalsIgnoreCase("f"))) {
-            throw new IllegalArgumentException(
-                    "Gender '" + gender + "' is not a valid value, please choose between 'm', 'male', 'f', and 'female' (case-insensitive)!"
-            );
+            String exceptionMessage = "IllegalArgumentException exception thrown: " +
+                    "Gender '" + gender + "' is not a valid value, please choose between 'm', 'male', 'f', and 'female' (case-insensitive)!";
+            logger.severe(exceptionMessage);
+            throw new IllegalArgumentException(exceptionMessage);
         }
 
         this.firstName = firstName;
