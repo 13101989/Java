@@ -2,7 +2,6 @@ package main.java;
 
 import main.java.customexceptions.IllegalOrderConditionException;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.logging.Logger;
 
@@ -11,13 +10,6 @@ public class Main8 {
 
     public static void main(String[] args) {
         String logFilePath = "week9/studentrepository/src/main/java/logger.log";
-
-        try {
-            LoggerConfig.setup(logFilePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
 
         Student student1 = new Student(
                 "Ion",
