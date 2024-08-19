@@ -9,7 +9,7 @@ public class Main8 {
         Student student1 = new Student(
                 "Ion",
                 "Maria",
-                LocalDate.of(1989, 10, 13),
+                LocalDate.of(1989, 10, 14),
                 "male",
                 "1111111111111");
         Student student2 = new Student(
@@ -40,7 +40,7 @@ public class Main8 {
 
         System.out.println();
         try {
-            studentContainer.listStudentsOrderedBy("name");
+            studentContainer.listStudentsOrderedBy("age");
         } catch (IllegalOrderConditionException e) {
             System.out.println("Exception caught: " + e);
         }

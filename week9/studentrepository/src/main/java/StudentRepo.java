@@ -59,12 +59,17 @@ public class StudentRepo {
         System.out.println("Sorted students by " + orderCondition + ":");
 
         if (orderCondition.equalsIgnoreCase("name")) {
-            students.sort(Comparator.comparing(Student::getLastName));
+            students.sort(Comparator.comparing(Student::getLastName)
+                    .thenComparing(Student::getFirstName));
             for (Student student : students) {
                 System.out.println(student);
             }
+
         } else if (orderCondition.equalsIgnoreCase("age")) {
-            students.sort(Comparator.comparing(Student::getDateOfBirth).reversed());
+            students.sort(Comparator.comparing(Student::getDateOfBirth)
+                    .reversed()
+                    .thenComparing(Student::getLastName)
+                    .thenComparing(Student::getFirstName));
             for (Student student : students) {
                 Map<String, Integer> studentAge = student.calculateAge();
                 System.out.println(student + " -> " +

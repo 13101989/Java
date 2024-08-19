@@ -2,6 +2,7 @@ package test.java;
 
 import main.java.Student;
 import main.java.StudentRepo;
+import main.java.customexceptions.IllegalOrderConditionException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -92,6 +93,16 @@ class StudentRepoTest {
     }
 
     @Test
-    void listStudentsOrderedBy() {
+    void listStudentsOrderedBy() throws IllegalOrderConditionException {
+        studentRepo.listStudentsOrderedBy("name");
+        assertEquals(
+                "Student(firstName=Ana, lastName=Aristide, dateOfBirth=1999-10-14, gender=female, id=3333333333333)",
+                studentRepo.students.get(0).toString());
+        assertEquals(
+                "Student(firstName=Ioana, lastName=Maria, dateOfBirth=1989-10-14, gender=F, id=2222222222222)",
+                studentRepo.students.get(1).toString());
+        assertEquals(
+                "Student(firstName=Ion, lastName=Maria, dateOfBirth=1989-10-13, gender=male, id=1111111111111)",
+                studentRepo.students.get(2).toString());
     }
 }
