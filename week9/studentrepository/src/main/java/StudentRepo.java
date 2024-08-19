@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 public class StudentRepo {
     private static final Logger logger = Logger.getLogger(StudentRepo.class.getName());
+
     public List<Student> students = new ArrayList<>();
 
     public void addStudent(Student newStudent) {

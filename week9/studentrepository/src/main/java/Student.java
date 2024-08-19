@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 @Data
 public class Student {
     private static final Logger logger = Logger.getLogger(Student.class.getName());
+
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
