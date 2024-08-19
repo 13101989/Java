@@ -18,7 +18,6 @@ public class Student {
     private String gender;
     private String id;
 
-
     public Student(String firstName, String lastName, LocalDate dateOfBirth, String gender, String id) {
 
         if (firstName.isEmpty() || lastName.isEmpty()) {
