@@ -9,8 +9,6 @@ public class Main8 {
     private static final Logger logger = Logger.getLogger(Main8.class.getName());
 
     public static void main(String[] args) {
-        String logFilePath = "week9/studentrepository/src/main/java/logger.log";
-
         Student student1 = new Student(
                 "Ion",
                 "Maria",
