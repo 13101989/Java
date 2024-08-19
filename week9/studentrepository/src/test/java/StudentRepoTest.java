@@ -105,7 +105,7 @@ class StudentRepoTest {
     }
 
     @Test
-    void listStudentsOrderedBy() throws IllegalOrderConditionException {
+    void listStudentsOrderedByScenarios() throws IllegalOrderConditionException {
         studentRepo.listStudentsOrderedBy("name");
         assertEquals(
                 "Student(firstName=Ana, lastName=Aristide, dateOfBirth=1999-10-14, gender=female, id=3333333333333)",
@@ -134,5 +134,10 @@ class StudentRepoTest {
         assertEquals(
                 "Student(firstName=Ion, lastName=Maria, dateOfBirth=1989-10-14, gender=male, id=1111111111111)",
                 studentRepo.students.get(3).toString());
+
+
+        assertThrows(IllegalArgumentException.class, () -> studentRepo.listStudentsOrderedBy(""));
+
+        assertThrows(IllegalOrderConditionException.class, () -> studentRepo.listStudentsOrderedBy("notNameOrAge"));
     }
 }
