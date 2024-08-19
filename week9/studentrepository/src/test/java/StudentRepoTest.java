@@ -17,6 +17,7 @@ class StudentRepoTest {
     private Student student1;
     private Student student2;
     private Student student3;
+    private Student student4;
 
     @BeforeEach
     void setUp() {
@@ -24,7 +25,7 @@ class StudentRepoTest {
         student1 = new Student(
                 "Ion",
                 "Maria",
-                LocalDate.of(1989, 10, 13),
+                LocalDate.of(1989, 10, 14),
                 "male",
                 "1111111111111");
         student2 = new Student(
@@ -39,9 +40,16 @@ class StudentRepoTest {
                 LocalDate.of(1999, 10, 14),
                 "female",
                 "3333333333333");
+        student4 = new Student(
+                "Mihai",
+                "Zainea",
+                LocalDate.of(2000, 10, 14),
+                "m",
+                "4444444444444");
         studentRepo.addStudent(student1);
         studentRepo.addStudent(student2);
         studentRepo.addStudent(student3);
+        studentRepo.addStudent(student4);
     }
 
     @Test
@@ -50,12 +58,13 @@ class StudentRepoTest {
         assertNotNull(student1);
         assertNotNull(student2);
         assertNotNull(student3);
+        assertNotNull(student4);
     }
 
     @Test
     void testAddStudent() {
         assertEquals(
-                "Student(firstName=Ion, lastName=Maria, dateOfBirth=1989-10-13, gender=male, id=1111111111111)",
+                "Student(firstName=Ion, lastName=Maria, dateOfBirth=1989-10-14, gender=male, id=1111111111111)",
                 studentRepo.students.get(0).toString());
         assertEquals(
                 "Student(firstName=Ioana, lastName=Maria, dateOfBirth=1989-10-14, gender=F, id=2222222222222)",
@@ -63,12 +72,15 @@ class StudentRepoTest {
         assertEquals(
                 "Student(firstName=Ana, lastName=Aristide, dateOfBirth=1999-10-14, gender=female, id=3333333333333)",
                 studentRepo.students.get(2).toString());
+        assertEquals(
+                "Student(firstName=Mihai, lastName=Zainea, dateOfBirth=2000-10-14, gender=m, id=4444444444444)",
+                studentRepo.students.get(3).toString());
     }
 
     @Test
     void deleteStudentScenarios() {
         studentRepo.deleteStudent("1111111111111");
-        assertEquals(2, studentRepo.students.size());
+        assertEquals(3, studentRepo.students.size());
         assertEquals(
                 "Student(firstName=Ioana, lastName=Maria, dateOfBirth=1989-10-14, gender=F, id=2222222222222)",
                 studentRepo.students.get(0).toString());
@@ -102,7 +114,25 @@ class StudentRepoTest {
                 "Student(firstName=Ioana, lastName=Maria, dateOfBirth=1989-10-14, gender=F, id=2222222222222)",
                 studentRepo.students.get(1).toString());
         assertEquals(
-                "Student(firstName=Ion, lastName=Maria, dateOfBirth=1989-10-13, gender=male, id=1111111111111)",
+                "Student(firstName=Ion, lastName=Maria, dateOfBirth=1989-10-14, gender=male, id=1111111111111)",
                 studentRepo.students.get(2).toString());
+        assertEquals(
+                "Student(firstName=Mihai, lastName=Zainea, dateOfBirth=2000-10-14, gender=m, id=4444444444444)",
+                studentRepo.students.get(3).toString());
+
+
+        studentRepo.listStudentsOrderedBy("age");
+        assertEquals(
+                "Student(firstName=Mihai, lastName=Zainea, dateOfBirth=2000-10-14, gender=m, id=4444444444444)",
+                studentRepo.students.get(0).toString());
+        assertEquals(
+                "Student(firstName=Ana, lastName=Aristide, dateOfBirth=1999-10-14, gender=female, id=3333333333333)",
+                studentRepo.students.get(1).toString());
+        assertEquals(
+                "Student(firstName=Ioana, lastName=Maria, dateOfBirth=1989-10-14, gender=F, id=2222222222222)",
+                studentRepo.students.get(2).toString());
+        assertEquals(
+                "Student(firstName=Ion, lastName=Maria, dateOfBirth=1989-10-14, gender=male, id=1111111111111)",
+                studentRepo.students.get(3).toString());
     }
 }
