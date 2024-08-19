@@ -12,7 +12,7 @@ class StudentTest {
     private Student student;
 
     @Test
-    void canInstantiateScenario() {
+    void canInstantiateScenarios() {
         /*
          * Test that student can instantiate with gender written with uppercase and lowercase letters.
          */
