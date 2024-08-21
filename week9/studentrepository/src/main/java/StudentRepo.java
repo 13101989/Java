@@ -79,14 +79,16 @@ public class StudentRepo {
         logger.info("Sorted students by " + orderCondition + ":");
 
         if (orderCondition.equalsIgnoreCase("name")) {
-            students.sort(Comparator.comparing(Student::getLastName)
+            students.sort(Comparator
+                    .comparing(Student::getLastName)
                     .thenComparing(Student::getFirstName));
             for (Student student : students) {
                 logger.info(student.toString());
             }
 
         } else if (orderCondition.equalsIgnoreCase("age")) {
-            students.sort(Comparator.comparing(Student::getDateOfBirth)
+            students.sort(Comparator
+                    .comparing(Student::getDateOfBirth)
                     .reversed()
                     .thenComparing(Student::getLastName)
                     .thenComparing(Student::getFirstName));
