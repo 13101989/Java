@@ -16,13 +16,18 @@ public class PersonHandler {
         readAndParsePersonsFromCsvFile(csvToRead);
 
         List<String> personsBornInSameMonth = new ArrayList<>();
-        System.out.println("Persons that are born in " + Month.of(month) + " are:");
         for (Person person : persons) {
             if (person.getDateOfBirth().getMonth().getValue() == month) {
-                System.out.println(person);
                 personsBornInSameMonth.add(person.toString());
             }
         }
+        personsBornInSameMonth.sort(null);
+
+        System.out.println("Persons that are born in " + Month.of(month) + " ordered alphabetically:");
+        for (String person : personsBornInSameMonth) {
+            System.out.println(person);
+        }
+
         writePersonsToFile(fileToWrite, personsBornInSameMonth);
     }
 

@@ -1,3 +1,4 @@
-Person(firstName=Mirela, lastName=Tanase, dateOfBirth=2000-02-12)
-Person(firstName=George, lastName=State, dateOfBirth=2002-02-24)
-Person(firstName=Valentina, lastName=Tanase, dateOfBirth=2002-02-02)
+George State -> 2002-02-24
+Mirela Tanase -> 2000-02-12
+Valentin Tanase -> 2002-02-10
+Valentin Tanasie -> 2002-02-02
