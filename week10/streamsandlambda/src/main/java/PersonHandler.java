@@ -19,7 +19,7 @@ import static main.java.Person.PERSON_COMPARATOR;
 public class PersonHandler {
     private List<Person> persons = new ArrayList<>();
 
-    public void findAndWriteToFilePersonsBornInSpecificMonth(String csvToRead, int month, String fileToWrite) throws IOException {
+    public void findAndReturnPersonsBornInSpecificMonth(String csvToRead, int month, String fileToWrite) throws IOException {
         readAndParsePersonsFromCsvFile(csvToRead);
 
         List<String> personsBornInSameMonth =
@@ -43,7 +43,7 @@ public class PersonHandler {
         writePersonsToFile(fileToWrite, personsBornInSameMonth);
     }
 
-    public List<String> findAndWriteToFilePersonsBornInSpecificMonth(List<String> csvToRead, int month, String fileToWrite) throws IOException {
+    public List<String> findAndReturnPersonsBornInSpecificMonth(List<String> csvToRead, int month) throws IOException {
         readAndParsePersonsFromCsvFile(csvToRead);
 
         List<String> personsBornInSameMonth =

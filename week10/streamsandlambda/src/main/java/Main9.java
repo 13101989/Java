@@ -9,7 +9,7 @@ public class Main9 {
 
         PersonHandler personsContainer = new PersonHandler();
         try {
-            personsContainer.findAndWriteToFilePersonsBornInSpecificMonth(sourceCsvPath, 2, destinationFilePath);
+            personsContainer.findAndReturnPersonsBornInSpecificMonth(sourceCsvPath, 2, destinationFilePath);
         } catch (IOException e) {
             System.out.println("Exception caught: " + e);
         }
