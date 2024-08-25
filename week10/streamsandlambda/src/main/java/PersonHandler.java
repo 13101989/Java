@@ -12,22 +12,24 @@ import java.util.List;
 public class PersonHandler {
     private final List<Person> persons = new ArrayList<>();
 
-    public void findPersonsBornInSpecificMonth(String csvToRead, int month, String csvToWrite) throws IOException {
+    public void findPersonsBornInSpecificMonth(String csvToRead, int month, String fileToWrite) throws IOException {
         readAndParsePersonsFromCsvFile(csvToRead);
 
+        List<String> personsBornInSameMonth = new ArrayList<>();
         System.out.println("Persons that are born in " + Month.of(month) + " are:");
         for (Person person : persons) {
             if (person.getDateOfBirth().getMonth().getValue() == month) {
                 System.out.println(person);
+                personsBornInSameMonth.add(person.toString());
             }
         }
-        writePersonsToCsvFile(csvToWrite);
+        writePersonsToFile(fileToWrite, personsBornInSameMonth);
     }
 
     private void readAndParsePersonsFromCsvFile(String csvToRead) throws IOException {
         String csvDelimiter = ",";
-        Path fileToRead = Paths.get(csvToRead);
-        List<String> lines = Files.readAllLines(fileToRead);
+        Path file = Paths.get(csvToRead);
+        List<String> lines = Files.readAllLines(file);
 
         if (lines.size() < 2) {
             throw new IOException("CSV file doesn't contain any person!");
@@ -49,7 +51,8 @@ public class PersonHandler {
         }
     }
 
-    private void writePersonsToCsvFile(String csvToWrite) {
-
+    private void writePersonsToFile(String fileToWrite, List<String> personsBornInSameMonth) throws IOException {
+        Path file = Paths.get(fileToWrite);
+        Files.write(file, personsBornInSameMonth);
     }
 }
