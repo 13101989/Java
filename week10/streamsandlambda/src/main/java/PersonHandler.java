@@ -54,5 +54,6 @@ public class PersonHandler {
     private void writePersonsToFile(String fileToWrite, List<String> personsBornInSameMonth) throws IOException {
         Path file = Paths.get(fileToWrite);
         Files.write(file, personsBornInSameMonth);
+        System.out.println("Lines written to file: " + file.toAbsolutePath());
     }
 }
