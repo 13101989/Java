@@ -35,8 +35,8 @@ public class PersonHandler {
             throw new IOException("CSV file doesn't contain any person!");
         }
 
-        for (String line : lines) {
-            String[] personData = line.split(csvDelimiter);
+        for (int i = 1; i < lines.size(); i++) {
+            String[] personData = lines.get(i).split(csvDelimiter);
 
             String personFirstName = personData[1];
             String personLastName = personData[2];
