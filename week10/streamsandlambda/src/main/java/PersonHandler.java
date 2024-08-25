@@ -12,7 +12,7 @@ import java.util.List;
 public class PersonHandler {
     private final List<Person> persons = new ArrayList<>();
 
-    public void findPersonsBornInSpecificMonth(String csvToRead, int month, String fileToWrite) throws IOException {
+    public void findAndWriteToFilePersonsBornInSpecificMonth(String csvToRead, int month, String fileToWrite) throws IOException {
         readAndParsePersonsFromCsvFile(csvToRead);
 
         List<String> personsBornInSameMonth = new ArrayList<>();
@@ -23,9 +23,17 @@ public class PersonHandler {
         }
         personsBornInSameMonth.sort(null);
 
-        System.out.println("Persons that are born in " + Month.of(month) + " ordered alphabetically:");
-        for (String person : personsBornInSameMonth) {
-            System.out.println(person);
+        if (!personsBornInSameMonth.isEmpty()) {
+            System.out.println("Persons that are born in " + Month.of(month) + " ordered alphabetically:");
+            for (String person : personsBornInSameMonth) {
+                System.out.println(person);
+            }
+            String firstLine = "Persons that are born in " + Month.of(month) + " ordered alphabetically:";
+            personsBornInSameMonth.add(0, firstLine);
+        } else {
+            String firstLine = "No person from list provided is born in the month of " + Month.of(month);
+            System.out.println(firstLine);
+            personsBornInSameMonth.add(firstLine);
         }
 
         writePersonsToFile(fileToWrite, personsBornInSameMonth);
