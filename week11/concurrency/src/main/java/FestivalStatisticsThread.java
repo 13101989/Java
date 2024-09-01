@@ -1,6 +1,5 @@
 package main.java;
 
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -47,7 +46,7 @@ public class FestivalStatisticsThread implements Runnable {
     public String toString() {
         return
                 "***************************************************************************\n" +
-                        "Stats collected from gate so far are as follow:\n" +
+                        "Total stats collected from gate so far are as follow:\n" +
                         totalAttendees + " people entered\n\n" +
                         attendeesWithFullAccess + " people have full tickets\n" +
                         attendeesWithFreePass + " people have free passes\n" +

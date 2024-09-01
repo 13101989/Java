@@ -18,14 +18,17 @@ public class Festival {
             attendeesRunnable.add(attendee);
         }
 
-        try (ExecutorService executorService = Executors.newFixedThreadPool(10)) {
-            for (Runnable attendee : attendeesRunnable) {
-                executorService.submit(attendee);
-            }
-
-            ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+        try (ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1)) {
             FestivalStatisticsThread gateStats = new FestivalStatisticsThread(gate);
             scheduledExecutorService.scheduleAtFixedRate(gateStats, 0, 5, TimeUnit.SECONDS);
+
+            try (ExecutorService executorService = Executors.newFixedThreadPool(10)) {
+                for (Runnable attendee : attendeesRunnable) {
+                    executorService.submit(attendee);
+                }
+            }
+
+            Thread.sleep(5000);
         }
     }
 }

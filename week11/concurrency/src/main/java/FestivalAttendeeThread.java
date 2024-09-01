@@ -2,7 +2,6 @@ package main.java;
 
 import lombok.Getter;
 
-
 @Getter
 public class FestivalAttendeeThread implements Runnable {
     private final TicketType ticketType;
