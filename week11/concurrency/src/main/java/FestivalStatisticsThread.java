@@ -48,11 +48,11 @@ public class FestivalStatisticsThread implements Runnable {
                 "***************************************************************************\n" +
                         "Total stats collected from gate so far are as follow:\n" +
                         totalAttendees + " people entered\n\n" +
-                        attendeesWithFullAccess + " people have full tickets\n" +
+                        attendeesWithFullAccess + " people have full access\n" +
                         attendeesWithFreePass + " people have free passes\n" +
-                        attendeesWithFullVIPAccess + " people have full VIP passes\n" +
-                        attendeesWithOneDayAccess + " people have one-day passes\n" +
-                        attendeesWithOneDayVIPAccess + " people have one-day VIP passes\n" +
+                        attendeesWithFullVIPAccess + " people have full VIP access\n" +
+                        attendeesWithOneDayAccess + " people have one-day access\n" +
+                        attendeesWithOneDayVIPAccess + " people have one-day VIP access\n" +
                         "***************************************************************************\n";
     }
 }
