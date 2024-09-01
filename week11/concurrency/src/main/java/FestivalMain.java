@@ -19,7 +19,7 @@ public class FestivalMain {
 
         try (ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1)) {
             FestivalStatisticsThread gateStats = new FestivalStatisticsThread(gate);
-            scheduledExecutorService.scheduleAtFixedRate(gateStats, 0, 5, TimeUnit.SECONDS);
+            scheduledExecutorService.scheduleAtFixedRate(gateStats, 5, 5, TimeUnit.SECONDS);
 
             int numberOfGateEntrances = 10;
             try (ExecutorService executorService = Executors.newFixedThreadPool(numberOfGateEntrances)) {

@@ -22,17 +22,19 @@ public class FestivalStatisticsThread implements Runnable {
         List<FestivalAttendeeThread> attendees = this.festivalGate.getAttendees();
         totalAttendees = attendees.size();
 
-        Map<TicketType, Long> ticketCountMapper = attendees
-                .stream()
-                .collect(Collectors.groupingBy(
-                        FestivalAttendeeThread::getTicketType,
-                        Collectors.counting()));
+        if (totalAttendees > 0) {
+            Map<TicketType, Long> ticketCountMapper = attendees
+                    .stream()
+                    .collect(Collectors.groupingBy(
+                            FestivalAttendeeThread::getTicketType,
+                            Collectors.counting()));
 
-        attendeesWithFullAccess = ticketCountMapper.getOrDefault(TicketType.FULL, 0L);
-        attendeesWithFullVIPAccess = ticketCountMapper.getOrDefault(TicketType.FULL_VIP, 0L);
-        attendeesWithFreePass = ticketCountMapper.getOrDefault(TicketType.FREE_PASS, 0L);
-        attendeesWithOneDayAccess = ticketCountMapper.getOrDefault(TicketType.ONE_DAY, 0L);
-        attendeesWithOneDayVIPAccess = ticketCountMapper.getOrDefault(TicketType.ONE_DAY_VIP, 0L);
+            attendeesWithFullAccess = ticketCountMapper.getOrDefault(TicketType.FULL, 0L);
+            attendeesWithFullVIPAccess = ticketCountMapper.getOrDefault(TicketType.FULL_VIP, 0L);
+            attendeesWithFreePass = ticketCountMapper.getOrDefault(TicketType.FREE_PASS, 0L);
+            attendeesWithOneDayAccess = ticketCountMapper.getOrDefault(TicketType.ONE_DAY, 0L);
+            attendeesWithOneDayVIPAccess = ticketCountMapper.getOrDefault(TicketType.ONE_DAY_VIP, 0L);
+        }
     }
 
     @Override
