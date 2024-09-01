@@ -4,11 +4,11 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 public enum TicketType {
-    Full,
-    FullVIP,
-    FreePass,
-    OneDay,
-    OneDayVIP;
+    FULL,
+    FULL_VIP,
+    FREE_PASS,
+    ONE_DAY,
+    ONE_DAY_VIP;
 
     public static TicketType getRandomTicketType() {
         return Stream.of(TicketType.values())

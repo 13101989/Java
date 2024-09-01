@@ -25,7 +25,6 @@ public class FestivalMain {
             try (ExecutorService executorService = Executors.newFixedThreadPool(numberOfGateEntrances)) {
                 attendeesRunnable.forEach(executorService::submit);
             }
-
             Thread.sleep(5000);
         }
     }

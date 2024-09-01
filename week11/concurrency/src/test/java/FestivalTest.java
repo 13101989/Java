@@ -26,16 +26,16 @@ class FestivalTest {
         gate = new FestivalGate();
         gate.setEstimatedValidationTime(0);
 
-        attendees.add(new FestivalAttendeeThread(TicketType.Full, gate));
-        attendees.add(new FestivalAttendeeThread(TicketType.Full, gate));
-        attendees.add(new FestivalAttendeeThread(TicketType.Full, gate));
+        attendees.add(new FestivalAttendeeThread(TicketType.FULL, gate));
+        attendees.add(new FestivalAttendeeThread(TicketType.FULL, gate));
+        attendees.add(new FestivalAttendeeThread(TicketType.FULL, gate));
 
-        attendees.add(new FestivalAttendeeThread(TicketType.FullVIP, gate));
+        attendees.add(new FestivalAttendeeThread(TicketType.FULL_VIP, gate));
 
-        attendees.add(new FestivalAttendeeThread(TicketType.FreePass, gate));
-        attendees.add(new FestivalAttendeeThread(TicketType.FreePass, gate));
+        attendees.add(new FestivalAttendeeThread(TicketType.FREE_PASS, gate));
+        attendees.add(new FestivalAttendeeThread(TicketType.FREE_PASS, gate));
 
-        attendees.add(new FestivalAttendeeThread(TicketType.OneDay, gate));
+        attendees.add(new FestivalAttendeeThread(TicketType.ONE_DAY, gate));
     }
 
     @Test
@@ -52,13 +52,13 @@ class FestivalTest {
 
         assertEquals(7, gate.getAttendees().size());
 
-        assertEquals("attendee with access type Full", gate.getAttendees().get(0).toString());
-        assertEquals("attendee with access type Full", gate.getAttendees().get(1).toString());
-        assertEquals("attendee with access type Full", gate.getAttendees().get(2).toString());
-        assertEquals("attendee with access type FullVIP", gate.getAttendees().get(3).toString());
-        assertEquals("attendee with access type FreePass", gate.getAttendees().get(4).toString());
-        assertEquals("attendee with access type FreePass", gate.getAttendees().get(5).toString());
-        assertEquals("attendee with access type OneDay", gate.getAttendees().get(6).toString());
+        assertEquals("attendee with access type FULL", gate.getAttendees().get(0).toString());
+        assertEquals("attendee with access type FULL", gate.getAttendees().get(1).toString());
+        assertEquals("attendee with access type FULL", gate.getAttendees().get(2).toString());
+        assertEquals("attendee with access type FULL_VIP", gate.getAttendees().get(3).toString());
+        assertEquals("attendee with access type FREE_PASS", gate.getAttendees().get(4).toString());
+        assertEquals("attendee with access type FREE_PASS", gate.getAttendees().get(5).toString());
+        assertEquals("attendee with access type ONE_DAY", gate.getAttendees().get(6).toString());
     }
 
     @Test
@@ -80,16 +80,13 @@ class FestivalTest {
                 "***************************************************************************\n" +
                         "Total stats collected from gate so far are as follow:\n" +
                         "7 people entered\n\n" +
-                        "3 people have full access\n" +
-                        "2 people have free passes\n" +
-                        "1 people have full VIP access\n" +
-                        "1 people have one-day access\n" +
-                        "0 people have one-day VIP access\n" +
+                        "3 people have FULL access\n" +
+                        "2 people have FREE_PASS access\n" +
+                        "1 people have FULL_VIP access\n" +
+                        "1 people have ONE_DAY access\n" +
+                        "0 people have ONE_DAY_VIP access\n" +
                         "***************************************************************************\n",
                 gateStats.toString()
         );
-
-
     }
-
 }

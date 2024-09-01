@@ -28,11 +28,11 @@ public class FestivalStatisticsThread implements Runnable {
                         FestivalAttendeeThread::getTicketType,
                         Collectors.counting()));
 
-        attendeesWithFullAccess = ticketCountMapper.getOrDefault(TicketType.Full, 0L);
-        attendeesWithFullVIPAccess = ticketCountMapper.getOrDefault(TicketType.FullVIP, 0L);
-        attendeesWithFreePass = ticketCountMapper.getOrDefault(TicketType.FreePass, 0L);
-        attendeesWithOneDayAccess = ticketCountMapper.getOrDefault(TicketType.OneDay, 0L);
-        attendeesWithOneDayVIPAccess = ticketCountMapper.getOrDefault(TicketType.OneDayVIP, 0L);
+        attendeesWithFullAccess = ticketCountMapper.getOrDefault(TicketType.FULL, 0L);
+        attendeesWithFullVIPAccess = ticketCountMapper.getOrDefault(TicketType.FULL_VIP, 0L);
+        attendeesWithFreePass = ticketCountMapper.getOrDefault(TicketType.FREE_PASS, 0L);
+        attendeesWithOneDayAccess = ticketCountMapper.getOrDefault(TicketType.ONE_DAY, 0L);
+        attendeesWithOneDayVIPAccess = ticketCountMapper.getOrDefault(TicketType.ONE_DAY_VIP, 0L);
     }
 
     @Override
@@ -48,11 +48,11 @@ public class FestivalStatisticsThread implements Runnable {
                 "***************************************************************************\n" +
                         "Total stats collected from gate so far are as follow:\n" +
                         totalAttendees + " people entered\n\n" +
-                        attendeesWithFullAccess + " people have full access\n" +
-                        attendeesWithFreePass + " people have free passes\n" +
-                        attendeesWithFullVIPAccess + " people have full VIP access\n" +
-                        attendeesWithOneDayAccess + " people have one-day access\n" +
-                        attendeesWithOneDayVIPAccess + " people have one-day VIP access\n" +
+                        attendeesWithFullAccess + " people have FULL access\n" +
+                        attendeesWithFreePass + " people have FREE_PASS access\n" +
+                        attendeesWithFullVIPAccess + " people have FULL_VIP access\n" +
+                        attendeesWithOneDayAccess + " people have ONE_DAY access\n" +
+                        attendeesWithOneDayVIPAccess + " people have ONE_DAY_VIP access\n" +
                         "***************************************************************************\n";
     }
 }
