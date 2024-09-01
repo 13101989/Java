@@ -2,6 +2,7 @@ package test.java;
 
 import main.java.FestivalAttendeeThread;
 import main.java.FestivalGate;
+import main.java.FestivalStatisticsThread;
 import main.java.TicketType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -58,6 +59,32 @@ class FestivalTest {
         assertEquals("attendee with access type FreePass", gate.getAttendees().get(4).toString());
         assertEquals("attendee with access type FreePass", gate.getAttendees().get(5).toString());
         assertEquals("attendee with access type OneDay", gate.getAttendees().get(6).toString());
+    }
+
+    @Test
+    void testStatsForGate() {
+        FestivalStatisticsThread gateStats;
+        try (ExecutorService executorService = Executors.newFixedThreadPool(1)) {
+            attendees.forEach(executorService::submit);
+
+            gateStats = new FestivalStatisticsThread(gate);
+            executorService.submit(gateStats);
+        }
+
+        assertEquals(
+                "***************************************************************************\n" +
+                        "Total stats collected from gate so far are as follow:\n" +
+                        "7 people entered\n\n" +
+                        "3 people have full access\n" +
+                        "2 people have free passes\n" +
+                        "1 people have full VIP access\n" +
+                        "1 people have one-day access\n" +
+                        "0 people have one-day VIP access\n" +
+                        "***************************************************************************\n",
+                gateStats.toString()
+        );
+
+
     }
 
 }
