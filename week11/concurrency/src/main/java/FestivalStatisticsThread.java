@@ -1,8 +1,8 @@
 package main.java;
 
 
-public class FestivalStatisticsThread {
-    private FestivalGate festivalGate;
+public class FestivalStatisticsThread implements Runnable {
+    private final FestivalGate festivalGate;
 
     private int totalAttendees;
     private int attendeesWithFullAccess;
@@ -15,7 +15,7 @@ public class FestivalStatisticsThread {
         this.festivalGate = festivalGate;
     }
 
-    private FestivalStatisticsThread collectGateStats() {
+    public void collectGateStats() {
         totalAttendees = this.festivalGate.getAttendees().size();
 
         for (FestivalAttendeeThread attendee : this.festivalGate.getAttendees()) {
@@ -27,18 +27,22 @@ public class FestivalStatisticsThread {
                 case OneDayVIP -> attendeesWithOneDayVIPAccess += 1;
             }
         }
-        return this;
+    }
+
+    @Override
+    public void run() {
+        collectGateStats();
     }
 
     @Override
     public String toString() {
         return
-                "Stats collected from gate so far are as follow: " +
-                totalAttendees + " people entered\n" +
-                attendeesWithFullAccess + " people have full tickets\n" +
-                attendeesWithFreePass + " people have free passes\n" +
-                attendeesWithFullVIPAccess + " people have full VIP passes\n" +
-                attendeesWithOneDayAccess + " people have one-day passes\n" +
-                attendeesWithOneDayVIPAccess + " people have one-day VIP passes";
+                "Stats collected from gate so far are as follow:\n\n" +
+                        totalAttendees + " people entered\n\n" +
+                        attendeesWithFullAccess + " people have full tickets\n" +
+                        attendeesWithFreePass + " people have free passes\n" +
+                        attendeesWithFullVIPAccess + " people have full VIP passes\n" +
+                        attendeesWithOneDayAccess + " people have one-day passes\n" +
+                        attendeesWithOneDayVIPAccess + " people have one-day VIP passes";
     }
 }

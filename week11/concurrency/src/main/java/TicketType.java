@@ -10,7 +10,7 @@ public enum TicketType {
     OneDay,
     OneDayVIP;
 
-    public static TicketType getRandomTicketType(){
+    public static TicketType getRandomTicketType() {
         return Stream.of(TicketType.values())
                 .skip(new Random().nextInt(TicketType.values().length))
                 .findFirst()
