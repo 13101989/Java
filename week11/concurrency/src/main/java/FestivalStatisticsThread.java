@@ -39,17 +39,21 @@ public class FestivalStatisticsThread implements Runnable {
     @Override
     public void run() {
         collectGateStats();
+        System.out.println();
+        System.out.println(this);
     }
 
     @Override
     public String toString() {
         return
-                "Stats collected from gate so far are as follow:\n\n" +
+                "***************************************************************************\n" +
+                        "Stats collected from gate so far are as follow:\n" +
                         totalAttendees + " people entered\n\n" +
                         attendeesWithFullAccess + " people have full tickets\n" +
                         attendeesWithFreePass + " people have free passes\n" +
                         attendeesWithFullVIPAccess + " people have full VIP passes\n" +
                         attendeesWithOneDayAccess + " people have one-day passes\n" +
-                        attendeesWithOneDayVIPAccess + " people have one-day VIP passes";
+                        attendeesWithOneDayVIPAccess + " people have one-day VIP passes\n" +
+                        "***************************************************************************\n";
     }
 }

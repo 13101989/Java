@@ -1,40 +1,31 @@
 package main.java;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Festival {
     public static void main(String[] args) throws InterruptedException {
         FestivalGate gate = new FestivalGate();
 
-        List<Thread> attendeeThreads = new ArrayList<>();
+        List<Runnable> attendeesRunnable = new ArrayList<>();
         for (int i = 0; i < 200; i++) {
             TicketType access = TicketType.getRandomTicketType();
             FestivalAttendeeThread attendee = new FestivalAttendeeThread(access, gate);
-            attendeeThreads.add(new Thread(attendee));
+            attendeesRunnable.add(attendee);
         }
 
-        for (Thread thread : attendeeThreads) {
-            thread.start();
+        try (ExecutorService executorService = Executors.newFixedThreadPool(10)) {
+            for (Runnable attendee : attendeesRunnable) {
+                executorService.submit(attendee);
+            }
+
+            ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+            FestivalStatisticsThread gateStats = new FestivalStatisticsThread(gate);
+            scheduledExecutorService.scheduleAtFixedRate(gateStats, 0, 5, TimeUnit.SECONDS);
         }
-
-        FestivalStatisticsThread gateStats = new FestivalStatisticsThread(gate);
-        Thread gateStatsThread = new Thread(gateStats);
-
-//        while (true) {
-//
-//            gateStatsThread.start();
-//
-//            try {
-//                Thread.sleep(5000);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-
-        Thread.sleep(10000);
-        gateStatsThread.start();
-        System.out.println(gateStats);
     }
 }

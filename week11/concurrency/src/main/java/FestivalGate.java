@@ -11,8 +11,8 @@ import java.util.List;
 public class FestivalGate {
     private List<FestivalAttendeeThread> attendees = new ArrayList<>();
 
-    public void addAttendee(FestivalAttendeeThread attendee) {
+    public synchronized void addAttendee(FestivalAttendeeThread attendee) {
         attendees.add(attendee);
-        System.out.println("Ticket was validate for: " + attendee);
+        System.out.println("Ticket was validated for -> " + attendee);
     }
 }

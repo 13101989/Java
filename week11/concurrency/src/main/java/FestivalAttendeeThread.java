@@ -1,9 +1,8 @@
 package main.java;
 
 import lombok.Getter;
-import lombok.ToString;
 
-@ToString
+
 @Getter
 public class FestivalAttendeeThread implements Runnable {
     private final TicketType ticketType;
@@ -21,7 +20,7 @@ public class FestivalAttendeeThread implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
