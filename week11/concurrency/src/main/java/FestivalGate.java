@@ -13,5 +13,6 @@ public class FestivalGate {
 
     public void addAttendee(FestivalAttendeeThread attendee) {
         attendees.add(attendee);
+        System.out.println("Ticket was validate for: " + attendee);
     }
 }

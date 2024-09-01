@@ -27,4 +27,9 @@ public class FestivalAttendeeThread implements Runnable {
         }
         validateAttendeeTicket();
     }
+
+    @Override
+    public String toString() {
+        return "attendee with access type " + ticketType;
+    }
 }
