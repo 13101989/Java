@@ -64,11 +64,16 @@ class FestivalTest {
     @Test
     void testStatsForGate() {
         FestivalStatisticsThread gateStats;
-        try (ExecutorService executorService = Executors.newFixedThreadPool(1)) {
+        try (ExecutorService executorService = Executors.newFixedThreadPool(7)) {
             attendees.forEach(executorService::submit);
 
             gateStats = new FestivalStatisticsThread(gate);
             executorService.submit(gateStats);
+        }
+
+        try (ExecutorService executorServiceStats = Executors.newFixedThreadPool(1)) {
+            gateStats = new FestivalStatisticsThread(gate);
+            executorServiceStats.submit(gateStats);
         }
 
         assertEquals(
