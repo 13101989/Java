@@ -24,7 +24,8 @@ public class FestivalMain {
             FestivalStatisticsThread gateStats = new FestivalStatisticsThread(gate);
             scheduledExecutorService.scheduleAtFixedRate(gateStats, 0, 5, TimeUnit.SECONDS);
 
-            try (ExecutorService executorService = Executors.newFixedThreadPool(10)) {
+            int numberOfGateEntrances = 10;
+            try (ExecutorService executorService = Executors.newFixedThreadPool(numberOfGateEntrances)) {
                 attendeesRunnable.forEach(executorService::submit);
             }
 
