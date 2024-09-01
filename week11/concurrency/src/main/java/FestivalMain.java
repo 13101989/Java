@@ -14,10 +14,7 @@ public class FestivalMain {
 
         List<Runnable> attendeesRunnable = IntStream
                 .range(0, 200)
-                .mapToObj(_ -> {
-                    TicketType access = TicketType.getRandomTicketType();
-                    return new FestivalAttendeeThread(access, gate);
-                })
+                .mapToObj(_ -> new FestivalAttendeeThread(TicketType.getRandomTicketType(), gate))
                 .collect(Collectors.toList());
 
         try (ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1)) {

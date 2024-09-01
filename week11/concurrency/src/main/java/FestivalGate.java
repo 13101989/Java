@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 public class FestivalGate {
     private List<FestivalAttendeeThread> attendees = new ArrayList<>();
+    private int estimatedValidationTime = 1000;
 
     public synchronized void addAttendee(FestivalAttendeeThread attendee) {
         attendees.add(attendee);

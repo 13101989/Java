@@ -19,7 +19,7 @@ public class FestivalAttendeeThread implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(festivalGate.getEstimatedValidationTime());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
