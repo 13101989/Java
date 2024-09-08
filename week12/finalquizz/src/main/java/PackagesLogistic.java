@@ -74,7 +74,7 @@ public class PackagesLogistic {
         for (Package pkg : group.getPackages()) {
             try {
                 System.out.println(pkg);
-                Thread.sleep(2000);  // Simulate delivery time
+                Thread.sleep(pkg.getDistance() * 1000L);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
