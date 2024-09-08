@@ -1,1 +1,5 @@
-No person from list provided is born in the month of APRIL
+Persons that are born in FEBRUARY ordered alphabetically:
+George State -> 2002-02-24
+Mirela Tanase -> 2000-02-12
+Valentin Tanase -> 2002-02-02
+Valentin Tanasie -> 2002-02-10
