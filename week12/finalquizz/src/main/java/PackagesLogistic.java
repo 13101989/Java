@@ -17,20 +17,19 @@ import java.util.concurrent.Executors;
 public class PackagesLogistic {
     public static void main(String[] args) throws IOException {
         String sourceFilePath = "/Users/valentindamache/Desktop/Java/assignments/Java/week12/finalquizz/src/main/resources/packages.csv";
+
         List<String> packagesData = loadPackagesFromFile(sourceFilePath);
         List<Package> packages = parsePackagesFromFile(packagesData);
+
         Map<String, Map<LocalDate, PackageGroup>> groupedPackages = groupPackages(packages);
-        ExecutorService executor = Executors.newFixedThreadPool(10);
 
-        for (Map.Entry<String, Map<LocalDate, PackageGroup>> locationEntry : groupedPackages.entrySet()) {
-            for (Map.Entry<LocalDate, PackageGroup> dateEntry : locationEntry.getValue().entrySet()) {
-                PackageGroup group = dateEntry.getValue();
-                executor.submit(() -> deliverPackages(group));
+        try (ExecutorService executor = Executors.newFixedThreadPool(10)) {
+            for (Map.Entry<String, Map<LocalDate, PackageGroup>> locationEntry : groupedPackages.entrySet()) {
+                for (Map.Entry<LocalDate, PackageGroup> dateEntry : locationEntry.getValue().entrySet()) {
+                    PackageGroup group = dateEntry.getValue();
+                    executor.submit(() -> deliverPackages(group));
+                }
             }
-        }
-
-        executor.shutdown();
-        while (!executor.isTerminated()) {
         }
 
         printResults(groupedPackages);
@@ -75,7 +74,7 @@ public class PackagesLogistic {
         for (Package pkg : group.packages) {
             try {
                 System.out.println(pkg);
-                Thread.sleep(pkg.distance * 1000L);  // Simulate delivery time
+                Thread.sleep(2000);  // Simulate delivery time
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
