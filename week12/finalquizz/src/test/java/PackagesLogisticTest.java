@@ -1,7 +1,7 @@
 package test.java;
 
-import main.java.PackageGroup;
 import main.java.Package;
+import main.java.PackageGroup;
 import main.java.PackagesLogistic;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
