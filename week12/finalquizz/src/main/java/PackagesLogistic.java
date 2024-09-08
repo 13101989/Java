@@ -74,7 +74,7 @@ public class PackagesLogistic {
         for (Package pkg : group.getPackages()) {
             try {
                 System.out.println(pkg);
-                Thread.sleep(pkg.getDistance() * 1000L);
+                Thread.sleep(2000); // pkg.getDistance() * 1000L
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
