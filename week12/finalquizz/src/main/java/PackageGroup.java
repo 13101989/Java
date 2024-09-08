@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PackageGroup {
-    String location;
-    LocalDate deliveryDate;
-    List<Package> packages;
+    public String location;
+    public LocalDate deliveryDate;
+    public List<Package> packages;
 
     @Getter
     int totalValue = 0;

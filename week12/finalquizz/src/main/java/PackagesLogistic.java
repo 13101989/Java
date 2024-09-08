@@ -36,13 +36,13 @@ public class PackagesLogistic {
         printResults(groupedPackages);
     }
 
-    private static List<Package> parsePackagesFromFile(List<String> packagesData) {
+    public static List<Package> parsePackagesFromFile(List<String> packagesData) {
         String csvDelimiter = ",";
         List<Package> packages = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        for (int i = 0; i < packagesData.size(); i++) {
-            String[] parts = packagesData.get(i).split(csvDelimiter);
+        for (String packagesDatum : packagesData) {
+            String[] parts = packagesDatum.split(csvDelimiter);
             String location = parts[0];
             int distance = Integer.parseInt(parts[1]);
             int value = Integer.parseInt(parts[2]);
@@ -53,12 +53,12 @@ public class PackagesLogistic {
         return packages;
     }
 
-    private static List<String> loadPackagesFromFile(String fileName) throws IOException {
+    public static List<String> loadPackagesFromFile(String fileName) throws IOException {
         Path file = Paths.get(fileName);
         return Files.readAllLines(file);
     }
 
-    private static Map<String, Map<LocalDate, PackageGroup>> groupPackages(List<Package> packages) {
+    public static Map<String, Map<LocalDate, PackageGroup>> groupPackages(List<Package> packages) {
         Map<String, Map<LocalDate, PackageGroup>> groupedPackages = new HashMap<>();
 
         for (Package pkg : packages) {
@@ -70,7 +70,7 @@ public class PackagesLogistic {
         return groupedPackages;
     }
 
-    private static void deliverPackages(PackageGroup group) {
+    public static void deliverPackages(PackageGroup group) {
         System.out.println("--------------------------------------------------");
         for (Package pkg : group.packages) {
             try {
