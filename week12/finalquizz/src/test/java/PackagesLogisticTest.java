@@ -28,16 +28,16 @@ class PackagesLogisticTest {
 
     @Test
     void testPackageCreation() {
-        assertEquals("Apahida", testPackage.location);
-        assertEquals(15, testPackage.distance);
-        assertEquals(100, testPackage.value);
-        assertEquals(LocalDate.of(2017, 9, 1), testPackage.deliveryDate);
+        assertEquals("Apahida", testPackage.getLocation());
+        assertEquals(15, testPackage.getDistance());
+        assertEquals(100, testPackage.getValue());
+        assertEquals(LocalDate.of(2017, 9, 1), testPackage.getDeliveryDate());
     }
 
     @Test
     void testPackageGroupCreation() {
         testGroup.addPackage(testPackage);
-        assertEquals(1, testGroup.packages.size());
+        assertEquals(1, testGroup.getPackages().size());
         assertEquals(100, testGroup.getTotalValue());
         assertEquals(15, testGroup.getTotalDistance());
         assertEquals(15, testGroup.getRevenue());  // 15 km * 1 LEU
@@ -59,12 +59,12 @@ class PackagesLogisticTest {
         // Check for packages in Apahida on 2017-09-01
         PackageGroup groupApahida = groupedPackages.get("Apahida").get(LocalDate.of(2017, 9, 1));
         assertNotNull(groupApahida);
-        assertEquals(2, groupApahida.packages.size());
+        assertEquals(2, groupApahida.getPackages().size());
 
         // Check for package in Floresti on 2017-09-02
         PackageGroup groupFloresti = groupedPackages.get("Floresti").get(LocalDate.of(2017, 9, 2));
         assertNotNull(groupFloresti);
-        assertEquals(1, groupFloresti.packages.size());
+        assertEquals(1, groupFloresti.getPackages().size());
     }
 
     @Test
@@ -80,15 +80,15 @@ class PackagesLogisticTest {
         List<Package> loadedPackages = PackagesLogistic.parsePackagesFromFile(packagaData);
 
         assertEquals(2, loadedPackages.size());
-        assertEquals("Apahida", loadedPackages.get(0).location);
-        assertEquals(15, loadedPackages.get(0).distance);
-        assertEquals(100, loadedPackages.get(0).value);
-        assertEquals(LocalDate.of(2017, 9, 1), loadedPackages.get(0).deliveryDate);
+        assertEquals("Apahida", loadedPackages.get(0).getLocation());
+        assertEquals(15, loadedPackages.get(0).getDistance());
+        assertEquals(100, loadedPackages.get(0).getValue());
+        assertEquals(LocalDate.of(2017, 9, 1), loadedPackages.get(0).getDeliveryDate());
 
-        assertEquals("Floresti", loadedPackages.get(1).location);
-        assertEquals(7, loadedPackages.get(1).distance);
-        assertEquals(200, loadedPackages.get(1).value);
-        assertEquals(LocalDate.of(2017, 9, 2), loadedPackages.get(1).deliveryDate);
+        assertEquals("Floresti", loadedPackages.get(1).getLocation());
+        assertEquals(7, loadedPackages.get(1).getDistance());
+        assertEquals(200, loadedPackages.get(1).getValue());
+        assertEquals(LocalDate.of(2017, 9, 2), loadedPackages.get(1).getDeliveryDate());
 
         // Clean up temporary file
         tempFile.deleteOnExit();

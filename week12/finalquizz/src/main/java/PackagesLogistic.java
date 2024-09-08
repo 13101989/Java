@@ -61,8 +61,8 @@ public class PackagesLogistic {
         Map<String, Map<LocalDate, PackageGroup>> groupedPackages = new HashMap<>();
 
         for (Package pkg : packages) {
-            groupedPackages.computeIfAbsent(pkg.location, k -> new HashMap<>())
-                    .computeIfAbsent(pkg.deliveryDate, k -> new PackageGroup(pkg.location, pkg.deliveryDate))
+            groupedPackages.computeIfAbsent(pkg.getLocation(), k -> new HashMap<>())
+                    .computeIfAbsent(pkg.getDeliveryDate(), k -> new PackageGroup(pkg.getLocation(), pkg.getDeliveryDate()))
                     .addPackage(pkg);
         }
 
@@ -71,7 +71,7 @@ public class PackagesLogistic {
 
     public static void deliverPackages(PackageGroup group) {
         System.out.println("--------------------------------------------------");
-        for (Package pkg : group.packages) {
+        for (Package pkg : group.getPackages()) {
             try {
                 System.out.println(pkg);
                 Thread.sleep(2000);  // Simulate delivery time

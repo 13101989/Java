@@ -1,13 +1,15 @@
 package main.java;
 
+import lombok.Getter;
+
 import java.time.LocalDate;
 
-
+@Getter
 public class Package {
-    public String location;
-    public int distance;
-    public int value;
-    public LocalDate deliveryDate;
+    private final String location;
+    private final int distance;
+    private final int value;
+    private final LocalDate deliveryDate;
 
     public Package(String location, int distance, int value, LocalDate deliveryDate) {
         this.location = location;

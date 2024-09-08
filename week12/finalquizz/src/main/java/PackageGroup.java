@@ -6,10 +6,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class PackageGroup {
-    public String location;
-    public LocalDate deliveryDate;
-    public List<Package> packages;
+    private final String location;
+    private final LocalDate deliveryDate;
+
+    @Getter
+    private List<Package> packages;
 
     @Getter
     int totalValue = 0;
@@ -24,12 +27,12 @@ public class PackageGroup {
 
     public void addPackage(Package pkg) {
         packages.add(pkg);
-        totalValue += pkg.value;
-        totalDistance += pkg.distance;
+        totalValue += pkg.getValue();
+        totalDistance += pkg.getDistance();
     }
 
     public int getRevenue() {
-        return packages.stream().mapToInt(pkg -> pkg.distance).sum();
+        return packages.stream().mapToInt(Package::getDistance).sum();
     }
 
     @Override
