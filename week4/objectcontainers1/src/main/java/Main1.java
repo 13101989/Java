@@ -6,7 +6,7 @@ import main.java.containers.Person;
 
 import java.util.*;
 
-public class Main2 {
+public class Main1 {
     public static void main(String[] args) {
 //        comparator compares first on name and after on age and comparable the opposite
 

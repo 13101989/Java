@@ -1,12 +1,8 @@
 package main.java;
 
-import main.java.phones.Phone;
-import main.java.phones.manufacturer.applemodels.iPhone15;
 import main.java.phones.manufacturer.applemodels.iPhone15Pro;
-import main.java.phones.manufacturer.samsungmodels.S24;
-import main.java.phones.manufacturer.samsungmodels.S24Ultra;
 
-public class Main {
+public class Main2 {
     public static void main(String[] args) {
 
 //        Phone phone = new Apple(); // shouldn't compile
