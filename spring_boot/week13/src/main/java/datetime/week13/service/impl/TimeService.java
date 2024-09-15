@@ -7,9 +7,9 @@ import java.time.format.DateTimeFormatter;
 
 @Service
 public class TimeService {
-    public String getTime() {
+    public String getTime(String timeFormat) {
         LocalDateTime localDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(timeFormat);
         return localDateTime.format(formatter);
     }
 }
