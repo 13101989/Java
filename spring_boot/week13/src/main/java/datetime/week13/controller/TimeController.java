@@ -19,17 +19,29 @@ public class TimeController {
         this.time = time;
     }
 
-    @GetMapping(value = "/time", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping("/time")
     public String getTime() {
         return "<table border='3'>" +
                     "<tr>" +
                         "<th>" +
-                            "Date & Hour" +
+                            "&nbsp;&nbsp;Profile&nbsp;&nbsp;" +
+                        "</th>" +
+                        "<th>" +
+                            "Date" +
+                        "</th>" +
+                        "<th>" +
+                            "Hour" +
                         "</th>" +
                     "</tr>" +
                     "<tr>" +
                         "<td>" +
-                            time.getTime(appConfig.getTimeFormat()) +
+                            "&nbsp;&nbsp;" + appConfig.getProfile() + "&nbsp;&nbsp;" +
+                        "</td>" +
+                        "<td>" +
+                            "&nbsp;&nbsp;" + time.getDate(appConfig.getDateFormat()) + "&nbsp;&nbsp;" +
+                        "</td>" +
+                        "<td>" +
+                            "&nbsp;&nbsp;" + time.getTime(appConfig.getTimeFormat()) + "&nbsp;&nbsp;" +
                         "</td>" +
                     "</tr>" +
                 "</table>";

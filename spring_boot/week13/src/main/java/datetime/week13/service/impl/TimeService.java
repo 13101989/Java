@@ -7,9 +7,17 @@ import java.time.format.DateTimeFormatter;
 
 @Service
 public class TimeService {
+    public String getDate(String dateFormat) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(dateFormat);
+
+        return localDateTime.format(dateFormatter);
+    }
+
     public String getTime(String timeFormat) {
         LocalDateTime localDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(timeFormat);
-        return localDateTime.format(formatter);
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(timeFormat);
+
+        return localDateTime.format(timeFormatter);
     }
 }
