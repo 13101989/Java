@@ -1,0 +1,18 @@
+package com.example.spring_ch14_ex1.models;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+
+import java.math.BigDecimal;
+
+@Getter
+@Setter
+public class Account {
+
+    @Id
+    private long id;
+
+    private String name;
+    private BigDecimal amount;
+}

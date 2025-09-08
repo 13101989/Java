@@ -1,0 +1,26 @@
+package ch4.ex6.services;
+
+import ch4.ex6.model.Comment;
+import ch4.ex6.proxies.CommentNotificationProxy;
+import ch4.ex6.repositories.CommentRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CommentService {
+
+    private final CommentRepository commentRepository;
+    private final CommentNotificationProxy commentNotificationProxy;
+
+    public CommentService(
+            CommentRepository commentRepository,
+            @Qualifier("PUSH") CommentNotificationProxy commentNotificationProxy) {
+        this.commentRepository = commentRepository;
+        this.commentNotificationProxy = commentNotificationProxy;
+    }
+
+    public void publishComment(Comment comment) {
+        commentRepository.storeComment(comment);
+        commentNotificationProxy.sendComment(comment);
+    }
+}
